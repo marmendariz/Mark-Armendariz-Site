@@ -20,12 +20,7 @@ export class IconToggle extends PolymerElement{
 
         </style>
 
-        <h1>dfdf</h1>
-        
         <iron-icon icon="{{toggleIcon}}"></iron-icon>
-
-
-
 
         `;
     }
@@ -37,7 +32,6 @@ export class IconToggle extends PolymerElement{
 
     static get properties(){
         return{
-
             toggleIcon: {
                 type: String
             },
