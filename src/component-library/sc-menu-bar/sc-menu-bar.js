@@ -29,11 +29,14 @@ export class ScMenuBar extends PolymerElement {
         }
       </style>
       
-      <sc-card>
+      <sc-card id="menuBarCard">
         <div slot="content" id="menuPageButtons">
-          <dom-repeat items="{{sections}}">
+          <dom-repeat id="repeat" items="{{pages}}">
             <template>
-              <sc-menu-page-button class="pageButton" title="{{item}}"></sc-menu-page-button>
+              <sc-menu-page-button id="{{item.id}}" 
+                                   class="pageButton" 
+                                   text="{{item.name}}">
+              </sc-menu-page-button>
             </template>
           </dom-repeat>
         </div>
@@ -49,26 +52,29 @@ export class ScMenuBar extends PolymerElement {
         value: 'sc-menu-bar'
       },
       
-      /**
-       * Temporary property holding section values.
-       * TODO: REPLACE WITH RESULTS FROM SERVICE RESPONSE
-       */
-      sections: {
-        value(){
-            return  [
-                     'Home', 
-                     'Skills',
-                     'Education', 
-                     'Direct Experience',
-                     'Special Projects',
-                     'Additional Experience',
-                     'Contact'
-                     ]; 
-        }
-      }
+      pages: {
+        type: Array,
+        notify: true,
+        reflectToAttribute: true,
+      },
 
+      selectedPage: {
+        type: String,
+        notify: true,
+        reflectToAttribute: true
+      }
     };
   }
+
+  connectedCallback(){
+    super.connectedCallback();
+    this.$.menuBarCard.addEventListener('buttontap', e => this._handlePageButtonClick(e))
+  }
+
+  _handlePageButtonClick(e){
+    this.selectedPage = e.detail;
+  }
+
 }
 
 window.customElements.define('sc-menu-bar', ScMenuBar);

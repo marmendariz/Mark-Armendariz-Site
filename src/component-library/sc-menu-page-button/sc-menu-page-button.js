@@ -40,7 +40,7 @@ export class ScMenuPageButton extends PolymerElement {
 
 
       <button on-click="buttonTapped" class="menuTab">
-        {{title}}
+        {{text}}
       </button>
 
 
@@ -53,7 +53,7 @@ export class ScMenuPageButton extends PolymerElement {
    *********************/
   static get properties() {
     return {
-      title:{
+      text:{
         type: String
       },
       selected:{
@@ -62,13 +62,21 @@ export class ScMenuPageButton extends PolymerElement {
         reflectToAttribute: true,
         notify: true
       },
+      event:{
+        type: Object,
+        value: {
+          buttonTapped: 'buttontap'
+        }
+      }
     };
   }
 
   buttonTapped(e){
-    console.log(e.target);
-    this.selected = !this.selected;
+    //this.selected = !this.selected;
+    this.dispatchEvent(new CustomEvent(this.event.buttonTapped, 
+                      {detail: {id: this.id, name: this.text}, bubbles: true, composed: true}));
   }
+  
 
 
 }

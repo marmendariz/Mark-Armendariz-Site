@@ -33,28 +33,34 @@ class ShowcaseApplication extends PolymerElement {
         }
       </style>
 
+      <!-- ====== APPLICATION ROUTING ====== -->
+      <app-location route="{{route}}">
+      </app-location>
+
+      <app-route route="{{route}}"
+                 pattern="/:name"
+                 data="{{selectedPage}}"
+                 tail="{{subroute}}">
+      </app-route>
+      <!-- ================================= -->
+
+      <!-- ====== MAIN APPLICATION STARTIN POINT ====== -->
       <sc-card id="appCard">
         <div slot="content">
+          
+          <sc-menu-bar id="menuBar" 
+                       selected-page="{{selectedPage}}"
+                       pages="{{appPages}}">
+          </sc-menu-bar>
 
-          <sc-menu-bar id="menuBar"></sc-menu-bar>
-
-          <iron-pages attr-for-selected="id" selected="Education">
-            <div id="LoadingPage"></div>
-            <div id="HomePage"></div>
-
-            <div id="Education">
-              <sc-resume-section title="education"></sc-resume-section>
-            </div>
-
-            <div id="DirectExperiencePage"></div>
-            <div id="SpecialProjectsPage"></div>
-            <div id="Additional Experience Page"></div>
-            <div id="SkillsPage"></div>
+          <iron-pages id="appIronPages" 
+                      selected="{{selectedPage.name}}" 
+                      attr-for-selected="title">
           </iron-pages>
 
         </div>
       </sc-card>
-      
+      <!-- =========================================== -->
 
     `;
   }
@@ -62,42 +68,80 @@ class ShowcaseApplication extends PolymerElement {
   
   static get properties() {
     return {
-      prop1: {
-        type: String,
-        value: 'showcase-application'
-      },
+      /**
+       * TODO: Set this value from web service response
+       */
       appPages: {
         type: Array,
-        value: ['Home', 
-                'Skills',
-                'Education', 
-                'Direct Experience',
-                'Special Projects',
-                'Additional Experience',
-                'Contact',
+        value: [
+                {
+                  id: 1,
+                  name: 'Home'
+                }, 
+                {
+                  id: 2,
+                  name: 'Skills'
+                },
+                {
+                  id: 3,
+                  name: 'Education'
+                },
+                {
+                  id: 4,
+                  name: 'Direct Experience'
+                },
+                {
+                  id: 5,
+                  name: 'Projects'
+                },
+                {
+                  id: 6,
+                  name: 'Additional Experience'
+                },
+                {
+                  id: 7,
+                  name: 'Contact'
+                }
               ]
       },
-      resumeData:{
+      
+      /**
+       * Holds information for page currently selected 
+       * and displayed
+       */
+      selectedPage: {
         type: Object,
-        value() {
-          return {};
-        }
-      }
+        notify: true,
+        value: {
+              id: 1,
+              name: 'Home'
+        },
+        reflectToAttribute: true,
+        observer: "_pageChanged"
+      },
     };
   }
 
   connectedCallback(){
     super.connectedCallback();
+    this._generateApplicationPages();
+  }
 
-    for(let pageName of this.appPages){
-      console.log(pageName);
-      var newPage = document.createElement("div");
-      newPage.attributes.id = pageName;
-      newPage.textContent = pageName;
-     // Polymer.dom(this.$.pages).appendChild(newPage);
-      //this.$.pages.appendChild(newPage);
+  /**
+   * Generates and appends page elements into app DOM
+   */
+  _generateApplicationPages(){
+    for(var i of this.appPages){
+      var newSection = document.createElement('sc-resume-section');
+      newSection.setAttribute('title', i.name);
+      newSection.setAttribute('section-id', i.id);
+      this.$.appIronPages.appendChild(newSection);
     }
+  }
 
+
+  _pageChanged(){
+    ///alert("LOADING...");
   }
 
 

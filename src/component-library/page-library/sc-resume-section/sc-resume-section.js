@@ -21,7 +21,7 @@ export class ScResumeSection extends PolymerElement {
       </style>
 
       <sc-card>
-        <div id="titleSlot" slot="title"><h2>{{title}}</h2></div>
+        <div id="titleSlot" slot="title"><h1>{{_toLowerCase(title)}}</h1></div>
         <div slot="content">
             <ul>
                 <li>Sustained and modernized products in the Electronic Maintenance System...</li>
@@ -45,6 +45,10 @@ export class ScResumeSection extends PolymerElement {
         notify: true
       },
     };
+  }
+
+  _toLowerCase(title){
+    return title.toLowerCase();
   }
 
 

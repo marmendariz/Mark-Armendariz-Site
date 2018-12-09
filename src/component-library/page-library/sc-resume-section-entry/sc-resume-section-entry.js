@@ -14,13 +14,13 @@ export class ScResumeSectionEntry extends PolymerElement {
         :host {
           display: block;
         }
-        #titleSlot{
-
-        }
       </style>
 
-
+      <div>
       
+      
+      </div>
+
 
 
     `;
