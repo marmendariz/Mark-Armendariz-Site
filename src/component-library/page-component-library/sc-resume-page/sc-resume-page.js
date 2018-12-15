@@ -55,11 +55,13 @@ export class ScResumePage extends PolymerElement {
        * Title of Resume Section
        */
       title:{
-        type: String
+        type: String,
+        reflectToAttribute: true
       },
 
-      sectionId: {
-        type: String
+      pageId: {
+        type: String,
+        reflectToAttribute: true
       },
 
 
@@ -69,13 +71,6 @@ export class ScResumePage extends PolymerElement {
         value: false,
       },
       
-      selected:{
-        type: Boolean,
-        value: false,
-        reflectToAttribute: true,
-        notify: true
-      },
-
       /**
        * TODO: Replace with web service response
        */
@@ -83,13 +78,8 @@ export class ScResumePage extends PolymerElement {
         type: Object,
         observer: "_test",
         notify: true,
-        reflectToAttribute: true
       }
     };
-  }
-
-  ready(){
-    super.ready();
   }
 
   _test(data){

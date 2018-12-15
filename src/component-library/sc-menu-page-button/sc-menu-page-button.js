@@ -74,7 +74,7 @@ export class ScMenuPageButton extends PolymerElement {
   buttonTapped(e){
     //this.selected = !this.selected;
     this.dispatchEvent(new CustomEvent(this.event.buttonTapped, 
-                      {detail: {id: this.id, name: this.text}, bubbles: true, composed: true}));
+                      {detail: {id: this.id, name: this.text, type: "type"}, bubbles: true, composed: true}));
   }
   
 

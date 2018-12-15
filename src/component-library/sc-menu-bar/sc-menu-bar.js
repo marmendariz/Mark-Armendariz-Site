@@ -59,7 +59,7 @@ export class ScMenuBar extends PolymerElement {
       },
 
       selectedPage: {
-        type: String,
+        type: Object,
         notify: true,
         reflectToAttribute: true
       }
@@ -72,7 +72,8 @@ export class ScMenuBar extends PolymerElement {
   }
 
   _handlePageButtonClick(e){
-    this.selectedPage = e.detail;
+    this.set('selectedPage', e.detail);
+    //this.selectedPage = e.detail;
   }
 
 }

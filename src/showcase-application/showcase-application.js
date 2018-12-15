@@ -33,6 +33,10 @@ class ShowcaseApplication extends PolymerElement {
           width: 95%;
           margin: 0 auto;
         }
+
+        iron-pages > .iron-selected{
+          transition: opacity 0.5s;
+        }
       </style>
 
       <!-- ====== APPLICATION ROUTING ====== -->
@@ -123,11 +127,7 @@ class ShowcaseApplication extends PolymerElement {
       selectedPage: {
         type: Object,
         notify: true,
-        value: {
-              id: "1",
-              name: 'Home'
-        },
-        reflectToAttribute: true,
+  
         observer: "_pageChanged"
       },
 
@@ -240,9 +240,6 @@ class ShowcaseApplication extends PolymerElement {
   _handlePageButtonClick(e){
     console.log("homeclicked");
     this.selectedPage = this.appPages[1];
-
-
-
   }
 
   /**
@@ -251,12 +248,13 @@ class ShowcaseApplication extends PolymerElement {
   _generateApplicationPages(){
     var newSection = document.createElement('sc-home-page');
     newSection.title = this.appPages[0].name;
+    newSection.pageId =  this.appPages[0].id;
     this._appendtoIronPages(newSection);
 
     for(var i=1; i<this.appPages.length-1; i++){
       newSection = document.createElement('sc-resume-page');
-      newSection.setAttribute('title', this.appPages[i].name);
-      newSection.setAttribute('section-id', i.id);
+      newSection.title = this.appPages[i].name;
+      newSection.pageId =  this.appPages[i].id;
       var data = (this.resumeData[this.appPages[i].id]) ? this.resumeData[this.appPages[i].id].entries :  [];
       newSection.resumeSectionData = data;
       this._appendtoIronPages(newSection);
@@ -264,11 +262,29 @@ class ShowcaseApplication extends PolymerElement {
 
     newSection = document.createElement('sc-home-page');
     newSection.title = this.appPages[this.appPages.length-1].name;
+    newSection.pageId =  this.appPages[this.appPages.length-1].id;
     this._appendtoIronPages(newSection);
   }
 
-  _pageChanged(){
-    ///alert("LOADING...");
+  _pageChanged(newVal, oldVal){
+    console.log(newVal);
+    console.log(oldVal);
+    if(!newVal || !oldVal)
+    return;    
+   if(!newVal.name || !oldVal.name)
+      return;
+    let pages = this.$.appIronPages.children;
+    for(let x of pages){
+      if(x.title == newVal.name)
+        newVal.id = x.pageId;
+    }
+    pages[newVal.id].style.opacity = 0;
+
+    setTimeout(
+      ((node) => {
+        node.style.opacity = 1;
+      }).bind(this, pages[newVal.id]), 0);
+
   }
 
   _appendtoIronPages(pageElement){
