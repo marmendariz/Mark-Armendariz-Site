@@ -1,19 +1,21 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
 import '@polymer/polymer/lib/legacy/polymer.dom';
-import {ScMenuBar} from '../component-library/sc-menu-bar/sc-menu-bar.js';
 import '@polymer/app-route/app-location';
 import '@polymer/app-route/app-route';
-import '@polymer/iron-pages/iron-pages';
-import {ScCard} from '../component-library/sc-card/sc-card.js';
+import {ScMenuBar} from '../component-library/sc-menu-bar/sc-menu-bar.js';
 import {ScResumePage} from '../component-library/page-component-library/sc-resume-page/sc-resume-page.js';
-import {ScHomePage} from '../component-library/page-component-library/sc-home-page/sc-home-page.js';
-
+import {ScLandingPage} from '../component-library/page-component-library/sc-landing-page/sc-landing-page.js';
+import {ScSkillsPage} from '../component-library/page-component-library/sc-skills-page/sc-skills-page.js';
+import {ScExperiencePage} from '../component-library/page-component-library/sc-experience-page/sc-experience-page.js';
+import {ScProjectsPage} from '../component-library/page-component-library/sc-projects-page/sc-projects-page.js';
+import {ScContactPage} from '../component-library/page-component-library/sc-contact-page/sc-contact-page.js';
 
 /**
  * @customElement
  * @polymer
  */
 class ShowcaseApplication extends PolymerElement {
+
  
   static get template() {
     return html`
@@ -21,24 +23,30 @@ class ShowcaseApplication extends PolymerElement {
       <style>
         :host {
           display: block;
-          --icon-toggle-outline-color: blue;
+          --sc-page-padding: 0px 20px;
         }
-
         #menuBar{
-          width: auto;
-          margin-bottom: 20px;
+          top: 0px;
+          margin-bottom: 70px;
         } 
-
-        #appCard{
-          width: 95%;
-          margin: 0 auto;
+        .page{
+          height: 92vh;
         }
-
-        iron-pages > .iron-selected{
-          transition: opacity 0.5s;
+        #landingPage{
+          height: 100vh;
         }
+        /*
+        #wrapper {
+          position: relative;
+          height: 100% !important;
+        }
+        #scroller {
+          position: absolute;
+          width: 100%;
+          z-index: -1;
+        }*/
       </style>
-
+  
       <!-- ====== APPLICATION ROUTING ====== -->
       <app-location route="{{route}}">
       </app-location>
@@ -50,25 +58,38 @@ class ShowcaseApplication extends PolymerElement {
       </app-route>
       <!-- ================================= -->
 
-      <!-- ====== MAIN APPLICATION STARTING POINT ====== -->
-      <sc-card id="appCard">
-        <div slot="content">
-          
-          <sc-menu-bar id="menuBar" 
-                       selected-page="{{selectedPage}}"
-                       pages="{{appPages}}"
-                       hidden="">
-          </sc-menu-bar>
+      <sc-menu-bar id="menuBar" 
+                    selected-page={{selectedPage}}
+                    pages={{appPages}}
+                    name-line-one="Mark"
+                    name-line-two="Armendariz"
+                    >
+      </sc-menu-bar>
 
-          <iron-pages id="appIronPages" 
-                      selected="{{selectedPage.name}}" 
-                      attr-for-selected="title">
-            <!-- === PAGES ARE GENERATED HERE === -->
-          </iron-pages>
+        <!--<div id="wrapper">-->
+      <!--<div id="content">
+      <div id="scroller">-->
 
-        </div>
-      </sc-card>
-      <!-- =========================================== -->
+      <sc-landing-page id="landingPage"
+                       class="page"
+                       title="Home" 
+                       page-id=1>
+      </sc-landing-page>
+      <sc-skills-page id="skillsPage"
+                      class="page" 
+                      title="Skills"
+                      data="[[skillsData]]">
+      </sc-skills-page>
+      <sc-experience-page class="page"
+                          title="Experience"
+                          data=[[experienceData]]>
+      </sc-experience-page>
+      <sc-projects-page class="page"
+                        title="Projects">
+      </sc-projects-page>
+      <sc-contact-page class="page" 
+                       title="Contact">
+      </sc-contact-page>
 
     `;
   }
@@ -82,11 +103,6 @@ class ShowcaseApplication extends PolymerElement {
       appPages: {
         type: Array,
         value: [
-                {
-                  id: "1",
-                  name: 'Home',
-                  type: 'home_page'
-                },
                 {
                   id: "2",
                   name: 'Skills',
@@ -119,6 +135,15 @@ class ShowcaseApplication extends PolymerElement {
                 }
               ]
       },
+
+      appTitle: {
+        value: "Mark Armendariz"
+      },
+
+      scroll:{
+        type: Object,
+        readOnly: false
+      },
       
       /**
        * Holds information for page currently selected 
@@ -131,27 +156,69 @@ class ShowcaseApplication extends PolymerElement {
         observer: "_pageChanged"
       },
 
+      skillsData:{
+        type: Array,
+        value: [
+          {
+            id: '1',
+            name: 'HTML',
+            comment: '',
+            skillLevel: '50'
+          },
+          {
+            id: '2',
+            name: 'JavaScript',
+            comment: '',
+            skillLevel: '50'
+          },
+          {
+            id: '3',
+            name: 'CSS',
+            comment: '',
+            skillLevel: '50'
+          },
+          {
+            id: '4',
+            name: 'C#/.NET',
+            comment: '',
+            skillLevel: '60'
+          },
+          {
+            id: '5',
+            name: 'SQL',
+            comment: '',
+            skillLevel: '10'
+          },
+          {
+            id: '6',
+            name: 'Polymer 1.0',
+            comment: '',
+            skillLevel: '10'
+          },
+          {
+            id: '7',
+            name: 'Polymer 3.0',
+            comment: '',
+            skillLevel: '10'
+          },
+          {
+            id: '8',
+            name: 'C/C++',
+            comment: 'Prior Experience',
+            skillLevel: '10'
+          },
+          {
+            id: '9',
+            name: 'PHP',
+            comment: 'Prior Experience',
+            skillLevel: '10'
+          }
+        ]
+      },
+
       resumeData: {
         type: Object,
         value: {
-          "2":{ //skills
-            "entries": [
-              {
-                "id": "2",
-                "type": "skills",
-                "points" : [
-                  "HTML",
-                  "Javascript",
-                  "CSS",
-                  "C#/.NET",
-                  "SQL",
-                  "Polymer 1.0 & 3.0",
-                  "C/C++ (Prior Experience)",
-                  "PHP (Prior Experience)"
-                ]
-              }
-            ]
-          },
           "3":{ //education
             "entries": [
               {
@@ -231,27 +298,46 @@ class ShowcaseApplication extends PolymerElement {
     };
   }
 
+
   connectedCallback(){
     super.connectedCallback();
-    this._generateApplicationPages();
-    this.$.appIronPages.addEventListener('homeEnterTap', e => this._handlePageButtonClick(e))
+    //this._generateApplicationPages();
+    this.addEventListener('homeEnterTap', e => this._handlePageButtonClick(e));
+
+    var that = this;
+
+    /*document.addEventListener('WebComponentsReady', function(){
+      console.log("scroll here");
+      that.scroll = new IScroll(this.$.content, {mouseWheel: false, click: true, desktopCompatibility:true});
+    }.bind(this));
+    */
+    /*if(this.route.path!="/"){
+      console.log("here");
+      this._hideLandingPage();
+    }*/
   }
 
   _handlePageButtonClick(e){
     console.log("homeclicked");
-    this.selectedPage = this.appPages[1];
+    this.selectedPage = this.appPages[0];
+    this._hideLandingPage();
   }
 
+  _hideLandingPage(){
+    this.$.landingPage.hide();
+  }
+  
   /**
    * Generates and appends page elements into app DOM
    */
   _generateApplicationPages(){
-    var newSection = document.createElement('sc-home-page');
-    newSection.title = this.appPages[0].name;
-    newSection.pageId =  this.appPages[0].id;
-    this._appendtoIronPages(newSection);
+    var newSection;
+    //var newSection = document.createElement('sc-home-page');
+    //newSection.title = this.appPages[0].name;
+    //newSection.pageId =  this.appPages[0].id;
+    //this._appendtoIronPages(newSection);
 
-    for(var i=1; i<this.appPages.length-1; i++){
+    for(var i=0; i<this.appPages.length-1; i++){
       newSection = document.createElement('sc-resume-page');
       newSection.title = this.appPages[i].name;
       newSection.pageId =  this.appPages[i].id;
@@ -266,24 +352,33 @@ class ShowcaseApplication extends PolymerElement {
     this._appendtoIronPages(newSection);
   }
 
+  /**
+   * 
+   * @param {*} newVal 
+   * @param {*} oldVal 
+   */
   _pageChanged(newVal, oldVal){
+
     console.log(newVal);
     console.log(oldVal);
-    if(!newVal || !oldVal)
-    return;    
-   if(!newVal.name || !oldVal.name)
-      return;
-    let pages = this.$.appIronPages.children;
-    for(let x of pages){
-      if(x.title == newVal.name)
-        newVal.id = x.pageId;
-    }
-    pages[newVal.id].style.opacity = 0;
+   
+    /*this.scroll = new IScroll(this.$.content, {mouseWheel: true, 
+                                               click: true,
+                                               snap: false
+                                              }).scrollToElement('#Projects');
+*/
 
-    setTimeout(
-      ((node) => {
-        node.style.opacity = 1;
-      }).bind(this, pages[newVal.id]), 0);
+    //this.$.Projects.scrollIntoView({behavior: 'smooth'});
+    var element = this.$.Projects;
+
+    var headerOffset = 18;
+    var elementPosition = element.getBoundingClientRect().top;
+    var offsetPosition = elementPosition - headerOffset;
+
+    /*window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth"
+    });*/
 
   }
 
@@ -291,7 +386,9 @@ class ShowcaseApplication extends PolymerElement {
     this.$.appIronPages.appendChild(pageElement);
   }
 
-
+  _getData(index){
+    return this.resumeData[index.toString()].entries;
+  }
 
 }
 

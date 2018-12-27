@@ -12,7 +12,7 @@ import '@webcomponents/shadycss/entrypoints/apply-shim.js';
  */
 
 
-export class ScResumePage extends PolymerElement {
+export class ScProjectsPage extends PolymerElement {
   
   static get template() {
     return html`
@@ -20,6 +20,7 @@ export class ScResumePage extends PolymerElement {
         :host {
           display: block;
           border-bottom: 1px solid black;
+          padding: var(--sc-page-padding, 0px);
         }
         #contentSlot{
           @apply --sc-resume-page-style;
@@ -127,4 +128,4 @@ export class ScResumePage extends PolymerElement {
 
 }
 
-window.customElements.define('sc-resume-page', ScResumePage);
+window.customElements.define('sc-projects-page', ScProjectsPage);
