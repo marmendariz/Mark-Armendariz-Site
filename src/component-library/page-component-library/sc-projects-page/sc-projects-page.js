@@ -21,36 +21,35 @@ export class ScProjectsPage extends PolymerElement {
           display: block;
           border-bottom: 1px solid black;
           padding: var(--sc-page-padding, 0px);
+          background-color: var(--sc-page-background-color ,white);
         }
         #contentSlot{
           @apply --sc-resume-page-style;
         }
       </style>
 
-      <!--<sc-card>-->
+      <sc-card>
+        <div id="titleSlot" slot="title"><h1>{{_toLowerCase(title)}}</h1></div>
 
-      <div id="titleSlot" slot="title"><h1>{{_toLowerCase(title)}}</h1></div>
+        <div id="contentSlot" slot="content">
+          <!-- START -->
+          <dom-repeat id="repeat" items="{{resumeSectionData}}" as="section">
+            <template>
 
-      <div id="contentSlot" slot="content">
-        <!-- START -->
-        <dom-repeat id="repeat" items="{{resumeSectionData}}" as="section">
-          <template>
-
-              <p>{{_formatBusinessAndPosition(section.companyName, section.positionName)}}</p>
-              <ul>
-                <dom-repeat id="repeat2" items="{{section.points}}">
-                  <template>
-                      <li>{{item}}</li>
-                  </template>
-                </dom-repeat>
-              </ul>
-              
-          </template>
-        </dom-repeat>
-        <!-- END -->
-      </div>
-
-      <!--</sc-card>-->
+                <p>{{_formatBusinessAndPosition(section.companyName, section.positionName)}}</p>
+                <ul>
+                  <dom-repeat id="repeat2" items="{{section.points}}">
+                    <template>
+                        <li>{{item}}</li>
+                    </template>
+                  </dom-repeat>
+                </ul>
+                
+            </template>
+          </dom-repeat>
+          <!-- END -->
+        </div>
+      </sc-card>
 
     `;
   }

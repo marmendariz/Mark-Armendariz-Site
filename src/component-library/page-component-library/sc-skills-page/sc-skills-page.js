@@ -20,32 +20,35 @@ export class ScSkillsPage extends PolymerElement {
       <style>
         :host {
           display: block;
-          border-bottom: 1px solid grey;
           padding: var(--sc-page-padding, 0px);
+          background-color: var(--sc-page-background-color ,white);
+        }
+        div[slot="subtitle"]{
+          color: #0c4e8a;
+          font-weight: bold;
+          font-size: 15pt;
         }
         :host sc-skill-progress-bar{
           margin: 20px;
+        }
+        sc-skill-progress-bar:hover{
+          box-shadow: var(--sc-card-box-shadow, 10px 10px 47px #55555557);
+        }
+        .centeredCard{
+          position: relative;
+          top: 50% !important;
+          left: 50% !important;
+          transform: translate(-50%, -50%);
         }
         ul{
           padding: 0px;
         }
         #skillsList{
           margin: 0 auto;
-          width: 80%;
+          width: 100%;
           padding: 15px 0px;
+          background-color: white;
         }
-
-        .box{
-    width:300px;
-    height:300px;
-    margin:500px 50px;
-    background:red;
-    transition: 1.5s; /* THE DURATION */
-}
-
-.rotate.triggeredCSS3    {transform : rotate(360deg); }
-.scale.triggeredCSS3     {transform : scale(1.6); }
-.translate.triggeredCSS3 {transform : translate3d(400px,0,0); }
 
         @media screen and (max-width: 900px){
           #skillsList{
@@ -54,21 +57,28 @@ export class ScSkillsPage extends PolymerElement {
           :host{
             padding: 0px 10px
           }
+          :host sc-skill-progress-bar{
+            margin: 10px;
+          }
         }
       </style>
 
-      <div id="titleSlot" slot="title"><h1>{{_toLowerCase(title)}}</h1></div>
+      <sc-card class="centeredCard">
+        <div id="titleSlot" slot="title"><h1>{{_toLowerCase(title)}}</h1></div>
+        <div slot="subtitle">[[subtitle]]</div>
 
-      <div id="skillsList">
-          <dom-repeat id="repeat" items="{{data}}" as="skill">
-            <template>
-                <sc-skill-progress-bar id=[[skill.id]]
-                                      bar-progress=[[skill.skillLevel]]
-                                      title=[[skill.name]]
-                                      comment=[[skill.comment]]>
-                </sc-skill-progress-bar>
-            </template>
-          </dom-repeat>
+        <div slot="content" id="skillsList">
+            <dom-repeat id="repeat" items="{{data}}" as="skill">
+              <template>
+                  <sc-skill-progress-bar id=[[skill.id]]
+                                        bar-progress=[[skill.skillLevel]]
+                                        title=[[skill.name]]
+                                        comment=[[skill.comment]]>
+                  </sc-skill-progress-bar>
+              </template>
+            </dom-repeat>
+        </div>
+      </sc-card>
 
           <!--<div class="box rotate"></div>
 <div class="box scale"></div>
@@ -89,12 +99,15 @@ export class ScSkillsPage extends PolymerElement {
         type: String,
         reflectToAttribute: true
       },
+      subtitle:{
+        type: String,
+        reflectToAttribute: true
+      },
 
       pageId: {
         type: String,
         reflectToAttribute: true
       },
-
 
 
       isGeneralType:{
@@ -115,10 +128,6 @@ export class ScSkillsPage extends PolymerElement {
 
   ready(){
     super.ready();
-
-    $(".box").inViewport(function(px){
-      if(px) $(this).addClass("triggeredCSS3") ;
-  });
   }
 
   _test(data){

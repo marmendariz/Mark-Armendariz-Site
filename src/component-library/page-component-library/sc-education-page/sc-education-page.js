@@ -12,7 +12,7 @@ import '@webcomponents/shadycss/entrypoints/apply-shim.js';
  */
 
 
-export class ScContactPage extends PolymerElement {
+export class ScEducationPage extends PolymerElement {
   
   static get template() {
     return html`
@@ -25,9 +25,16 @@ export class ScContactPage extends PolymerElement {
         #contentSlot{
           @apply --sc-resume-page-style;
         }
+        .centeredCard{
+          position: relative;
+          top: 50% !important;
+          left: 50% !important;
+          transform: translate(-50%, -50%);
+        }
       </style>
 
-      <sc-card>
+      <sc-card class="centeredCard">
+
         <div id="titleSlot" slot="title"><h1>{{_toLowerCase(title)}}</h1></div>
 
         <div id="contentSlot" slot="content">
@@ -46,6 +53,7 @@ export class ScContactPage extends PolymerElement {
                 
             </template>
           </dom-repeat>
+          <!-- END -->
         </div>
 
       </sc-card>
@@ -126,4 +134,4 @@ export class ScContactPage extends PolymerElement {
 
 }
 
-window.customElements.define('sc-contact-page', ScContactPage);
+window.customElements.define('sc-education-page', ScEducationPage);

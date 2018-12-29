@@ -17,6 +17,19 @@ export class ScCard extends PolymerElement {
           @apply --sc-card-style;
         }
 
+        slot[name='subtitle'], slot[name='title']{
+          padding: 0 2%;
+        }
+
+        slot[name='title']{
+          font-size: 20pt;
+          line-height: 0px;
+        }
+        slot[name='subtitle']{
+          font-size: 15pt;
+          font-weight: bold;
+        }
+
         #cardFrame{
           @apply --sc-card-frame;
           box-shadow: var(--sc-card-box-shadow, 4px 2px 31px #55555557);
@@ -27,6 +40,7 @@ export class ScCard extends PolymerElement {
 
       <div id="cardFrame">
         <slot name="title"></slot>
+        <slot name="subtitle"></slot>
         <slot name="content"></slot>
         <slot name="controls"></slot>
       </div>

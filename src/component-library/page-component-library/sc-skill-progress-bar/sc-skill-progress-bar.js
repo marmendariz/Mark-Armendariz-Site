@@ -21,14 +21,15 @@ export class ScSkillProgressBar extends PolymerElement {
         }
       }
       #energyBar{
-        background-color: var(--sc-skill-progress-bar-color, blue);
+        background-color: var(--sc-skill-progress-bar-color, #0c4e8a);
       }
       #skillName{
-        background-color: #719FFF;
+        background-color: #0c4e8a;
         width: 100px;
         color: white;
-        font-weight: 400;
+        font-weight: bold;
         padding-left: 10px;
+        font-size: 11pt;
       }
       #barContainer{
         background-color: white;
@@ -51,14 +52,14 @@ export class ScSkillProgressBar extends PolymerElement {
         }
         #skillName{
           width: 70px;
-          font-size: 9pt;
+          font-size: 8pt;
         }
       }
       </style>
 
       <sc-card>
         <div id="contentSlot" slot="content">
-            <div class="bar" id="skillName">[[title]]</div>
+            <div class="bar" id="skillName">[[_toUpperCase(title)]]</div>
             <div class="bar" id="energyBar"></div>
             <div id="ratio">[[_getRatio()]]</div>
         </div>
@@ -91,6 +92,10 @@ export class ScSkillProgressBar extends PolymerElement {
           observer: "_updateBarProgress"
       }
     };
+  }
+
+  _toUpperCase(string){
+    return string.toUpperCase();
   }
 
   _updateBarProgress(barProgress){
