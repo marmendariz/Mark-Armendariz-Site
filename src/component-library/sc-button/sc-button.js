@@ -1,5 +1,6 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
 import {ScBaseButton} from '../sc-base-button/sc-base-button.js';
+import '@webcomponents/shadycss/entrypoints/apply-shim.js';
 
 /**
  * @customElement
@@ -7,13 +8,14 @@ import {ScBaseButton} from '../sc-base-button/sc-base-button.js';
  */
 
 
-export class ScMenuPageButton extends PolymerElement {
+export class ScButton extends PolymerElement {
   
   static get template() {
     return html`
       <style>
         :host {
           display: block;
+          @apply --sc-menu-button;
         }
         :host([selected]) button, button:hover{
           background-color: #555555;
@@ -22,8 +24,8 @@ export class ScMenuPageButton extends PolymerElement {
           color: white;
         }
         button{
-          height: var(--sc-menu-page-button-height, 10px);
-          width: var(--sc-menu-page-button-width, 10px);
+          height: var(--sc-menu-page-button-height, 40px);
+          width: var(--sc-menu-page-button-width, 100px);
           background-color: white;
           color: black;
           border: none;
@@ -54,7 +56,8 @@ export class ScMenuPageButton extends PolymerElement {
   static get properties() {
     return {
       text:{
-        type: String
+        type: String,
+        value: "Label"
       },
       selected:{
         type: Boolean,
@@ -73,12 +76,14 @@ export class ScMenuPageButton extends PolymerElement {
 
   buttonTapped(e){
     //this.selected = !this.selected;
-    this.dispatchEvent(new CustomEvent(this.event.buttonTapped, 
-                      {detail: {id: this.id, name: this.text, type: "type"}, bubbles: true, composed: true}));
+    console.log("mark first");
+    this.dispatchEvent(new CustomEvent(this.event.buttonTapped, {detail: {}, bubbles: true, composed: true}));
+    //this.dispatchEvent(new CustomEvent(this.event.buttonTapped, 
+    //                  {detail: {id: this.id, name: this.text, type: "type"}, bubbles: true, composed: true}));
   }
   
 
 
 }
 
-window.customElements.define('sc-menu-page-button', ScMenuPageButton);
+window.customElements.define('sc-button', ScButton);

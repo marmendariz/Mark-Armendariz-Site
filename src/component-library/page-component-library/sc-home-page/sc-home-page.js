@@ -4,7 +4,7 @@ import {ScCard} from '../../sc-card/sc-card.js';
 import {} from '@polymer/polymer/lib/elements/dom-repeat';
 import {ScResumeEntry} from '../sc-resume-entry/sc-resume-entry.js';
 import '@polymer/polymer/lib/elements/dom-if.js';
-import {ScMenuPageButton} from '../../sc-menu-page-button/sc-menu-page-button.js';
+import {ScIcon} from '../../sc-icon/sc-icon.js';
 /**
  * @customElement
  * @polymer
@@ -18,31 +18,108 @@ export class ScHomePage extends PolymerElement {
       <style>
         :host {
           display: block;
-          position: absolute;
-          top: 0px;
-          left: 0px;
-          height: 100%;
-          width: 100%;
-          background-color: grey;
+          padding: var(--sc-page-padding, 0px);
+          background-color: var(--sc-page-background-color ,white);
         }
-        :host:hover{
-          top: -100px;
-          left: -100px;
+        div[slot="subtitle"]{
+          @apply --sc-subtitle-text;
         }
+        .centeredCard{
+          --sc-card-frame:{
+           /* min-height: 93vh;*/
+          }
+        }
+        #traitIcons{
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          margin-top: 20px;
+        }
+        sc-icon{
+          --sc-icon-background-color : var(--sc-main-theme-color);
+          --sc-icon-border-radius: 50%;
+          --sc-icon-style:{
+            width: 100px;
+            height: 100px;
+          }
+          margin: 0 43px;
+        }
+        sc-icon:hover{
+          filter: drop-shadow(var(--sc-card-box-shadow, 10px 10px 10px #55555557));
+          transform: translate(-1%, -2%);
+        }
+        .highlighted{
+          color: var(--sc-main-theme-color);
+        }
+        #pageContent{
+          padding: 20px 0px;
+        }
+
+
+        @media screen and (max-width: 1110px){
+          sc-icon{
+            margin: 10px;
+            flex-wrap: wrap;
+          }
+        }
+
+        /*@media screen and (max-width: 820px){
+          sc-icon{
+            margin: 5px;
+            --sc-icon-style:{
+              width: 40px;
+              height: 40px;
+            }
+          }
+        }
+
+        @media screen and (max-width: 420px){
+          sc-icon{
+            margin: 0;
+            --sc-icon-style:{
+              width: 20px;
+              height: 20px;
+            }
+          }
+        }*/
+
       </style>
+<div>
+      <sc-card class="centeredCard">
+        <div id="titleSlot" slot="title"><h1>Hi, I'm <span class="highlighted"> Mark.</span></h1></div>
+        <div slot="subtitle">[[subtitle]]</div>
+        <!--<div id="traitIconsTitle">This is who I am:</div>-->
 
-      <div id="frame">
+        <div slot ="content">
+          <p>I'm a software engineer with to kadfalsdfkad kjdsfkd kjdfj dfjd dfjdf js
+             kjsadfka sdjfsk dfjkjk dfjdkk jkdfjk mkdfjk mkk k jkdfjkd  jkjkjkdf kjdsfkdk
+             ljlkj lkjjii  jjdjd jdjdjd.
+          </p>
+        </div>
+      </sc-card>
 
-
-        <!-- START -->
-        <p>fdfdf</p>
-        <!-- END -->
-        <sc-menu-page-button id="homeButton" 
-                             class="pageButton" 
-                             text="Enter">
-        </sc-menu-page-button>
-
+      <div id="pageContent">
+        <div id="traitIcons">
+          <sc-icon title="Reliable Performer"
+                    icon-name="ReliablePerformer"
+                    text="Whatever lands on my desk will always get done.">
+          </sc-icon>
+          <sc-icon title="Philomath"
+                    icon-name="Philomath"
+                    text="Whatever lands on my desk will always get done.">
+          </sc-icon>
+          <sc-icon title="Problem Solver"
+                    icon-name="ProblemSolver"
+                    text="Whatever lands on my desk will always get done.">
+          </sc-icon>
+          <sc-icon title="Strategist"
+                    icon-name="Strategist"
+                    text="Whatever lands on my desk will always get done.">
+          </sc-icon>
+        </div>
       </div>
+</div>
+
 
     `;
   }
@@ -56,18 +133,15 @@ export class ScHomePage extends PolymerElement {
       title:{
         type: String
       },
+      subtitle:{
+        type: String
+      },
 
       sectionId: {
         type: String
       },
 
 
-
-      isGeneralType:{
-        type: Boolean,
-        value: false,
-      },
-      
       selected:{
         type: Boolean,
         value: false,
@@ -75,21 +149,7 @@ export class ScHomePage extends PolymerElement {
         notify: true
       },
 
-      /**
-       * TODO: Replace with web service response
-       */
-      resumeSectionData:{
-        type: Object,
-        notify: true,
-        reflectToAttribute: true
-      }
     };
-  }
-
-  ready(){
-    super.ready();
-    this.$.frame.addEventListener('buttontap', e => this._handlePageButtonClick(e))
-
   }
 
   _handlePageButtonClick(e){

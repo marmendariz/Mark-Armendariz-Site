@@ -17,26 +17,27 @@ export class ScSkillProgressBar extends PolymerElement {
         display: block;
         --sc-card-padding: 0px;
         --sc-card-frame:{
-          height: 30px;
+          height: 40px;
         }
+        font-size: 11pt;
       }
       #energyBar{
         background-color: var(--sc-skill-progress-bar-color, #0c4e8a);
       }
       #skillName{
         background-color: #0c4e8a;
-        width: 100px;
+        width: 120px;
         color: white;
         font-weight: bold;
         padding-left: 10px;
-        font-size: 11pt;
+        line-height:28px;
       }
       #barContainer{
         background-color: white;
       }
       .bar{
         float: left;
-        height: 20px;
+        height: 30px;
         padding: 5px;
       }
       #ratio{
@@ -44,6 +45,7 @@ export class ScSkillProgressBar extends PolymerElement {
         padding: 5px;
         padding-right: 10px;
         float: right;
+        line-height:28px;
       }
 
       @media screen and (max-width: 500px){
@@ -86,7 +88,7 @@ export class ScSkillProgressBar extends PolymerElement {
 
       
 
-      barProgress:{
+      progress:{
           type: String,
           notify: true,
           observer: "_updateBarProgress"
@@ -103,7 +105,7 @@ export class ScSkillProgressBar extends PolymerElement {
   }
   
   _getRatio(){
-    return (parseInt(this.barProgress)/10) + "/10";
+    return (parseInt(this.progress)/10) + "/10";
   }
 
 }

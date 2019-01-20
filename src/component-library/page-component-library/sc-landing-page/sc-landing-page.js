@@ -4,7 +4,7 @@ import {ScCard} from '../../sc-card/sc-card.js';
 import {} from '@polymer/polymer/lib/elements/dom-repeat';
 import {ScResumeEntry} from '../sc-resume-entry/sc-resume-entry.js';
 import '@polymer/polymer/lib/elements/dom-if.js';
-import {ScMenuPageButton} from '../../sc-menu-page-button/sc-menu-page-button.js';
+import {ScButton} from '../../sc-button/sc-button.js';
 /**
  * @customElement
  * @polymer
@@ -18,13 +18,34 @@ export class ScLandingPage extends PolymerElement {
       <style>
         :host {
           display: block;
-          background-color: grey;
+          background-image:url('src/images/landingPage.jpg');
+          background-attachment: fixed;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
+          /*background-color: grey;*/
+
+        }
+        #landingFrame{
+          position: relative;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          font-size: 30pt;
+          text-align: center;
+          font-weight: 600;
+        }
+        #apptitle{
+          font-size: 40pt;
+          font-weight: 900;
+          color: var(--sc-main-theme-color);
         }
       </style>
 
       <div id="landingFrame">
-
-
+        <div>Hi, I'm</div>
+        <div id='apptitle'>Mark Armendariz</div>
+        <sc-button text="Enter"></sc-button>
       </div>
 
     `;

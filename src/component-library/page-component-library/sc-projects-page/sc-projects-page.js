@@ -5,6 +5,7 @@ import {} from '@polymer/polymer/lib/elements/dom-repeat';
 import {ScResumeEntry} from '../sc-resume-entry/sc-resume-entry.js';
 import '@polymer/polymer/lib/elements/dom-if.js';
 import '@webcomponents/shadycss/entrypoints/apply-shim.js';
+import '../sc-project-card/sc-project-card.js';
 
 /**
  * @customElement
@@ -19,38 +20,50 @@ export class ScProjectsPage extends PolymerElement {
       <style>
         :host {
           display: block;
-          border-bottom: 1px solid black;
           padding: var(--sc-page-padding, 0px);
           background-color: var(--sc-page-background-color ,white);
+        }
+        div[slot="subtitle"]{
+          @apply --sc-subtitle-text;
         }
         #contentSlot{
           @apply --sc-resume-page-style;
         }
+        sc-project-card{
+          flex: 1;
+          --sc-project-card-style:{
+            height: 20vh;
+            width: 120px;
+          }
+        }
+        #projectCards{
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+          margin: 15px 0;
+        }
       </style>
 
-      <sc-card>
-        <div id="titleSlot" slot="title"><h1>{{_toLowerCase(title)}}</h1></div>
+      <div class="centeredCard">
+        <sc-card >
+          <div id="titleSlot" slot="title"><h1>{{_toLowerCase(title)}}</h1></div>
+          <div slot="subtitle">[[subtitle]]</div>
 
-        <div id="contentSlot" slot="content">
-          <!-- START -->
-          <dom-repeat id="repeat" items="{{resumeSectionData}}" as="section">
-            <template>
+        </sc-card>
 
-                <p>{{_formatBusinessAndPosition(section.companyName, section.positionName)}}</p>
-                <ul>
-                  <dom-repeat id="repeat2" items="{{section.points}}">
-                    <template>
-                        <li>{{item}}</li>
-                    </template>
-                  </dom-repeat>
-                </ul>
-                
-            </template>
-          </dom-repeat>
-          <!-- END -->
+        <div id="projectCards">
+            <sc-project-card title="My Website">
+            </sc-project-card>
+            <sc-project-card title="Mobile-First Forum">
+            </sc-project-card>
+            <sc-project-card title="Relational Database & Java GUI">
+            </sc-project-card>
+            <!--<sc-project-card title="test"></sc-project-card>
+            <sc-project-card title="test"></sc-project-card>
+            <sc-project-card title="test"></sc-project-card>-->
         </div>
-      </sc-card>
 
+      </div>
     `;
   }
 
@@ -64,40 +77,25 @@ export class ScProjectsPage extends PolymerElement {
         type: String,
         reflectToAttribute: true
       },
+      subtitle:{
+        type: String
+      },
 
       pageId: {
         type: String,
         reflectToAttribute: true
       },
 
-
-
-      isGeneralType:{
-        type: Boolean,
-        value: false,
-      },
-      
-      /**
-       * TODO: Replace with web service response
-       */
       resumeSectionData:{
         type: Object,
-        observer: "_test",
-        notify: true,
+        value:[
+          {
+
+          }
+        ]
       }
+
     };
-  }
-
-  _test(data){
-    console.log(data);
-  }
-
-  /**
-   * 
-   * @param {*} sectionId 
-   */
-  _getPageData(sectionId){
-    return this.resumeSectionData[parseInt(sectionId)].entries;
   }
 
   /**
@@ -106,22 +104,6 @@ export class ScProjectsPage extends PolymerElement {
    */
   _toLowerCase(text){
     return text.toLowerCase();
-  }
-
-  /**
-   * 
-   * @param {*} businessName 
-   * @param {*} positionName 
-   */
-  _formatBusinessAndPosition(businessName, positionName){
-    var returnString = "";
-    if(businessName && !positionName){
-      returnString = businessName;
-    }
-    else if(businessName && positionName){
-      returnString = businessName + " - " + positionName;
-    }
-    return returnString;
   }
 
 

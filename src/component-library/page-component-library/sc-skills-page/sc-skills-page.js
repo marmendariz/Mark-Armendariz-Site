@@ -28,27 +28,41 @@ export class ScSkillsPage extends PolymerElement {
           font-weight: bold;
           font-size: 15pt;
         }
+
+
+
         :host sc-skill-progress-bar{
           margin: 20px;
-        }
+       }
         sc-skill-progress-bar:hover{
-          box-shadow: var(--sc-card-box-shadow, 10px 10px 47px #55555557);
+          box-shadow: var(--sc-card-box-shadow, 10px 10px 47px 20px #55555557);
+          transform: translate(-1%, -2%) scale(1.0, 1.0);
+          backface-visibility: hidden;
+          -webkit-backface-visibility: hidden;
+          -webkit-transform: translate(-1%, -2%) scale(1.0, 1.0);
         }
-        .centeredCard{
-          position: relative;
-          top: 50% !important;
-          left: 50% !important;
-          transform: translate(-50%, -50%);
+
+
+
+        sc-card{
+          --sc-card-frame:{
+            height: 95vh;
+          }
         }
+
+
         ul{
           padding: 0px;
         }
         #skillsList{
+          height: 80%;
           margin: 0 auto;
           width: 100%;
           padding: 15px 0px;
-          background-color: white;
+          /*background-color: white;*/
         }
+
+
 
         @media screen and (max-width: 900px){
           #skillsList{
@@ -61,9 +75,19 @@ export class ScSkillsPage extends PolymerElement {
             margin: 10px;
           }
         }
+
+
+
+        .centeredCard{
+          /*position: relative;
+          top: 50% !important;
+          left: 50% !important;
+          transform: translate(-50%, -50%);*/
+        }
+
       </style>
 
-      <sc-card class="centeredCard">
+      <sc-card>
         <div id="titleSlot" slot="title"><h1>{{_toLowerCase(title)}}</h1></div>
         <div slot="subtitle">[[subtitle]]</div>
 
@@ -71,9 +95,9 @@ export class ScSkillsPage extends PolymerElement {
             <dom-repeat id="repeat" items="{{data}}" as="skill">
               <template>
                   <sc-skill-progress-bar id=[[skill.id]]
-                                        bar-progress=[[skill.skillLevel]]
-                                        title=[[skill.name]]
-                                        comment=[[skill.comment]]>
+                                         progress=[[skill.skillLevel]]
+                                         title=[[skill.name]]
+                                         comment=[[skill.comment]]>
                   </sc-skill-progress-bar>
               </template>
             </dom-repeat>

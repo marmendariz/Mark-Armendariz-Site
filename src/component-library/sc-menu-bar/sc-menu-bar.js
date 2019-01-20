@@ -1,5 +1,5 @@
 import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
-import {ScMenuPageButton} from '../sc-menu-page-button/sc-menu-page-button.js';
+import {ScButton} from '../sc-button/sc-button.js';
 import {} from '@polymer/polymer/lib/elements/dom-repeat';
 import {ScCard} from '../sc-card/sc-card.js';
 import {} from '@polymer/iron-icon/iron-icon';
@@ -16,7 +16,7 @@ export class ScMenuBar extends PolymerElement {
       <style>
         :host {
           display: block;
-          position: fixed;
+          position: var(--sc-menu-bar-position, fixed)
           width: 100%;
           --sc-menu-page-button-height: 45px;
           --sc-menu-page-button-width: 100%;
@@ -33,11 +33,7 @@ export class ScMenuBar extends PolymerElement {
           display: flex;
           flex-wrap: wrap;
         }
-        .pageButton{
-          align-self: stretch;
-          flex: 1;
-          margin: 3px;
-        }
+
         #appTitle{
           height: 10px;
           padding: 6px 18px;
@@ -53,7 +49,27 @@ export class ScMenuBar extends PolymerElement {
           display: none;
         }
 
-        @media screen and (max-width: 900px){
+        .bttonsArea.normal{
+          display: contents !important;
+          visibility: visible !important; 
+        }
+        .bttonsArea.hidden{
+          display: none;
+          visibility: hidden;
+        }
+
+        .menuButton{
+          align-self: stretch;
+          flex: 1;
+          margin: 3px;
+        }
+
+        #menuBarCard{
+          position: relative;
+          width: 100%;
+        }
+
+        @media screen and (max-width: 910px){
           #appTitle{
             width: fit-content;
             height: auto;
@@ -72,9 +88,14 @@ export class ScMenuBar extends PolymerElement {
           #lineTwo{
             float: left;
           }
-          .pageButton{
+
+
+        /*
+          #buttonsArea{
             display: none;
-          }
+          }*/
+
+          
           #menuIcon{
             position: absolute;
             top: 0px;
@@ -94,15 +115,19 @@ export class ScMenuBar extends PolymerElement {
             <div id="lineOne">[[nameLineOne]]</div>
             <div id="lineTwo">[[nameLineTwo]]</div>
           </div>
-          <iron-icon id="menuIcon" icon="menu"></iron-icon>
+          <iron-icon id="menuIcon" icon="menu" on-click="_openMenu"></iron-icon>
+
+          <div id="buttonsArea" class="bttonsArea hidden">
           <dom-repeat id="repeat" items="{{pages}}">
             <template>
-              <sc-menu-page-button id="{{item.id}}" 
-                                   class="pageButton" 
+              <sc-button id="{{item.id}}" 
+                                   class="menuButton" 
                                    text="{{item.name}}">
-              </sc-menu-page-button>
+              </sc-button>
             </template>
           </dom-repeat>
+          </div>
+
         </div>
       </sc-card>
     `;
@@ -135,11 +160,56 @@ export class ScMenuBar extends PolymerElement {
   connectedCallback(){
     super.connectedCallback();
     this.$.menuBarCard.addEventListener('buttontap', e => this._handlePageButtonClick(e))
+
+    window.addEventListener('load', function(e){
+        this._buttonsAreaAdjust(e);
+      }.bind(this));
+      
+    window.addEventListener('resize', function(e){
+      this._buttonsAreaAdjust(e);
+    }.bind(this));
+
+  }
+
+  _buttonsAreaAdjust(e){
+    if(window.innerWidth > 911){
+      if(this.$.buttonsArea.classList.contains('hidden')){
+        this.$.buttonsArea.classList.remove('hidden');
+        this.$.buttonsArea.classList.add("normal");
+      }
+    }
+    else {
+       if(this.$.buttonsArea.classList.contains('normal')){
+        this.$.buttonsArea.classList.remove('normal');
+        this.$.buttonsArea.classList.add("hidden");
+      }
+    }
   }
 
   _handlePageButtonClick(e){
     this.set('selectedPage', e.detail);
     //this.selectedPage = e.detail;
+  }
+
+  _openMenu(e){
+    /*if(this.$.buttons.style.display == 'none'){
+      this.$.buttonsArea.style.display = 'block';
+    }
+      else{
+        this.$.buttonsArea.style.display = 'none';
+
+      }*/
+    //var this.$.buttons = this.$.buttons;
+    if(this.$.buttonsArea.classList.contains('normal')){
+      this.$.buttonsArea.classList.remove('normal');
+      this.$.buttonsArea.classList.add('hidden');
+    }
+    else if(this.$.buttonsArea.classList.contains('hidden')){
+      this.$.buttonsArea.classList.add('normal');
+      this.$.buttonsArea.classList.remove('hidden');
+    }
+    this.updateStyles();
+
   }
 
 }

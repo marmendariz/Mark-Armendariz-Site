@@ -15,7 +15,6 @@ export class ScCard extends PolymerElement {
         :host {
           display: block;
           @apply --sc-card-style;
-          height: 100%;
         }
         slot[name='subtitle'], slot[name='title']{
           padding: 0 2%;
@@ -29,9 +28,9 @@ export class ScCard extends PolymerElement {
           font-weight: bold;
         }
         #cardFrame{
-          background-image: var(--sc-card-background-image, linear-gradient(white, #fafafa));
-          height: 100% !important;
-          /*background-image: var(--sc-card-background-image);*/
+          height: 100%;
+          width: 100%;
+          background-image: var(--sc-card-background-image);
           box-shadow: var(--sc-card-box-shadow, 4px 2px 31px #55555557);
           padding: var(--sc-card-padding, 20px);
           background-color: var(--sc-card-background-color, white);

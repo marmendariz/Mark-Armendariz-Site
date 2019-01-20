@@ -2,7 +2,11 @@ import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
 import '@polymer/polymer/lib/legacy/polymer.dom';
 import '@polymer/app-route/app-location';
 import '@polymer/app-route/app-route';
+import {} from '@polymer/polymer/lib/utils/resolve-url.js';
+
+/* */
 import {ScMenuBar} from '../component-library/sc-menu-bar/sc-menu-bar.js';
+import {ScHomePage} from '../component-library/page-component-library/sc-home-page/sc-home-page.js';
 import {ScResumePage} from '../component-library/page-component-library/sc-resume-page/sc-resume-page.js';
 import {ScLandingPage} from '../component-library/page-component-library/sc-landing-page/sc-landing-page.js';
 import {ScSkillsPage} from '../component-library/page-component-library/sc-skills-page/sc-skills-page.js';
@@ -10,7 +14,6 @@ import {ScExperiencePage} from '../component-library/page-component-library/sc-e
 import {ScProjectsPage} from '../component-library/page-component-library/sc-projects-page/sc-projects-page.js';
 import {ScContactPage} from '../component-library/page-component-library/sc-contact-page/sc-contact-page.js';
 import {ScEducationPage} from '../component-library/page-component-library/sc-education-page/sc-education-page.js';
-import {} from '@polymer/polymer/lib/utils/resolve-url.js';
 
 /**
  * @customElement
@@ -25,29 +28,58 @@ class ShowcaseApplication extends PolymerElement {
       <style>
         :host {
           display: block;
+
           --sc-page-padding: 0px 5%;
-          color: #404042;
-        }
-        #menuBar{
-          top: 0px;
-          margin-bottom: 70px;
-          z-index: 1;
-        } 
+
+          --sc-general-font-color: #404042;
+          --sc-accent-font-color: white;
+          --sc-suppress-font-color: #b1b1b4;
+          --sc-main-theme-color: #0c4e8a;
+          
+          color: var(--sc-general-font-color);
+          --sc-subtitle-text:{
+            color: var(--sc-main-theme-color);
+            font-weight: bold;
+            font-size: 15pt !important;
+          }
+        }        
+        
+        /* PAGE STYLES */
         .page{
-          /*height: 92vh;*/
           height: 100vh;
+          padding: 30px;
         }
         #landingPage{
           height: 100vh;
         }
-
         #appPages>.page:nth-child(odd){
-          --sc-page-background-color: #0c4e8a;
+          --sc-page-background-color: var(--sc-main-theme-color);
         }
+
+        
+        /* MENU BAR STYLES */
+        #menuBar{
+          top: 0px;
+          /*margin-bottom: 70px;*/
+          z-index: 1;
+          --sc-menu-bar-position: relative;
+        } 
+
+
 
         @media screen and (max-width: 900px){
           .page{
-            height: 80vh;
+            min-height: 93vh;
+            padding:10px;
+          }
+          #homePage{
+            height: 175vh;
+          }
+        }
+
+        @media screen and (min-height: 1272px){
+          .page{
+            max-height: 41vh;
           }
         }
 
@@ -75,13 +107,7 @@ class ShowcaseApplication extends PolymerElement {
       </app-route>
       <!-- ================================= -->
 
-      <sc-menu-bar id="menuBar" 
-                    selected-page={{selectedPage}}
-                    pages={{appPages}}
-                    name-line-one="Mark"
-                    name-line-two="Armendariz"
-                    >
-      </sc-menu-bar>
+
 
       <sc-landing-page id="landingPage"
                         title="Home" 
@@ -91,7 +117,17 @@ class ShowcaseApplication extends PolymerElement {
       <!--<div id="content">
       <div id="scroller">-->
       <div id="appPages">
-
+        <sc-menu-bar id="menuBar" 
+                      selected-page={{selectedPage}}
+                      pages={{appPages}}
+                      name-line-one="Mark"
+                      name-line-two="Armendariz">
+        </sc-menu-bar>
+        <sc-home-page id="homePage"
+                      class="page"
+                      title="Hi, I'm Mark."
+                      subtitle="This is who I am:">
+        </sc-home-page>
         <sc-skills-page id="skillsPage"
                         class="page" 
                         title="Skills."
@@ -101,8 +137,8 @@ class ShowcaseApplication extends PolymerElement {
         <sc-education-page id="skillsPage"
                         class="page" 
                         title="Education."
-                        subtitle="This is what I can do:"
-                        data="[[educationData]]">
+                        subtitle="This is where I studied:"
+                        data=[[educationData]]>
         </sc-education-page>
         <sc-experience-page class="page"
                             title="Experience."
@@ -110,13 +146,13 @@ class ShowcaseApplication extends PolymerElement {
                             data=[[experienceData]]>
         </sc-experience-page>
         <sc-projects-page class="page"
-                          title="Projects"
+                          title="Projects."
                           subtitle="This is what I've worked on (or am working on):"
                           data=[[projectsData]]>
         </sc-projects-page>
         <sc-contact-page class="page" 
                         title="Contact"
-                        subtitle="This is how to get ahold of me"
+                        subtitle="This is how to get ahold of me:"
                         data=[[contactData]]>
         </sc-contact-page>
       </div>
@@ -126,47 +162,11 @@ class ShowcaseApplication extends PolymerElement {
   
   static get properties() {
     return {
-      /**
-       * TODO: Set this value from web service response
-       */
       appPages: {
-        type: Array,
-        value: [
-                {
-                  id: "2",
-                  name: 'Skills',
-                  type: 'general'
-                },
-                {
-                  id: "3",
-                  name: 'Education',
-                  type: 'general'
-                },
-                {
-                  id: "4",
-                  name: 'Direct Experience',
-                  type: 'general'
-                },
-                {
-                  id: "5",
-                  name: 'Projects',
-                  type: 'general'
-                },
-                {
-                  id: "6",
-                  name: 'Additional Experience',
-                  type: 'general'
-                },
-                {
-                  id: "7",
-                  name: 'Contact',
-                  type: 'contact_page'
-                }
-              ]
+        type: Array
       },
-
       appTitle: {
-        value: "Mark Armendariz"
+        type: String
       },
 
       scroll:{
@@ -181,223 +181,43 @@ class ShowcaseApplication extends PolymerElement {
       selectedPage: {
         type: Object,
         notify: true,
-  
         observer: "_pageChanged"
       },
 
       skillsData:{
-        type: Array,
-        value: [
-          {
-            id: '1',
-            name: 'HTML',
-            comment: '',
-            skillLevel: '50'
-          },
-          {
-            id: '2',
-            name: 'JavaScript',
-            comment: '',
-            skillLevel: '50'
-          },
-          {
-            id: '3',
-            name: 'CSS',
-            comment: '',
-            skillLevel: '50'
-          },
-          {
-            id: '4',
-            name: 'C#/.NET',
-            comment: '',
-            skillLevel: '60'
-          },
-          {
-            id: '5',
-            name: 'SQL',
-            comment: '',
-            skillLevel: '10'
-          },
-          {
-            id: '6',
-            name: 'Polymer 1.0',
-            comment: '',
-            skillLevel: '10'
-          },
-          {
-            id: '7',
-            name: 'Polymer 3.0',
-            comment: '',
-            skillLevel: '10'
-          },
-          {
-            id: '8',
-            name: 'C/C++',
-            comment: 'Prior Experience',
-            skillLevel: '10'
-          },
-          {
-            id: '9',
-            name: 'PHP',
-            comment: 'Prior Experience',
-            skillLevel: '10'
-          }
-        ]
+        type: Array
       },
-
       experienceData:{
-        type: Array,
-        value: [
-          {
-            "companyName": "Ricardo Defense Inc.",
-            "positionName": "Software Engineer",
-            "startDate": "September 2016",
-            "endDate" : "Present",
-            "city": "Goleta",
-            "state": "CA",
-            "points": [
-              "Sustained and modernized products in a large web-based software suite spanning eight interconnected-products developed in C#, Perl, HTML, and Javascript.",
-              "Utilized Polymer 1.0 for multiple web-based applications, include two desktop applications. ",
-              "Soley supported user-acceptance testing for a newly developed product in order to produce software suitable for production",
-              "Modernized segments of legacy software with newer technologies for purposes of increasing the codebase readability, sustainability, and efficiency, as well as for expanding the products capabilities to meet new requirements.",
-              "Sustained software by understanding the product, studying the code, learning new programming languages, working to resolve software trouble reports, and implementing change requests and new features."
-            ]
-          },
-          {
-            "companyName": "CSU Bakersfield",
-            "positionName": "Computer Science Tutor",
-            "startDate": "April 2015",
-            "endDate" : "June 2016",
-            "city": "Bakersfield",
-            "state": "CA",
-            "points": [
-              "In-class tutor for Operating Systems and Web Design courses, assisting students with programming assignments and concepts",
-              "Provided assistance with C/C++, HTML, JavaScript, CSS, and PHP in computer lab outside of class during scheduled hours.",
-              "Aided students with debugging and logic for programming assignments and assisted teachers with grading student submissions.",
-            ]
-          },
-          {
-            "companyName": "Chevron USA, Inc.",
-            "positionName": "Technical Assistant Intern",
-            "startDate": "June 2015",
-            "endDate" : "August 2015",
-            "city": "Bakersfield",
-            "state": "CA",
-            "points": [
-              "Investigated, diagnosed, and resolved problems in internal database systems, such as absent or inconsistent data",
-              "Managed documents used for tracking data issues to avoid redundant efforts in the future",
-              "Coordinated with staff members from multiple disciplines to ensure high integrity and accuracy of data",
-              "Completed twenty minute presentation regarding the completion of summer assignment to all concerned parties"
-            ]
-          }
-        ]
+        type: Array
       },
-
-      resumeData: {
-        type: Object,
-        value: {
-          "3":{ //education
-            "entries": [
-              {
-                "id": "3",
-                "type": "general",
-                "companyName": "CSU Bakersfield",
-                "positionName": "Bachelor of Science, Computer Science",
-                "points": [
-                  "Web Design",
-                  "Server Scripting",
-                  "Artificial Intelligence",
-                  "Object-Oriented Programming",
-                  "Relational Database Systems",
-                  "Operating Systems",
-                  "Algorithm Analysis & Design",
-                  "Software Engineer"
-              ]
-              }
-            ]
-          },
-          "4": { //direct experience
-            "entries" : [
-              {
-                "id": "4",
-                "type": "general",
-                companyName: "Ricardo Defense Inc.",
-                positionName: "Software Engineer",
-                "points": [
-                  "Sustained and modernized products in a large web-based software suite spanning eight interconnected-products developed in C#, Perl, HTML, and Javascript.",
-                  "Utilized Polymer 1.0 for multiple web-based applications, include two desktop applications. ",
-                  "Soley supported user-acceptance testing for a newly developed product in order to produce software suitable for production",
-                  "Modernized segments of legacy software with newer technologies for purposes of increasing the codebase readability, sustainability, and efficiency, as well as for expanding the products capabilities to meet new requirements.",
-                  "Sustained software by understanding the product, studying the code, learning new programming languages, working to resolve software trouble reports, and implementing change requests and new features."
-                ]
-              }
-            ]
-          },
-          "5":{ //projects
-            "entries": [
-              {
-                "id": "5",
-                "type": "project",
-                "points": []
-              }
-            ]
-          },
-          "6":{ //additional experience
-            "entries": [
-              {
-                "id": "4",
-                "type": "general",
-                "companyName": "CSU Bakersfield",
-                "positionName": "Computer Science Tutor",
-                "points": [
-                  "In-class tutor for Operating Systems and Web Design courses, assisting students with programming assignments and concepts",
-                  "Provided assistance with C/C++, HTML, JavaScript, CSS, and PHP in computer lab outside of class during scheduled hours.",
-                  "Aided students with debugging and logic for programming assignments and assisted teachers with grading student submissions.",
-                ]
-              },
-              {
-                "id": "5",
-                "type": "general",
-                companyName: "Chevron USA, Inc.",
-                positionName: "Technical Assistant Intern",
-                "points": [
-                  "Investigated, diagnosed, and resolved problems in internal database systems, such as absent or inconsistent data",
-                  "Managed documents used for tracking data issues to avoid redundant efforts in the future",
-                  "Coordinated with staff members from multiple disciplines to ensure high integrity and accuracy of data",
-                  "Completed twenty minute presentation regarding the completion of summer assignment to all concerned parties"
-                ]
-              }
-            ]
-          }
-        }
-      },
-
+      educationData:{
+        type: Object
+      }
     };
   }
 
   ready(){
     super.ready();
+    this._getResumeData();
   }
 
-  _computeData() {
+  _getResumeData() {
     this._getResource( {
-        url: this.resolveUrl('../../data/resume.json'),
+        url: this.resolveUrl('src/data/resume-data.json'),
         onLoad(e){
-            //this.set('data.items', JSON.parse(e.target.responseText));
-            console.log(e);
+            var data = JSON.parse(e.target.responseText).d.result;
+            this.appTitle = data.appTitle;
+            this.appPages = data.appPages;
+            this.skillsData = data.skillsData;
+            this.experienceData = data.experienceData;
+            this.educationData = data.educationData;
         }
      })
-    }
-  _getResource(rq) {
-    let xhr = new XMLHttpRequest();
-    xhr.addEventListener('load', rq.onLoad.bind(this));
-    xhr.open('GET', rq.url);
-    xhr.send();
   }
 
   connectedCallback(){
     super.connectedCallback();
-    //this._generateApplicationPages();
+    //this._generateApplicationPages(); //currently not implemented
     this.addEventListener('homeEnterTap', e => this._handlePageButtonClick(e));
 
     var that = this;
@@ -413,6 +233,13 @@ class ShowcaseApplication extends PolymerElement {
     }*/
   }
 
+  _getResource(rq) {
+    let xhr = new XMLHttpRequest();
+    xhr.addEventListener('load', rq.onLoad.bind(this));
+    xhr.open('GET', rq.url);
+    xhr.send();
+  }
+
   _handlePageButtonClick(e){
     console.log("homeclicked");
     this.selectedPage = this.appPages[0];
@@ -425,7 +252,7 @@ class ShowcaseApplication extends PolymerElement {
   
   /**
    * Generates and appends page elements into app DOM
-   */
+   *
   _generateApplicationPages(){
     var newSection;
     //var newSection = document.createElement('sc-home-page');
@@ -446,7 +273,7 @@ class ShowcaseApplication extends PolymerElement {
     newSection.title = this.appPages[this.appPages.length-1].name;
     newSection.pageId =  this.appPages[this.appPages.length-1].id;
     this._appendtoIronPages(newSection);
-  }
+  }*/
 
   /**
    * 
@@ -480,10 +307,6 @@ class ShowcaseApplication extends PolymerElement {
 
   _appendtoIronPages(pageElement){
     this.$.appIronPages.appendChild(pageElement);
-  }
-
-  _getData(index){
-    return this.resumeData[index.toString()].entries;
   }
 
 }
