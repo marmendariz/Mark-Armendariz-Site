@@ -23,7 +23,7 @@ export class MaProjectDialog extends PolymerElement {
           display: block;
           cursor: default;
         }
-        paper-dialog{
+        #dialog{
           border: 2px solid;
           border-color: var(--ma-main-theme-color);
           width: var(--ma-project-modal-width, 65%);
@@ -42,9 +42,44 @@ export class MaProjectDialog extends PolymerElement {
           height: 56%;
           margin: 0 auto;
         }
+        iron-icon{
+          height: 40px;
+          width: 40px;
+        }
+        iron-icon:hover{
+          fill: var(--ma-accent-color);
+        }
+
+        @media (min-width: 1281px) {
+        }
+
+        @media (min-width: 1025px) and (max-width: 1280px) {
+        }
+
+        @media (min-width: 768px) and (max-width: 1024px) {
+        }
+
+        @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+        }
+
+        @media (min-width: 481px) and (max-width: 767px) {
+        }
+
+        @media (min-width: 320px) and (max-width: 480px) {
+          #dialog{
+            width: 100%;
+            max-width: none !important; 
+            margin: 0;
+            height: 80vh;
+          }
+          div#projectImage{
+            height: 30%;
+          }
+        }
       </style>
 
       <paper-dialog id="dialog" opened={{opened}}>
+        <iron-icon on-tap="close" icon="icons:close"></iron-icon>
         <h2 id="title">[[title]]</h2>
         <div id="projectImage"></div>
         <div id="projectDescription"></div>
@@ -90,6 +125,10 @@ export class MaProjectDialog extends PolymerElement {
     else{
       this.$.dialog.close();
     }
+  }
+
+  close(){
+    this.$.dialog.close();
   }
 
   _setIconImage(iconName){

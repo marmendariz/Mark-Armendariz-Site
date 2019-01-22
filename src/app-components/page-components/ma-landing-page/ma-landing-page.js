@@ -22,8 +22,6 @@ export class MaLandingPage extends PolymerElement {
           background-position: center;
           background-repeat: no-repeat;
           background-size: cover;
-          /*background-color: grey;*/
-
         }
         #landingFrame{
           position: relative;
@@ -38,6 +36,12 @@ export class MaLandingPage extends PolymerElement {
           font-size: 40pt;
           font-weight: 900;
           color: var(--ma-main-theme-color);
+        }
+
+        @media (min-width: 320px) and (max-width: 480px) {
+          #apptitle{
+            font-size: 30pt;
+          }
         }
       </style>
 

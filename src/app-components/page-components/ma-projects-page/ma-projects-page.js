@@ -48,6 +48,34 @@ export class MaProjectsPage extends PolymerElement {
         h3#comingSoonMsg{
           text-align: center;
         }
+        @media (min-width: 1281px) {
+        }
+
+        @media (min-width: 1025px) and (max-width: 1280px) {
+        }
+
+        @media (min-width: 768px) and (max-width: 1024px) {
+        }
+
+        @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+        }
+
+        @media (min-width: 481px) and (max-width: 767px) {
+        }
+
+        @media (min-width: 320px) and (max-width: 480px) {
+          ma-project-card{
+            margin-bottom: 20px;
+            --ma-project-card-style:{
+              height: 24vh;
+              width: 120px;
+            }
+          }        
+          ma-card#comingSoonCard{
+            margin-top: 0px;
+            margin-bottom: 10px;
+          }
+        }
       </style>
 
       <div class="centeredCard">
@@ -60,7 +88,7 @@ export class MaProjectsPage extends PolymerElement {
             <ma-project-card title="My Website"
                              icon-name="markArmendarizWebsiteIcon">
             </ma-project-card>
-            <ma-project-card title="Mobile-First Forum"
+            <ma-project-card title="Content Rating and Discussion Site"
                              icon-name="forumProjectIcon">
             </ma-project-card>
             <ma-project-card title="Relational Database & Java GUI"
@@ -91,20 +119,6 @@ export class MaProjectsPage extends PolymerElement {
       subtitle:{
         type: String
       },
-
-      pageId: {
-        type: String,
-        reflectToAttribute: true
-      },
-
-      resumeSectionData:{
-        type: Object,
-        value:[
-          {
-
-          }
-        ]
-      }
 
     };
   }

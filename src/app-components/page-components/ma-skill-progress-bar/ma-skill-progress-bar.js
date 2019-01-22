@@ -48,7 +48,7 @@ export class MaSkillProgressBar extends PolymerElement {
         line-height:33px;
       }
 
-      @media screen and (max-width: 500px){
+      @media screen and (max-width: 640px){
         #ratio{
           display: none;
         }

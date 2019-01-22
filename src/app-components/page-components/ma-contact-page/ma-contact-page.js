@@ -63,6 +63,18 @@ export class MaContactPage extends PolymerElement {
           filter: drop-shadow(var(--ma-card-box-shadow, 10px 10px 10px #55555557));
           transform: translate(-1%, -2%);
         }
+
+        @media (min-width: 481px) and (max-width: 767px) {
+          ma-icon{
+            margin: 10px 0px;
+          }
+        }
+
+        @media (min-width: 320px) and (max-width: 480px) {
+          ma-icon{
+            margin: 10px 0px;
+          }
+        }
       </style>
 
 

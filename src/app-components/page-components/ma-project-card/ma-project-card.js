@@ -85,16 +85,6 @@ export class MaProjectCard extends PolymerElement {
           z-index: 2;
           transform: rotateY(0deg);
         }
-        /*ma-project-modal{
-          height: 60%;
-          width: 90%;
-        }*/
-        /*paper-dialog>h1{
-          text-align: center;
-        }*/
-        #modalView{
-
-        }
         #cardFrontOverlay{
           position: absolute;
           background-color: var(--ma-main-theme-color-lite-transparent);

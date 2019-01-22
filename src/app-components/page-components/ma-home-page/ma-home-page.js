@@ -18,12 +18,13 @@ export class MaHomePage extends PolymerElement {
       <style>
         :host {
           display: block;
-          padding: var(--ma-page-padding, 0px);
           background-color: var(--ma-page-background-color ,white);
         }
         div[slot="subtitle"]{
           @apply --ma-subtitle-text;
         }
+
+
         #traitIcons{
           display: flex;
           flex-wrap: wrap;
@@ -39,7 +40,6 @@ export class MaHomePage extends PolymerElement {
           }
           margin: 0 30px;
           padding: 20px;
-
         }
         .traitIcon:hover{
           filter: drop-shadow(var(--ma-card-box-shadow, 10px 10px 10px #55555557));
@@ -49,12 +49,12 @@ export class MaHomePage extends PolymerElement {
         .highlighted{
           color: var(--ma-main-theme-color);
         }
-        #pageContent{
+        /*#pageContent{
           margin: 20px 0px;
-        }
+        }*/
 
 
-        @media screen and (max-width: 1110px){
+        /*@media screen and (max-width: 1110px){
           ma-icon{
             margin: 10px;
             flex-wrap: wrap;
@@ -79,7 +79,31 @@ export class MaHomePage extends PolymerElement {
               height: 160px;
             }
           }
-        }
+        }*/
+
+        
+
+      @media (min-width: 1281px) {
+      }
+
+
+      @media (min-width: 1025px) and (max-width: 1280px) {
+      }
+
+
+      @media (min-width: 768px) and (max-width: 1024px) {
+      }
+
+
+      @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+      }
+
+      @media (min-width: 481px) and (max-width: 767px) {
+      }
+
+
+      @media (min-width: 320px) and (max-width: 480px) {
+      }
 
       </style>
 <div>

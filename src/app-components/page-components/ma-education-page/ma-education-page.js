@@ -19,8 +19,11 @@ export class MaEducationPage extends PolymerElement {
       <style>
         :host {
           display: block;
-          padding: var(--ma-page-padding, 0px);
-          background-color: var(--ma-page-background-color ,white);
+          background-image:url('src/images/educationPage.png');
+          background-attachment: fixed;
+          background-position: center;
+          background-repeat: no-repeat;
+          background-size: cover;
         }
         #contentSlot{
           @apply --ma-resume-page-style;
@@ -31,13 +34,11 @@ export class MaEducationPage extends PolymerElement {
           font-size: 15pt;
         }
         #educationInfoCard{
-          /*margin: 25px 25px 25px 0px;*/
           --ma-card-height: 10px;
           height: 50%;
         }
 
         #educationDetailsCard{
-          /*margin: 25px 0px 25px 25px;*/
           font-size: 10pt;
         }
      
@@ -45,8 +46,6 @@ export class MaEducationPage extends PolymerElement {
         #educationInfoCard>div[slot="content"]{
           line-height: 15px;
         }
-
-
 
         #pageContent{
           display: flex;
@@ -82,25 +81,14 @@ export class MaEducationPage extends PolymerElement {
           line-height: 5px;
           font-size: 12pt;
         }
-        /*.dateRange{
-          margin-top: 20px;
-        }*/
-        li{
-          line-height: 50px;
-          font-size: 13pt;
-        }
         ul{
           padding-left: 24px;
         }
 
 
         #educationIcon{
-          /*height: 300px;*/
           height: 50%;
           overflow: hidden;
-         /* background-image: url('src/images/Education.png');
-          background-size: 100% 100%;
-          background-repeat: no-repeat;*/
         }
         img{
           height: 91%;
@@ -108,17 +96,12 @@ export class MaEducationPage extends PolymerElement {
           position: relative;
           left: 50%;
           top: 50%;
-          /*width:100%;
-          height:100%;
-          object-fit: cover;
-          overflow: hidden;*/
         }
         #coursesTitle{
           font-weight: 800;
         }
 
         #educationDetailsCard, #educationDetailsCard>div[slot="content"]{
-          /*height: 100%;*/
           --ma-card-frame:{
             height: 78vh;
           }
@@ -135,8 +118,6 @@ export class MaEducationPage extends PolymerElement {
         }
 
 
-        @media screen and (max-width: 900px){
-        }
         @media screen and (max-width: 930px){
           #educationIcon>img{
             width:100%;
@@ -172,16 +153,10 @@ export class MaEducationPage extends PolymerElement {
           #educationInfoCard{
             width: 50%;
           }
-          li{
-            font-size: 15pt;
-            line-height: 28px;
-          }
           #coursesTitle{
-            font-size: 18pt;
+            text-align: center;
+            font-size: 14pt;
             margin-bottom: 0;
-          }
-          .schoolName{
-            font-size: 12pt;
           }
           #educationInfoCard{
             --ma-card-frame:{
@@ -190,9 +165,114 @@ export class MaEducationPage extends PolymerElement {
           }
         }
 
+
+
+        @media (min-width: 1281px) {
+          .schoolName{
+            font-size: 18pt;
+            line-height: 28px;
+          }
+          .degreeInfo{
+            font-size: 16pt;
+          }
+          .dateRange, .gpa{
+            font-size: 14pt;
+          }
+          li{
+            line-height: 60px;
+            font-size: 16pt;
+          }
+        }
+
+        @media (min-width: 1025px) and (max-width: 1280px) {
+          li{
+            line-height: 60px;
+            font-size: 16pt;
+          }
+          .schoolName{
+            font-size: 18pt;
+            line-height: 28px;
+          }
+          .degreeInfo{
+            font-size: 15pt;
+          }
+          .gpa, .dateRange{
+            font-size: 14pt;
+          }
+
+        }
+
+        @media (min-width: 768px) and (max-width: 1024px) {
+          img{
+            height: 72%;
+            transform: translate(-50%, -62%);
+          }
+
+          li{
+            line-height: 55px;
+            font-size: 16pt;
+          }
+          .degreeInfo, .gpa, .dateRange{
+            font-size: 13pt;
+          }
+        }
+        @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+          img{
+            height: 72%;
+            transform: translate(-50%, -62%);
+          }
+          li{
+            line-height: 55px;
+            font-size: 16pt;
+          }
+
+        }
+
+        @media (min-width: 481px) and (max-width: 767px) {
+          img{
+            height: 75%;
+            transform: translate(-50%, -62%);
+          }
+          li{
+            line-height: 45px;
+            font-size: 14pt;
+          }
+          .degreeInfo{
+            font-size: 13pt;
+          }
+          .gpa{
+            font-size: 12pt;
+          }
+        }
+
+        @media (min-width: 320px) and (max-width: 480px) {
+          #educationDetailsCard{
+            --ma-card-padding: 10px 17px;
+          }
+          #educationIcon{
+            display: none;
+          }
+          #educationInfoCard{
+            width: 100%;
+          }
+          .schoolName{
+            font-size: 13pt;
+          }
+          .degreeInfo{
+            font-size: 13pt;
+          }
+          #educationInfoCard>div[slot="content"]{
+            padding: 16px 0px;
+          }
+          li{
+            line-height: 40px;
+            font-size: 12pt;
+          }
+        }
+
       </style>
 
-    <div id="centeredCard">
+      <div id="centeredCard">
 
         <ma-card class="">
           <div slot="title"><h1>{{_toLowerCase(title)}}</h1></div>
@@ -201,36 +281,36 @@ export class MaEducationPage extends PolymerElement {
       
         <div id="pageContent">
 
-          <div id="educationInfoContainer">
-              <div id="educationIcon"><img src="src/images/Education.png"></div>
-              <ma-card id="educationInfoCard">
+            <div id="educationInfoContainer">
+                <div id="educationIcon"><img src="src/images/EducationWhite.png"></div>
+                <ma-card id="educationInfoCard">
+                  <div slot="content">
+                    <p class="schoolName">[[_toUpperCase(data.schoolName)]]</p>
+                    <p class="degreeInfo">[[data.degreeName]] - [[data.majorName]]</p>
+                    <p class="dateRange">[[data.startDate]] - [[data.endDate]]</p>
+                    <p class="gpa">GPA - [[data.gpaValue]] on a 4.00 scale.</p>
+                    <!--<div id="schoolIcon"><img src="src/images/csub.png"></div>-->
+                  </div>
+                </ma-card>
+            </div>
+
+            <div id="educationDetailsContainer">
+              <ma-card id="educationDetailsCard">
                 <div slot="content">
-                  <p class="schoolName">[[_toUpperCase(data.schoolName)]]</p>
-                  <p class="degreeInfo">[[data.degreeName]] - [[data.majorName]]</p>
-                  <p class="dateRange">[[data.startDate]] - [[data.endDate]]</p>
-                  <p class="location">GPA - [[data.gpaValue]] on a 4.00 scale.</p>
-                  <div id="schoolIcon"><img src="src/images/csub.png"></div>
+                  <h2 id="coursesTitle">COURSES INCLUDED</h2>
+                    <ul>
+                      <dom-repeat id="repeat" items="[[data.courses]]">
+                        <template>
+                            <li>[[item]]</li>
+                        </template>
+                      </dom-repeat>
+                    </ul>
                 </div>
               </ma-card>
-          </div>
-
-          <div id="educationDetailsContainer">
-            <ma-card id="educationDetailsCard">
-              <div slot="content">
-                <h2 id="coursesTitle">COURSES INCLUDED</h2>
-                  <ul>
-                    <dom-repeat id="repeat" items="[[data.courses]]">
-                      <template>
-                          <li>[[item]]</li>
-                      </template>
-                    </dom-repeat>
-                  </ul>
-              </div>
-            </ma-card>
-          </div>
+            </div>
         </div>
 
-  </div>
+      </div>
 
     `;
   }

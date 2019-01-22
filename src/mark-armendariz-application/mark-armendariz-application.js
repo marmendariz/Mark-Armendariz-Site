@@ -22,7 +22,6 @@ class MarkArmendarizApplication extends PolymerElement {
       <style>
         :host {
           display: block;
-          --ma-page-padding: 0px 5%;
           --ma-general-font-color: #404042;
           --ma-accent-font-color: #404042;
           --ma-suppress-font-color: #b1b1b4;
@@ -37,17 +36,11 @@ class MarkArmendarizApplication extends PolymerElement {
             font-size: 15pt !important;
           }
         }        
-        
-        /* PAGE STYLES */
-        .page{
-          height: 100vh;
-          padding: 40px;
-        }
-        #experiencePage, #educationPage{
-          height: initial;
-        }
         #landingPage{
           height: 100vh;
+        }
+        .page{
+          padding: 40px;
         }
         #appPages>.page:nth-child(odd){
           --ma-page-background-color: var(--ma-main-theme-color);
@@ -65,24 +58,24 @@ class MarkArmendarizApplication extends PolymerElement {
 
         }
 
-
-
-        @media screen and (max-width: 1000px){
+        @media (min-width: 1281px) {
+        }
+        @media (min-width: 1025px) and (max-width: 1280px) {
+        }
+        @media (min-width: 768px) and (max-width: 1024px) {
+        }
+        @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+        }
+        @media (min-width: 481px) and (max-width: 767px) {
           .page{
-            min-height: 93vh;
-            padding:25px;
-          }
-          #homePage{
-            height: 185vh;
+            padding: 25px 10px;
           }
         }
-
-        @media screen and (min-height: 1272px){
+        @media (min-width: 320px) and (max-width: 480px) {
           .page{
-            max-height: 41vh;
+            padding: 20px 5px;
           }
         }
-
       </style>
   
       <!-- ====== APPLICATION ROUTING ====== -->
@@ -135,7 +128,7 @@ class MarkArmendarizApplication extends PolymerElement {
         <ma-projects-page id="projectsPage"
                           class="page"
                           title="Projects."
-                          subtitle="This is what I've worked on (or am working on):"
+                          subtitle="This is some of what I've worked on (or am working on):"
                           data=[[projectsData]]>
         </ma-projects-page>
         <ma-contact-page class="page" 

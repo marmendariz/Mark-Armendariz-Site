@@ -20,7 +20,6 @@ export class MaSkillsPage extends PolymerElement {
       <style>
         :host {
           display: block;
-          padding: var(--ma-page-padding, 0px);
           background-color: var(--ma-page-background-color ,white);
         }
         div[slot="subtitle"]{
@@ -29,11 +28,6 @@ export class MaSkillsPage extends PolymerElement {
           font-size: 15pt;
         }
 
-
-
-        :host ma-skill-progress-bar{
-          margin: 20px 0px 25px 0px;
-       }
         ma-skill-progress-bar:hover{
           box-shadow: var(--ma-card-box-shadow, 10px 10px 47px 20px #55555557);
           transform: translate(-1%, -2%) scale(1.0, 1.0);
@@ -58,16 +52,15 @@ export class MaSkillsPage extends PolymerElement {
           width: 90%;
         }
 
-        @media screen and (max-width: 900px){
+        ma-skill-progress-bar{
+            margin: 40px 0px 25px 0px;
+        }
+        @media (min-width: 320px) and (max-width: 480px) {
           #skillsList{
             width: 100%;
-            padding-top: 15px;
           }
-          :host{
-            padding: 0px 10px
-          }
-          :host ma-skill-progress-bar{
-            margin: 20px;
+          ma-card{
+            --ma-card-padding: 10px;
           }
         }
 
@@ -81,6 +74,7 @@ export class MaSkillsPage extends PolymerElement {
             <dom-repeat id="repeat" items="{{data}}" as="skill">
               <template>
                   <ma-skill-progress-bar id=[[skill.id]]
+                                         class="progressBar"
                                          progress=[[skill.skillLevel]]
                                          title=[[skill.name]]
                                          comment=[[skill.comment]]>

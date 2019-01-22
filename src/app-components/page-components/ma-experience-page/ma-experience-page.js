@@ -30,8 +30,6 @@ export class MaExperiencePage extends PolymerElement {
           font-size: 15pt;
         }
 
-
-
         ma-card.selected{
           --ma-card-background-color : #404042;
           --ma-card-style:{
@@ -44,8 +42,6 @@ export class MaExperiencePage extends PolymerElement {
           }
         }
 
-
-        
         #pageContent{
           display: flex;
           height: 76vh;
@@ -55,16 +51,11 @@ export class MaExperiencePage extends PolymerElement {
           margin-bottom: 20px;
         }
 
-        #jobsContainer{
+        #jobsListContainer{
           margin: 0px 10px 0px 0px;
           display: table;
           table-layout: fixed;
           width: 45%;
-          height: 100%;
-          
-          /*--ma-card-frame:{
-            height: 100%;
-          }*/
         }
         .jobCard{
           display: table-row;
@@ -84,9 +75,6 @@ export class MaExperiencePage extends PolymerElement {
           display: table-row;
           height: 100%;
           font-size: 10pt;
-          /*--ma-card-frame:{
-            height: 93%;
-          }*/
         }
 
         /**************************/
@@ -162,7 +150,7 @@ export class MaExperiencePage extends PolymerElement {
           ul{
             font-size: 9pt;
           }
-          #jobsContainer{
+          #jobsListContainer{
             table-layout: unset;
           }
           .jobCard{
@@ -187,26 +175,78 @@ export class MaExperiencePage extends PolymerElement {
           #jobDetailsCard>div[slot="content"]{
             width: 100%;
           }
-          #jobsContainer{
+          #jobsListContainer{
             width: 100%;
             display: flex;
             justify-content: space-between;
-            height:100%;
           }
           .jobCard{
             width: 100%;
-            /*--ma-card-padding: 10px;*/
             margin: 10px 2px;
           }
-          #jobDetailsCard, #jobDetailsContainer{
+          #jobDetailsContainer{
             margin: 0px 0px;
             width: 100%;
             height: 66%;
-            transform: translateY(-49%);
           }
         }
-        /*****************************************/
 
+        /*#jobDetailsCard{
+          transform: translateY(50%);
+        }*/
+        /*****************************************/
+        @media (min-width: 1281px) {
+          li{
+            font-size: 14pt !important;
+            line-height: 35px;
+          }
+
+        }
+
+        @media (min-width: 1025px) and (max-width: 1280px) {
+        }
+
+        @media (min-width: 731px) {
+          #jobDetailsCard{
+            transform: none;
+          }
+          #jobsListContainer{
+            height: 100%;
+          }
+          li{
+            font-size: 12pt;
+          }
+          .companyName{
+            font-size: 18pt;
+            line-height: 10px;
+          }
+          .positionName{
+            font-size: 15pt;
+            line-height: 10px;
+            margin-bottom: 30px;
+          }
+          .dateRange, .location{
+            font-size: 13pt;
+          }
+        }
+
+        @media (min-width: 731px) and (max-width: 1024px) and (orientation: landscape) {
+        }
+
+        @media (min-width: 481px) and (max-width: 730px) {
+          .jobCard{
+            --ma-card-padding: 10px 10px;
+          }
+          li{
+           font-size: 11pt;
+          }
+        }
+
+        @media (min-width: 320px) and (max-width: 480px) {
+          .jobCard{
+            --ma-card-padding: 10px 5px;
+          }
+        }
 
 
       </style>
@@ -220,7 +260,7 @@ export class MaExperiencePage extends PolymerElement {
         <div id="pageContent">
 
 
-            <div id="jobsContainer">
+            <div id="jobsListContainer">
             <dom-repeat id="repeat" items="{{data}}" as="section">
               <template>
                 <ma-card id="[[section.id]]" class="jobCard" on-click="_setAsSelected">
@@ -312,7 +352,7 @@ export class MaExperiencePage extends PolymerElement {
   _setAsSelected(e){
     var targetElement;
     var selectedClass = "selected";
-    var targetElementName = "ma-CARD";
+    var targetElementName = "MA-CARD";
 
     if(e.target.tagName == targetElementName){
       targetElement = e.target;
