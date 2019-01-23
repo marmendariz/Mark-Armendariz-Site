@@ -20,7 +20,6 @@ export class MaExperiencePage extends PolymerElement {
         :host {
           position: relative;
           display: block;
-          /*padding: var(--ma-page-padding, 0px);*/
           background-color: var(--ma-page-background-color ,white);
           height: 100%;
         }
@@ -119,7 +118,6 @@ export class MaExperiencePage extends PolymerElement {
         }
         /*********************/
 
-
         /*****************************************/
         @media screen and (max-width: 900px){
           .companyName{
@@ -136,9 +134,6 @@ export class MaExperiencePage extends PolymerElement {
           }
         }
         /*****************************************/
-
-
-
 
         /*****************************************/
         /* SMALLER RESOLUTION STYLES */
@@ -251,14 +246,13 @@ export class MaExperiencePage extends PolymerElement {
 
       </style>
 
-<div>
+  <div>
         <ma-card id="pageTitleCard" class="">
           <div slot="title"><h1>{{_toLowerCase(title)}}</h1></div>
           <div slot="subtitle">[[subtitle]]</div>
         </ma-card>
       
         <div id="pageContent">
-
 
             <div id="jobsListContainer">
             <dom-repeat id="repeat" items="{{data}}" as="section">
@@ -289,7 +283,6 @@ export class MaExperiencePage extends PolymerElement {
               </ma-card>
             </div>
 
-
         </div>
 
   </div>
@@ -308,24 +301,13 @@ export class MaExperiencePage extends PolymerElement {
         reflectToAttribute: true
       },
 
-      pageId: {
-        type: String,
-        reflectToAttribute: true
-      },
-
       subtitle:{
         type: String,
         reflectToAttribute: true
       },
 
-      isGeneralType:{
-        type: Boolean,
-        value: false,
-      },
-
       data:{
         type: Object,
-        observer: "_test",
         notify: true,
       },
 
@@ -343,10 +325,6 @@ export class MaExperiencePage extends PolymerElement {
   ready(){
     super.ready();
     this._selectedData = [this.defaultDetailsMessage];
-  }
-
-  _test(data){
-    console.log(data);
   }
 
   _setAsSelected(e){
@@ -421,23 +399,6 @@ export class MaExperiencePage extends PolymerElement {
   _toLowerCase(text){
     return text.toLowerCase();
   }
-
-  /**
-   * 
-   * @param {*} businessName 
-   * @param {*} positionName 
-   */
-  _formatBusinessAndPosition(businessName, positionName){
-    var returnString = "";
-    if(businessName && !positionName){
-      returnString = businessName;
-    }
-    else if(businessName && positionName){
-      returnString = businessName + " - " + positionName;
-    }
-    return returnString;
-  }
-
 
 }
 

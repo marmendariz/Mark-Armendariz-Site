@@ -27,7 +27,6 @@ export class MaSkillsPage extends PolymerElement {
           font-weight: bold;
           font-size: 15pt;
         }
-
         ma-skill-progress-bar:hover{
           box-shadow: var(--ma-card-box-shadow, 10px 10px 47px 20px #55555557);
           transform: translate(-1%, -2%) scale(1.0, 1.0);
@@ -36,13 +35,11 @@ export class MaSkillsPage extends PolymerElement {
           -webkit-transform: translate(-1%, -2%) scale(1.0, 1.0);
           --ma-skill-progress-bar-color: var(--ma-main-theme-color-lite);
         }
-
         ma-card{
           --ma-card-frame:{
             height: 95vh;
           }
         }
-
         ul{
           padding: 0px;
         }
@@ -51,7 +48,6 @@ export class MaSkillsPage extends PolymerElement {
           margin: 45px auto;
           width: 90%;
         }
-
         ma-skill-progress-bar{
             margin: 40px 0px 25px 0px;
         }
@@ -63,7 +59,6 @@ export class MaSkillsPage extends PolymerElement {
             --ma-card-padding: 10px;
           }
         }
-
       </style>
 
       <ma-card>
@@ -101,24 +96,8 @@ export class MaSkillsPage extends PolymerElement {
         type: String,
         reflectToAttribute: true
       },
-
-      pageId: {
-        type: String,
-        reflectToAttribute: true
-      },
-
-
-      isGeneralType:{
-        type: Boolean,
-        value: false,
-      },
-      
-      /**
-       * TODO: Replace with web service response
-       */
       data:{
         type: Object,
-        observer: "_test",
         notify: true,
       }
     };
@@ -128,18 +107,6 @@ export class MaSkillsPage extends PolymerElement {
     super.ready();
   }
 
-  _test(data){
-    console.log(data);
-  }
-
-  /**
-   * 
-   * @param {*} sectionId 
-   */
-  _getPageData(sectionId){
-    return this.data[parseInt(sectionId)].entries;
-  }
-
   /**
    * Utility method for converting text to lowercase
    * @param {*} title 
@@ -147,23 +114,6 @@ export class MaSkillsPage extends PolymerElement {
   _toLowerCase(text){
     return text.toLowerCase();
   }
-
-  /**
-   * 
-   * @param {*} businessName 
-   * @param {*} positionName 
-   */
-  _formatBusinessAndPosition(businessName, positionName){
-    var returnString = "";
-    if(businessName && !positionName){
-      returnString = businessName;
-    }
-    else if(businessName && positionName){
-      returnString = businessName + " - " + positionName;
-    }
-    return returnString;
-  }
-
 
 }
 

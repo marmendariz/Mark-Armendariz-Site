@@ -3,7 +3,6 @@ import '@polymer/polymer/lib/legacy/polymer.dom';
 import '@polymer/app-route/app-location';
 import '@polymer/app-route/app-route';
 import {} from '@polymer/polymer/lib/utils/resolve-url.js';
-
 import {MaMenuBar} from '../app-components/page-components/ma-menu-bar/ma-menu-bar.js';
 import {MaLandingPage} from '../app-components/page-components/ma-landing-page/ma-landing-page.js';
 import {MaHomePage} from '../app-components/page-components/ma-home-page/ma-home-page.js';
@@ -40,7 +39,7 @@ class MarkArmendarizApplication extends PolymerElement {
           height: 100vh;
         }
         .page{
-          padding: 40px;
+          /*padding: 60px 40px 40px 40px;*/
         }
         /*#skillsPage, #educationPage, #experiencePage, #projectsPage, #contactPage{
         }*/
@@ -50,12 +49,15 @@ class MarkArmendarizApplication extends PolymerElement {
 
         ma-menu-bar#menuBar{
           top: 0px;
-          /*margin-bottom: 70px;*/
           z-index: 1;
           --ma-menu-bar-position: relative;
         }
         ma-menu-bar#menuBar.sticky{
           position: fixed;
+          width: 100%;
+        }
+        .sticky + #homePage {
+         padding-top: 60px;
         }
 
         /*@media (min-width: 1281px) {
@@ -68,25 +70,31 @@ class MarkArmendarizApplication extends PolymerElement {
         }*/
         @media (min-width: 481px) and (max-width: 1024px) {
           .page{
-            padding: 25px 10px;
+            padding: 60px 10px 60px 10px;
+          }
+          #homePage{
+            padding-top: 0px;
           }
         }
         @media (min-width: 320px) and (max-width: 480px) {
           .page{
-            padding: 20px 5px;
+            padding: 60px 5px 20px 5px;
+          }
+          #homePage{
+            padding-top: 0px;
           }
         }
       </style>
   
-      <!-- ====== APPLICATION ROUTING ====== -->
-      <app-location route="{{route}}">
+      <!-- ====== APPLICATION ROUTING Not currently implemented ====== -->
+      <!--<app-location route="{{route}}">
       </app-location>
 
       <app-route route="{{route}}"
                  pattern="/:name"
                  data="{{selectedPage}}"
                  tail="{{subroute}}">
-      </app-route>
+      </app-route>-->
       <!-- ================================= -->
 
       <!-- ========== APPLICATION ========== -->
@@ -152,11 +160,6 @@ class MarkArmendarizApplication extends PolymerElement {
       appTitle: {
         type: String
       },
-
-      /**
-       * Holds information for page currently selected 
-       * and displayed
-       */
       selectedPage: {
         type: Object,
         notify: true,
@@ -180,6 +183,23 @@ class MarkArmendarizApplication extends PolymerElement {
   ready(){
     super.ready();
     this._getResumeData();
+    
+    window.addEventListener("scroll", function(e){
+      this._resolveMenubarStickiness();
+    }.bind(this));
+  }
+
+  _resolveMenubarStickiness(){
+    var menuBar = this.$.menuBar;
+    var menuBarOffset = menuBar.offsetTop;
+    var homePageDist = this.$.homePage.getBoundingClientRect().top;
+
+    if (window.pageYOffset >= menuBarOffset) {
+      menuBar.classList.add("sticky");
+    } 
+    if(homePageDist >= menuBarOffset){
+      menuBar.classList.remove("sticky");
+    }
   }
 
   _getResumeData() {
@@ -199,20 +219,7 @@ class MarkArmendarizApplication extends PolymerElement {
 
   connectedCallback(){
     super.connectedCallback();
-    //this._generateApplicationPages(); //currently not implemented
     this.addEventListener('homeEnterTap', e => this._handleHomeButtonClick(e));
-
-    var that = this;
-
-    /*document.addEventListener('WebComponentsReady', function(){
-      console.log("scroll here");
-      that.scroll = new IScroll(this.$.content, {mouseWheel: false, click: true, desktopCompatibility:true});
-    }.bind(this));
-    */
-    /*if(this.route.path!="/"){
-      console.log("here");
-      this._hideLandingPage();
-    }*/
   }
 
   _getResource(rq) {
@@ -223,55 +230,17 @@ class MarkArmendarizApplication extends PolymerElement {
   }
 
   _handleHomeButtonClick(e){
-    console.log("jjdjdjdjjdjdjdjdjd");
-    var element = this.$.homePage;
-    var headerOffset = 18;
-    var elementPosition = element.getBoundingClientRect().top;
-    var offsetPosition = elementPosition - headerOffset;
-
-    window.scrollTo({
-      top: offsetPosition,
-      behavior: "smooth"
-    });
-    //this.selectedPage = this.appPages[0];
-    //this.$.landingPage.style.visibility = 'hidden';
+    this.$.homePage.scrollIntoView({block: "start", behavior: "smooth"});
   }
   
-  /**
-   * Generates and appends page elements into app DOM
-   *
-  _generateApplicationPages(){
-    var newSection;
-    //var newSection = document.createElement('ma-home-page');
-    //newSection.title = this.appPages[0].name;
-    //newSection.pageId =  this.appPages[0].id;
-    //this._appendtoIronPages(newSection);
 
-    for(var i=0; i<this.appPages.length-1; i++){
-      newSection = document.createElement('ma-resume-page');
-      newSection.title = this.appPages[i].name;
-      newSection.pageId =  this.appPages[i].id;
-      var data = (this.resumeData[this.appPages[i].id]) ? this.resumeData[this.appPages[i].id].entries :  [];
-      newSection.resumeSectionData = data;
-      this._appendtoIronPages(newSection);
-    }
-
-    newSection = document.createElement('ma-home-page');
-    newSection.title = this.appPages[this.appPages.length-1].name;
-    newSection.pageId =  this.appPages[this.appPages.length-1].id;
-    this._appendtoIronPages(newSection);
-  }*/
 
   _pageChanged(val){
     var element = this.$.appPages.querySelector("#"+val.page);
     if(element){
-      this.$.appPages.querySelector("#"+val.page).scrollIntoView({behavior: "smooth"});
+      this.$.appPages.querySelector("#"+val.page).scrollIntoView({block: "start", behavior: "smooth"});
     }
   }
-
-  /*_appendtoIronPages(pageElement){
-    this.$.appIronPages.appendChild(pageElement);
-  }*/
 
 }
 

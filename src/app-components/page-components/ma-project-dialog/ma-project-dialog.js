@@ -149,7 +149,6 @@ export class MaProjectDialog extends PolymerElement {
   }
 
   _setProjectImage(imageName){
-    console.log("ksdfkdfkdfkdfkdfkdfkdf");
     this.$.projectImage.style.backgroundImage = "url("+this.imagePath + imageName +".png)"
   }
 

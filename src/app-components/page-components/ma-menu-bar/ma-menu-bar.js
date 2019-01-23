@@ -2,14 +2,9 @@ import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
 import {} from '@polymer/polymer/lib/elements/dom-repeat';
 import {} from '@polymer/iron-icon/iron-icon';
 import {} from '@polymer/iron-icons/iron-icons';
-
 import {MaButton} from '../../util-components/ma-button/ma-button.js';
 import {MaCard} from '../../util-components/ma-card/ma-card.js';
 
-/**
- * @customElement
- * @polymer
- */
 export class MaMenuBar extends PolymerElement {
   
   static get template() {
@@ -34,7 +29,6 @@ export class MaMenuBar extends PolymerElement {
           display: flex;
           flex-wrap: wrap;
         }
-
         #appTitle{
           height: 10px;
           padding: 6px 18px;
@@ -49,7 +43,6 @@ export class MaMenuBar extends PolymerElement {
         #menuIcon{
           display: none;
         }
-
         .bttonsArea.normal{
           display: contents !important;
           visibility: visible !important; 
@@ -58,19 +51,16 @@ export class MaMenuBar extends PolymerElement {
           display: none;
           visibility: hidden;
         }
-
         .menuButton{
           align-self: stretch;
           flex: 1;
           margin: 3px;
         }
-
         ma-card#menuBarCard{
           position: relative;
           width: 100%;
           --ma-background-color: white;
         }
-
         @media screen and (max-width: 910px){
           #appTitle{
             width: fit-content;
@@ -90,14 +80,6 @@ export class MaMenuBar extends PolymerElement {
           #lineTwo{
             float: left;
           }
-
-
-        /*
-          #buttonsArea{
-            display: none;
-          }*/
-
-          
           #menuIcon{
             position: absolute;
             top: 0px;
@@ -105,9 +87,8 @@ export class MaMenuBar extends PolymerElement {
             padding: 8px;
           }
           #menuIcon:hover{
-            color: blue;
+            color: var(--ma-accent-color);
           }
-          
         }
       </style>
       
@@ -123,9 +104,9 @@ export class MaMenuBar extends PolymerElement {
           <dom-repeat id="repeat" items="{{pages}}">
             <template>
               <ma-button id="{{item.id}}" 
-                                   class="menuButton"
-                                   page="{{item.page}}"
-                                   text="{{item.name}}">
+                         class="menuButton"
+                         page="{{item.page}}"
+                         text="{{item.name}}">
               </ma-button>
             </template>
           </dom-repeat>
@@ -145,13 +126,10 @@ export class MaMenuBar extends PolymerElement {
       nameLineTwo:{
         type: String
       },
-
-      
       pages: {
         type: Array,
         notify: true
       },
-
       selectedPage: {
         type: Object,
         notify: true,
@@ -191,17 +169,15 @@ export class MaMenuBar extends PolymerElement {
 
   _handlePageButtonClick(e){
     this.set('selectedPage', e.detail);
+    if(window.innerWidth < 911){
+      if(this.$.buttonsArea.classList.contains('normal')){
+        this.$.buttonsArea.classList.remove('normal');
+        this.$.buttonsArea.classList.add('hidden');
+      }
+    } 
   }
 
   _openMenu(e){
-    /*if(this.$.buttons.style.display == 'none'){
-      this.$.buttonsArea.style.display = 'block';
-    }
-      else{
-        this.$.buttonsArea.style.display = 'none';
-
-      }*/
-    //var this.$.buttons = this.$.buttons;
     if(this.$.buttonsArea.classList.contains('normal')){
       this.$.buttonsArea.classList.remove('normal');
       this.$.buttonsArea.classList.add('hidden');
@@ -211,7 +187,6 @@ export class MaMenuBar extends PolymerElement {
       this.$.buttonsArea.classList.remove('hidden');
     }
     this.updateStyles();
-
   }
 
 }
