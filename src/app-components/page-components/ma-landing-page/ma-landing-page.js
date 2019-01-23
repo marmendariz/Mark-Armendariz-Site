@@ -37,7 +37,6 @@ export class MaLandingPage extends PolymerElement {
           font-weight: 900;
           color: var(--ma-main-theme-color);
         }
-
         @media (min-width: 320px) and (max-width: 480px) {
           #apptitle{
             font-size: 30pt;
@@ -84,27 +83,16 @@ export class MaLandingPage extends PolymerElement {
         type: Boolean,
         value: false,
         notify: true
-      },
-
-      /**
-       * TODO: Replace with web service response
-       */
-      resumeSectionData:{
-        type: Object,
-        notify: true,
-        reflectToAttribute: true
       }
     };
   }
 
   ready(){
     super.ready();
-    //this.$.frame.addEventListener('buttontap', e => this._handlePageButtonClick(e))
+    this.$.landingFrame.addEventListener('buttontap', e => this._handlePageButtonClick(e))
   }
 
   _handlePageButtonClick(e){
-    //this.selectedPage = e.detail;
-    console.log("home");
     this.dispatchEvent(new CustomEvent('homeEnterTap', {bubbles: true, composed: true}));
   }
 

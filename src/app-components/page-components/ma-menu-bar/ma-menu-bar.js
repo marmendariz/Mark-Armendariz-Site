@@ -123,7 +123,8 @@ export class MaMenuBar extends PolymerElement {
           <dom-repeat id="repeat" items="{{pages}}">
             <template>
               <ma-button id="{{item.id}}" 
-                                   class="menuButton" 
+                                   class="menuButton"
+                                   page="{{item.page}}"
                                    text="{{item.name}}">
               </ma-button>
             </template>
@@ -190,7 +191,6 @@ export class MaMenuBar extends PolymerElement {
 
   _handlePageButtonClick(e){
     this.set('selectedPage', e.detail);
-    //this.selectedPage = e.detail;
   }
 
   _openMenu(e){

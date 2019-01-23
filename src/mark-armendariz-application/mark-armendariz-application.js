@@ -42,15 +42,12 @@ class MarkArmendarizApplication extends PolymerElement {
         .page{
           padding: 40px;
         }
-        #skillsPage, #educationPage, #experiencePage, #projectsPage, #contactPage{
-          height: 909px;
-        }
+        /*#skillsPage, #educationPage, #experiencePage, #projectsPage, #contactPage{
+        }*/
         #appPages>.page:nth-child(odd){
           --ma-page-background-color: var(--ma-main-theme-color);
         }
 
-        
-        /* MENU BAR STYLES */
         ma-menu-bar#menuBar{
           top: 0px;
           /*margin-bottom: 70px;*/
@@ -58,17 +55,17 @@ class MarkArmendarizApplication extends PolymerElement {
           --ma-menu-bar-position: relative;
         }
         ma-menu-bar#menuBar.sticky{
-
+          position: fixed;
         }
 
-        @media (min-width: 1281px) {
+        /*@media (min-width: 1281px) {
         }
         @media (min-width: 1025px) and (max-width: 1280px) {
         }
         @media (min-width: 768px) and (max-width: 1024px) {
         }
         @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-        }
+        }*/
         @media (min-width: 481px) and (max-width: 1024px) {
           .page{
             padding: 25px 10px;
@@ -94,8 +91,8 @@ class MarkArmendarizApplication extends PolymerElement {
 
       <!-- ========== APPLICATION ========== -->
       <ma-landing-page id="landingPage"
-                        title="Home" 
-                        page-id=1>
+                       title="Home" 
+                       page-id=1>
       </ma-landing-page>
       
       <div id="appPages">
@@ -203,7 +200,7 @@ class MarkArmendarizApplication extends PolymerElement {
   connectedCallback(){
     super.connectedCallback();
     //this._generateApplicationPages(); //currently not implemented
-    this.addEventListener('homeEnterTap', e => this._handlePageButtonClick(e));
+    this.addEventListener('homeEnterTap', e => this._handleHomeButtonClick(e));
 
     var that = this;
 
@@ -225,14 +222,19 @@ class MarkArmendarizApplication extends PolymerElement {
     xhr.send();
   }
 
-  _handlePageButtonClick(e){
-    console.log("homeclicked");
-    this.selectedPage = this.appPages[0];
-    this._hideLandingPage();
-  }
+  _handleHomeButtonClick(e){
+    console.log("jjdjdjdjjdjdjdjdjd");
+    var element = this.$.homePage;
+    var headerOffset = 18;
+    var elementPosition = element.getBoundingClientRect().top;
+    var offsetPosition = elementPosition - headerOffset;
 
-  _hideLandingPage(){
-    this.$.landingPage.hide();
+    window.scrollTo({
+      top: offsetPosition,
+      behavior: "smooth"
+    });
+    //this.selectedPage = this.appPages[0];
+    //this.$.landingPage.style.visibility = 'hidden';
   }
   
   /**
@@ -260,29 +262,16 @@ class MarkArmendarizApplication extends PolymerElement {
     this._appendtoIronPages(newSection);
   }*/
 
-  /**
-   * 
-   * @param {*} newVal 
-   * @param {*} oldVal 
-   */
-  _pageChanged(newVal, oldVal){
-    console.log(newVal);
-    console.log(oldVal);
-   
-    var element = this.$.homePage;
-    var headerOffset = 18;
-    var elementPosition = element.getBoundingClientRect().top;
-    var offsetPosition = elementPosition - headerOffset;
-
-    window.scrollTo({
-      top: offsetPosition,
-      behavior: "smooth"
-    });
+  _pageChanged(val){
+    var element = this.$.appPages.querySelector("#"+val.page);
+    if(element){
+      this.$.appPages.querySelector("#"+val.page).scrollIntoView({behavior: "smooth"});
+    }
   }
 
-  _appendtoIronPages(pageElement){
+  /*_appendtoIronPages(pageElement){
     this.$.appIronPages.appendChild(pageElement);
-  }
+  }*/
 
 }
 

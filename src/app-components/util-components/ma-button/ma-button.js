@@ -43,6 +43,10 @@ export class MaButton extends PolymerElement {
         type: String,
         value: "Label"
       },
+      page:{
+        type: String,
+        value: ""
+      },
       selected:{
         type: Boolean,
         value: false,
@@ -61,7 +65,7 @@ export class MaButton extends PolymerElement {
   buttonTapped(e){
     //this.selected = !this.selected;
     console.log("mark first");
-    this.dispatchEvent(new CustomEvent(this.event.buttonTapped, {detail: {}, bubbles: true, composed: true}));
+    this.dispatchEvent(new CustomEvent(this.event.buttonTapped, {detail: {page: this.page}, bubbles: true, composed: true}));
     //this.dispatchEvent(new CustomEvent(this.event.buttonTapped, 
     //                  {detail: {id: this.id, name: this.text, type: "type"}, bubbles: true, composed: true}));
   }
