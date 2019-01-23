@@ -29,12 +29,13 @@ export class MaProjectDialog extends PolymerElement {
           width: var(--ma-project-modal-width, 65%);
           height: var(--ma-project-modal-height, 75%);
         }
-        h2#title{
+        h1#title{
+          line-height: 27px;
           text-align: center;
           margin-bottom: 10px;
         }
         div#projectImage{
-          background-image: url('src/images/projects/databaseProject.png');
+          /*background-image: url('src/images/projects/databaseProject.png');*/
           background-size: contain;
           background-repeat: no-repeat;
           background-position: center;
@@ -45,18 +46,30 @@ export class MaProjectDialog extends PolymerElement {
         iron-icon{
           height: 40px;
           width: 40px;
+          cursor: pointer;
         }
         iron-icon:hover{
           fill: var(--ma-accent-color);
         }
 
-        @media (min-width: 1281px) {
+        @media (min-width: 1025px)  {
+          div#projectImage{
+            height: 50%;
+          }
+          #projectDescription{
+            font-size: 16pt;
+            line-height: 20pt;
+          }
         }
 
-        @media (min-width: 1025px) and (max-width: 1280px) {
-        }
-
-        @media (min-width: 768px) and (max-width: 1024px) {
+        @media (min-width: 320px) and (max-width: 1024px) {
+          #projectDescription{
+            font-size: 14pt;
+            line-height: 20pt;
+          }
+          div#projectImage{
+            height: 30%;
+          }
         }
 
         @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
@@ -72,17 +85,22 @@ export class MaProjectDialog extends PolymerElement {
             margin: 0;
             height: 80vh;
           }
-          div#projectImage{
-            height: 30%;
-          }
         }
       </style>
 
       <paper-dialog id="dialog" opened={{opened}}>
         <iron-icon on-tap="close" icon="icons:close"></iron-icon>
-        <h2 id="title">[[title]]</h2>
+        <h1 id="title">[[title]]</h1>
         <div id="projectImage"></div>
-        <div id="projectDescription"></div>
+        <div id="projectDescription">
+            <ul>
+              <dom-repeat items="[[data]]">
+                <template>
+                  <li>[[item]]</li>
+                </template>
+              </dom-repeat>
+            </ul>
+        </div>
         <div id="projectCodeUrl"></div>
       </paper-dialog>
 
@@ -96,7 +114,6 @@ export class MaProjectDialog extends PolymerElement {
        */
       title:{
         type: String,
-        //observer: "_titleProcess"
       },
       text:{
         type: String
@@ -106,13 +123,13 @@ export class MaProjectDialog extends PolymerElement {
         notify: true,
         observer: "openDialog"
       },
-      iconPath:{
+      imagePath:{
         type: String,
-        value: "src/images/"
+        value: "src/images/projects/"
       },
-      iconName:{
+      imageName:{
         type: String,
-        observer: "_setIconImage"
+        observer: "_setProjectImage"
       }
       
     };
@@ -131,8 +148,9 @@ export class MaProjectDialog extends PolymerElement {
     this.$.dialog.close();
   }
 
-  _setIconImage(iconName){
-    this.updateStyles({"--ma-card-background-image": "url("+this.iconPath + iconName +".png)"});
+  _setProjectImage(imageName){
+    console.log("ksdfkdfkdfkdfkdfkdfkdf");
+    this.$.projectImage.style.backgroundImage = "url("+this.imagePath + imageName +".png)"
   }
 
 }

@@ -263,7 +263,7 @@ export class MaExperiencePage extends PolymerElement {
             <div id="jobsListContainer">
             <dom-repeat id="repeat" items="{{data}}" as="section">
               <template>
-                <ma-card id="[[section.id]]" class="jobCard" on-click="_setAsSelected">
+                <ma-card id="[[section.id]]" class="jobCard" on-tap="_setAsSelected">
                   <div slot="content">
                     <p class="companyName">[[section.companyName]]</p>
                     <p class="positionName">[[section.positionName]]</p>
@@ -335,14 +335,14 @@ export class MaExperiencePage extends PolymerElement {
 
       defaultDetailsMessage: {
         type: String,
-        value: "Select an experience card for more details!"
+        value: "Select an experience card for more details"
       }
     };
   }
 
   ready(){
     super.ready();
-    //this._selectedData = this.data[0].points;
+    this._selectedData = [this.defaultDetailsMessage];
   }
 
   _test(data){
@@ -376,7 +376,13 @@ export class MaExperiencePage extends PolymerElement {
     }
     this.updateStyles();
 
-    this._selectedData = this.data[parseInt(targetElement.id)-1].points;
+    var tempSelection = this.data[parseInt(targetElement.id)-1].points;
+    if(tempSelection!= this._selectedData){
+      this._selectedData = tempSelection;
+    }
+    else{
+      this._selectedData = [this.defaultDetailsMessage];
+    }
 
   }
 

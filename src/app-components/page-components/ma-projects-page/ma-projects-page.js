@@ -85,15 +85,15 @@ export class MaProjectsPage extends PolymerElement {
         </ma-card>
 
         <div id="projectCards">
-            <ma-project-card title="My Website"
-                             icon-name="markArmendarizWebsiteIcon">
-            </ma-project-card>
-            <ma-project-card title="Content Rating and Discussion Site"
-                             icon-name="forumProjectIcon">
-            </ma-project-card>
-            <ma-project-card title="Relational Database & Java GUI"
-                             icon-name="databaseProjectIcon">
-            </ma-project-card>
+          <dom-repeat id="repeat" items="[[data]]">
+            <template>
+                <ma-project-card title=[[item.projectName]]
+                                  icon-name=[[item.iconName]]
+                                  image-name=[[item.projectImage]]
+                                  data=[[item.points]]>
+                </ma-project-card>
+            </template>
+          </dom-repeat>
         </div>
         
         <ma-card id="comingSoonCard">
@@ -119,6 +119,9 @@ export class MaProjectsPage extends PolymerElement {
       subtitle:{
         type: String
       },
+      data:{
+        type: Array
+      }
 
     };
   }

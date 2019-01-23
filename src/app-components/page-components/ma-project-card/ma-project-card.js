@@ -24,7 +24,7 @@ export class MaProjectCard extends PolymerElement {
             background-repeat: no-repeat;
             background-position: center;
             background-size: cover;
-          }
+          };
           cursor: pointer;
         }
         div[slot="content"]{
@@ -93,7 +93,18 @@ export class MaProjectCard extends PolymerElement {
           top: 0%;
           left: 0%;
         }
-
+        @media (min-width: 320px) and (max-width: 800px) {
+          .cardBack{
+            transform: none;
+            background-color: #ffffffc7;
+          }
+          .flipCard:hover .flipCardInner, .flipCard.hover .flipCardInner{
+            transform: none;
+          }
+          #cardText{
+            font-size: 20pt;
+          }
+        }
       </style>
 
       <div id="projectCard">
@@ -123,7 +134,9 @@ export class MaProjectCard extends PolymerElement {
           <p>asdfkasdfkasdfk</p>
         </paper-dialog>-->
         <ma-project-dialog opened={{opened}}
-                          title=[[title]]>
+                           title=[[title]]
+                           data=[[data]]
+                           image-name=[[imageName]]>
         </ma-project-dialog>
 
       </div>
@@ -141,6 +154,9 @@ export class MaProjectCard extends PolymerElement {
         type: String,
         //observer: "_titleProcess"
       },
+      data:{
+        type: Array
+      },
       text:{
         type: String
       },
@@ -152,6 +168,9 @@ export class MaProjectCard extends PolymerElement {
         type: String,
         value: "project",
         observer: "_setIconImage"
+      },
+      imageName:{
+        type: String
       },
       opened:{
         type: Boolean,

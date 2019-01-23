@@ -19,7 +19,7 @@ export class MaEducationPage extends PolymerElement {
       <style>
         :host {
           display: block;
-          background-image:url('src/images/educationPage.png');
+          background-image:url('src/images/educationPageFaded2.png');
           background-attachment: fixed;
           background-position: center;
           background-repeat: no-repeat;
@@ -282,7 +282,7 @@ export class MaEducationPage extends PolymerElement {
         <div id="pageContent">
 
             <div id="educationInfoContainer">
-                <div id="educationIcon"><img src="src/images/EducationWhite.png"></div>
+                <div id="educationIcon"><img src="src/images/Education.png"></div>
                 <ma-card id="educationInfoCard">
                   <div slot="content">
                     <p class="schoolName">[[_toUpperCase(data.schoolName)]]</p>

@@ -42,6 +42,9 @@ class MarkArmendarizApplication extends PolymerElement {
         .page{
           padding: 40px;
         }
+        #skillsPage, #educationPage, #experiencePage, #projectsPage, #contactPage{
+          height: 909px;
+        }
         #appPages>.page:nth-child(odd){
           --ma-page-background-color: var(--ma-main-theme-color);
         }
@@ -66,7 +69,7 @@ class MarkArmendarizApplication extends PolymerElement {
         }
         @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
         }
-        @media (min-width: 481px) and (max-width: 767px) {
+        @media (min-width: 481px) and (max-width: 1024px) {
           .page{
             padding: 25px 10px;
           }
@@ -131,10 +134,11 @@ class MarkArmendarizApplication extends PolymerElement {
                           subtitle="This is some of what I've worked on (or am working on):"
                           data=[[projectsData]]>
         </ma-projects-page>
-        <ma-contact-page class="page" 
-                        title="Contact"
-                        subtitle="This is how to get ahold of me:"
-                        data=[[contactData]]>
+        <ma-contact-page id="contactPage"
+                         class="page" 
+                         title="Contact"
+                         subtitle="This is how to get ahold of me:"
+                         data=[[contactData]]>
         </ma-contact-page>
       </div>
       <!-- ================================= -->
@@ -161,11 +165,13 @@ class MarkArmendarizApplication extends PolymerElement {
         notify: true,
         observer: "_pageChanged"
       },
-
       skillsData:{
         type: Array
       },
       experienceData:{
+        type: Array
+      },
+      projectsData:{
         type: Array
       },
       educationData:{
@@ -188,6 +194,7 @@ class MarkArmendarizApplication extends PolymerElement {
             this.appPages = data.appPages;
             this.skillsData = data.skillsData;
             this.experienceData = data.experienceData;
+            this.projectsData = data.projectsData;
             this.educationData = data.educationData;
         }
      })
