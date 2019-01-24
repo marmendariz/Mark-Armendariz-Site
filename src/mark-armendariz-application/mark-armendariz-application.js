@@ -38,15 +38,9 @@ class MarkArmendarizApplication extends PolymerElement {
         #landingPage{
           height: 100vh;
         }
-        .page{
-          /*padding: 60px 40px 40px 40px;*/
-        }
-        /*#skillsPage, #educationPage, #experiencePage, #projectsPage, #contactPage{
-        }*/
         #appPages>.page:nth-child(odd){
           --ma-page-background-color: var(--ma-main-theme-color);
         }
-
         ma-menu-bar#menuBar{
           top: 0px;
           z-index: 1;
@@ -59,13 +53,23 @@ class MarkArmendarizApplication extends PolymerElement {
         .sticky + #homePage {
          padding-top: 60px;
         }
+        #projectsPage, #contactPage{
+          height: 909px;
+        }
 
-        /*@media (min-width: 1281px) {
+        @media (min-width: 1281px) {
+          #homePage{
+            height: 100vh;
+            padding-top: 0px;
+          }
+            .page{
+            padding: 60px 40px 60px 40px;
+          }
         }
         @media (min-width: 1025px) and (max-width: 1280px) {
         }
         @media (min-width: 768px) and (max-width: 1024px) {
-        }
+        }/*
         @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
         }*/
         @media (min-width: 481px) and (max-width: 1024px) {
@@ -99,8 +103,7 @@ class MarkArmendarizApplication extends PolymerElement {
 
       <!-- ========== APPLICATION ========== -->
       <ma-landing-page id="landingPage"
-                       title="Home" 
-                       page-id=1>
+                       title="Home">
       </ma-landing-page>
       
       <div id="appPages">
@@ -113,7 +116,8 @@ class MarkArmendarizApplication extends PolymerElement {
         <ma-home-page id="homePage"
                       class="page"
                       title="Hi, I'm Mark."
-                      subtitle="This is who I am:">
+                      subtitle="This is who I am:"
+                      data=[[homePageData]]>
         </ma-home-page>
         <ma-skills-page id="skillsPage"
                         class="page" 
@@ -165,6 +169,9 @@ class MarkArmendarizApplication extends PolymerElement {
         notify: true,
         observer: "_pageChanged"
       },
+      homePageData:{
+        type: Object,
+      },
       skillsData:{
         type: Array
       },
@@ -209,6 +216,7 @@ class MarkArmendarizApplication extends PolymerElement {
             var data = JSON.parse(e.target.responseText).d.result;
             this.appTitle = data.appTitle;
             this.appPages = data.appPages;
+            this.homePageData = data.homePageData;
             this.skillsData = data.skillsData;
             this.experienceData = data.experienceData;
             this.projectsData = data.projectsData;
@@ -232,8 +240,6 @@ class MarkArmendarizApplication extends PolymerElement {
   _handleHomeButtonClick(e){
     this.$.homePage.scrollIntoView({block: "start", behavior: "smooth"});
   }
-  
-
 
   _pageChanged(val){
     var element = this.$.appPages.querySelector("#"+val.page);

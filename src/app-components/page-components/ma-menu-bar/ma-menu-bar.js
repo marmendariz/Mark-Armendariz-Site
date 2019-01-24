@@ -14,7 +14,7 @@ export class MaMenuBar extends PolymerElement {
           display: block;
           position: var(--ma-menu-bar-position, fixed)
           width: 100%;
-          --ma-menu-page-button-height: 45px;
+          --ma-menu-page-button-height: 40px;
           --ma-menu-page-button-width: 100%;
           --ma-card-padding: 0px;
           --ma-card-style:{
@@ -33,7 +33,7 @@ export class MaMenuBar extends PolymerElement {
           height: 10px;
           padding: 6px 18px;
           font-size: 20pt;
-          line-height: 22px;
+          line-height: 20px;
           font-weight: 700;
           top: -3px;
           position: relative;
