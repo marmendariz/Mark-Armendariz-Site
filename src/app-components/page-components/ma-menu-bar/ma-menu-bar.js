@@ -43,14 +43,19 @@ export class MaMenuBar extends PolymerElement {
         #menuIcon{
           display: none;
         }
+        
+        #buttonsArea{
+          display: flex;
+        }
         .bttonsArea.normal{
-          display: contents !important;
-          visibility: visible !important; 
+          display: flex;
+          /*visibility: visible !important;*/
         }
-        .bttonsArea.hidden{
-          display: none;
+        /*.bttonsArea.small{
+          display: block;
           visibility: hidden;
-        }
+        }*/
+
         .menuButton{
           align-self: stretch;
           flex: 1;
@@ -100,7 +105,7 @@ export class MaMenuBar extends PolymerElement {
           </div>
           <iron-icon id="menuIcon" icon="menu" on-tap="_openMenu"></iron-icon>
 
-          <div id="buttonsArea" class="bttonsArea hidden">
+          <div id="buttonsArea" class="bttonsArea">
           <dom-repeat id="repeat" items="{{pages}}">
             <template>
               <ma-button id="{{item.id}}" 
@@ -152,41 +157,50 @@ export class MaMenuBar extends PolymerElement {
 
   }
 
+  /**
+   * Adjust menu bar buttons when resizing
+   * @param {*} e 
+   */
   _buttonsAreaAdjust(e){
+    console.log("there");
+    console.log(window.innerWidth);
     if(window.innerWidth > 911){
-      if(this.$.buttonsArea.classList.contains('hidden')){
-        this.$.buttonsArea.classList.remove('hidden');
-        this.$.buttonsArea.classList.add("normal");
-      }
+        this.$.buttonsArea.style.display = "flex";
+        this.$.buttonsArea.style.visibility = "visible";
     }
-    else {
-       if(this.$.buttonsArea.classList.contains('normal')){
-        this.$.buttonsArea.classList.remove('normal');
-        this.$.buttonsArea.classList.add("hidden");
+    else { //<911
+        this.$.buttonsArea.style.display = "none";
+        this.$.buttonsArea.style.visibility = "hidden";
       }
+  }
+
+  /**
+   * 
+   * @param {*} e 
+   */
+  _openMenu(e){
+
+    var menu = this.$.buttonsArea;
+    if(menu.style.display == "none"){
+      menu.style.display = "block";
+      menu.style.visibility = "visible";
+    }
+    else if(menu.style.display == "block"){
+      menu.style.display = "none";
+      menu.style.visibility = "hidden";
     }
   }
+
+
 
   _handlePageButtonClick(e){
     this.set('selectedPage', e.detail);
     if(window.innerWidth < 911){
-      if(this.$.buttonsArea.classList.contains('normal')){
-        this.$.buttonsArea.classList.remove('normal');
-        this.$.buttonsArea.classList.add('hidden');
+      if(this.$.buttonsArea.style.display == "block"){
+        this.$.buttonsArea.style.display = 'none';
+        this.$.buttonsArea.style.visibility = "hidden";
       }
     } 
-  }
-
-  _openMenu(e){
-    if(this.$.buttonsArea.classList.contains('normal')){
-      this.$.buttonsArea.classList.remove('normal');
-      this.$.buttonsArea.classList.add('hidden');
-    }
-    else if(this.$.buttonsArea.classList.contains('hidden')){
-      this.$.buttonsArea.classList.add('normal');
-      this.$.buttonsArea.classList.remove('hidden');
-    }
-    this.updateStyles();
   }
 
 }
