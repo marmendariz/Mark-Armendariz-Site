@@ -32,7 +32,7 @@ export class MaButton extends PolymerElement {
         }
       </style>
 
-      <button on-click="buttonTapped">{{text}}</button>
+      <button on-tap="buttonTapped">{{text}}</button>
 
     `;
   }
