@@ -98,7 +98,7 @@ export class MaMenuBar extends PolymerElement {
             <div id="lineOne">[[nameLineOne]]</div>
             <div id="lineTwo">[[nameLineTwo]]</div>
           </div>
-          <iron-icon id="menuIcon" icon="menu" on-click="_openMenu"></iron-icon>
+          <iron-icon id="menuIcon" icon="menu" on-tap="_openMenu"></iron-icon>
 
           <div id="buttonsArea" class="bttonsArea hidden">
           <dom-repeat id="repeat" items="{{pages}}">
