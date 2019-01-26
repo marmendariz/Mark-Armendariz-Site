@@ -51,7 +51,7 @@ export class MaEducationPage extends PolymerElement {
           display: flex;
           position: relative;
           margin-top:20px;
-          height: 82vh;
+          /*height: 82vh;*/
         }
 
 
@@ -139,7 +139,7 @@ export class MaEducationPage extends PolymerElement {
           }
           #educationDetailsCard, #educationDetailsCard>div[slot="content"]{
           --ma-card-frame:{
-            height: 44vh;
+            /*height: 44vh;*/
           }
         }
           #educationDetailsContainer{

@@ -43,7 +43,7 @@ export class MaExperiencePage extends PolymerElement {
 
         #pageContent{
           display: flex;
-          height: 76vh;
+          /*height: 76vh;*/
           position: relative;
         }
         #pageTitleCard{

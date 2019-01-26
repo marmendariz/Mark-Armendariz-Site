@@ -37,7 +37,7 @@ export class MaSkillsPage extends PolymerElement {
         }
         ma-card{
           --ma-card-frame:{
-            height: 95vh;
+            /*height: 95vh;*/
           }
         }
         ul{

@@ -83,7 +83,11 @@ export class MaProjectDialog extends PolymerElement {
             width: 100%;
             max-width: none !important; 
             margin: 0;
-            height: 80vh;
+            height: 93vh;
+            top: 40px !important;
+          }
+          #projectDescription{
+            font-size: 10pt;
           }
         }
       </style>
