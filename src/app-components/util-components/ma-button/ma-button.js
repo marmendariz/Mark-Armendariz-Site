@@ -25,8 +25,8 @@ export class MaButton extends PolymerElement {
         button{
           height: var(--ma-menu-page-button-height, 40px);
           width: var(--ma-menu-page-button-width, 100px);
-          background-color: white;
-          color: black;
+          background-color: var(--ma-button-background-color, white);
+          color:  var(--ma-button-color, black);
           border: none;
           font-weight: bold;
         }

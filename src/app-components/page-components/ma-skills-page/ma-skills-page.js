@@ -53,6 +53,8 @@ export class MaSkillsPage extends PolymerElement {
         ul{
           padding-left: 17px;
           margin-top: 0px;
+          font-weight: 700;
+          font-size: 14pt;
         }
         @media (min-width: 320px) and (max-width: 480px) {
           #skillsList{
@@ -81,7 +83,7 @@ export class MaSkillsPage extends PolymerElement {
             </dom-repeat>
 
             <h3 id="otherSkillsTitle">Skills from Previous Experience:</h3>
-            <ul>
+            <ul id="otherSkillsList">
               <dom-repeat id="repeat" items="{{otherData}}" as="skill">
                 <template>
                     <li>[[skill.name]]</li>

@@ -25,12 +25,12 @@ export class MaHomePage extends PolymerElement {
           margin-top: 20px;
         }
         .traitIcon{
-          width: 252px;
+          width: 437px;
           --ma-icon-background-color : var(--ma-main-theme-color);
           --ma-icon-border-radius: 50%;
           --ma-icon-style:{
-            width: 150px;
-            height: 150px;
+            width: 200px;
+            height: 200px;
           }
           margin: 0 30px;
           padding: 20px;
@@ -42,6 +42,23 @@ export class MaHomePage extends PolymerElement {
         }
         .highlighted{
           color: var(--ma-main-theme-color);
+        }
+        #resumeAnchor>ma-button{
+          --ma-menu-page-button-width: 150px;
+          --ma-button-background-color: var(--ma-main-theme-color);
+          --ma-button-color: white;
+          display: inline-block;
+          cursor: pointer;
+        }
+
+        @media (min-width: 320px) and (max-width: 1025px) {
+          .traitIcon{
+            width: 252px;
+            --ma-icon-style:{
+              width: 150px;
+              height: 150px;
+            }
+          }
         }
         /*@media (min-width: 1281px) {
         }
@@ -55,6 +72,8 @@ export class MaHomePage extends PolymerElement {
         }
         @media (min-width: 320px) and (max-width: 480px) {
         }*/
+
+        
       </style>
       <div>
 
@@ -66,6 +85,7 @@ export class MaHomePage extends PolymerElement {
           <div slot ="content">
             <p>[[data.topMsg]]
             </p>
+            <a id="resumeAnchor" href="src\\docs\\MarkArmendariz_Resume.pdf"><ma-button id="resumeButton" text="Resume"></ma-button></a>
           </div>
         </ma-card>
 

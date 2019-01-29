@@ -32,7 +32,7 @@ export class MaSkillProgressBar extends PolymerElement {
         background-color: var(--ma-skill-progress-bar-color, #0c4e8a);
         width: 120px;
         font-weight: bold;
-        padding: 0px 10px;
+        padding: 0px 0px 0px 10px;
         line-height:47px;
         color: white;
         height: 45px;
@@ -41,7 +41,7 @@ export class MaSkillProgressBar extends PolymerElement {
         background-color: white;
         display: flex;
         flex-wrap: nowrap;
-        justify-content: space-between;
+        /*justify-content: space-between;*/
       }
       .bar{
         float: left;

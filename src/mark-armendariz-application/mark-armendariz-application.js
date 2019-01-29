@@ -59,16 +59,21 @@ class MarkArmendarizApplication extends PolymerElement {
 
         @media (min-width: 1281px) {
           #homePage{
-            height: 100vh;
             padding-top: 0px;
           }
-            .page{
+          .page{
             padding: 60px 40px 60px 40px;
           }
         }
         @media (min-width: 1025px) and (max-width: 1280px) {
+          .page{
+            padding: 60px 40px 60px 40px;
+          }
         }
         @media (min-width: 768px) and (max-width: 1024px) {
+          .page{
+            padding: 60px 40px 60px 40px;
+          }
         }/*
         @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
         }*/
