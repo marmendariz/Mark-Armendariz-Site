@@ -35,7 +35,6 @@ export class MaProjectDialog extends PolymerElement {
           margin-bottom: 10px;
         }
         div#projectImage{
-          /*background-image: url('src/images/projects/databaseProject.png');*/
           background-size: contain;
           background-repeat: no-repeat;
           background-position: center;
@@ -56,6 +55,9 @@ export class MaProjectDialog extends PolymerElement {
           div#projectImage{
             height: 50%;
           }
+          #dialog{
+            height: 88%;
+          }
           #projectDescription{
             font-size: 16pt;
             line-height: 20pt;
@@ -69,6 +71,10 @@ export class MaProjectDialog extends PolymerElement {
           }
           div#projectImage{
             height: 30%;
+          }
+          #dialog{
+            width: 90%;
+            height: 87%;
           }
         }
 
