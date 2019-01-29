@@ -167,8 +167,6 @@ export class MaMenuBar extends PolymerElement {
    * @param {*} e 
    */
   _buttonsAreaAdjust(e){
-    console.log("there");
-    console.log(window.innerWidth);
     if(window.innerWidth > 970){
         this.$.buttonsArea.style.display = "flex";
         this.$.buttonsArea.style.visibility = "visible";
