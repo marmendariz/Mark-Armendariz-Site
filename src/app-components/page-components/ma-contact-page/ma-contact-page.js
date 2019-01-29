@@ -42,7 +42,7 @@ export class MaContactPage extends PolymerElement {
         }
 
         a{
-          width: 485px;
+          width: 347px;
         }
         ma-icon{
           padding: 20px;

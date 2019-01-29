@@ -26,8 +26,8 @@ export class MaProjectDialog extends PolymerElement {
         #dialog{
           border: 2px solid;
           border-color: var(--ma-main-theme-color);
-          width: var(--ma-project-modal-width, 65%);
-          height: var(--ma-project-modal-height, 75%);
+          width: var(--ma-project-modal-width, 75%);
+          height: var(--ma-project-modal-height, 85%);
         }
         h1#title{
           line-height: 27px;

@@ -35,11 +35,6 @@ export class MaSkillsPage extends PolymerElement {
           -webkit-transform: translate(-1%, -2%) scale(1.0, 1.0);
           --ma-skill-progress-bar-color: var(--ma-main-theme-color-lite);
         }
-        ma-card{
-          --ma-card-frame:{
-            /*height: 95vh;*/
-          }
-        }
         ul{
           padding: 0px;
         }
@@ -50,6 +45,14 @@ export class MaSkillsPage extends PolymerElement {
         }
         ma-skill-progress-bar{
             margin: 40px 0px 25px 0px;
+        }
+        #otherSkillsTitle{
+          color: var(--ma-main-theme-color);
+          margin-bottom: 5px;
+        }
+        ul{
+          padding-left: 17px;
+          margin-top: 0px;
         }
         @media (min-width: 320px) and (max-width: 480px) {
           #skillsList{
@@ -76,6 +79,16 @@ export class MaSkillsPage extends PolymerElement {
                   </ma-skill-progress-bar>
               </template>
             </dom-repeat>
+
+            <h3 id="otherSkillsTitle">Skills from Previous Experience:</h3>
+            <ul>
+              <dom-repeat id="repeat" items="{{otherData}}" as="skill">
+                <template>
+                    <li>[[skill.name]]</li>
+                </template>
+              </dom-repeat>
+            </ul>
+
         </div>
       </ma-card>
 
@@ -99,6 +112,10 @@ export class MaSkillsPage extends PolymerElement {
       data:{
         type: Object,
         notify: true,
+      },
+      otherData:{
+        type: Object,
+        notify: true
       }
     };
   }

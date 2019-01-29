@@ -22,29 +22,37 @@ export class MaSkillProgressBar extends PolymerElement {
         font-size: 12pt;
       }
       #energyBar{
+        width: 80%;
+      }
+      #energyBar>#fillInArea{
         background-color: var(--ma-skill-progress-bar-color, #0c4e8a);
+        height: 45px; 
       }
       #skillName{
         background-color: var(--ma-skill-progress-bar-color, #0c4e8a);
         width: 120px;
-        color: white;
         font-weight: bold;
-        padding-left: 10px;
-        line-height:33px;
+        padding: 0px 10px;
+        line-height:47px;
+        color: white;
+        height: 45px;
       }
       #barContainer{
         background-color: white;
+        display: flex;
+        flex-wrap: nowrap;
+        justify-content: space-between;
       }
       .bar{
         float: left;
         height: 35px;
-        padding: 5px;
       }
       #ratio{
         height: 20px;
         padding: 5px;
         padding-right: 10px;
         float: right;
+        width: 55px;
         line-height:33px;
       }
 
@@ -53,7 +61,6 @@ export class MaSkillProgressBar extends PolymerElement {
           display: none;
         }
         #skillName{
-          width: 70px;
           font-size: 8pt;
         }
       }
@@ -61,9 +68,13 @@ export class MaSkillProgressBar extends PolymerElement {
 
       <ma-card>
         <div id="contentSlot" slot="content">
+          <div id="barContainer">
             <div class="bar" id="skillName">[[_toUpperCase(title)]]</div>
-            <div class="bar" id="energyBar"></div>
+            <div class="bar" id="energyBar">
+              <div id="fillInArea"></div>
+            </div>
             <div id="ratio">[[_getRatio()]]</div>
+          </div>
         </div>
       </ma-card>
 
@@ -101,11 +112,24 @@ export class MaSkillProgressBar extends PolymerElement {
   }
 
   _updateBarProgress(barProgress){
-      this.$.energyBar.style.width = barProgress + "%";
+     this.$.fillInArea.style.width = barProgress + "%";
   }
   
   _getRatio(){
     return (parseInt(this.progress)/10) + "/10";
+  }
+
+  ready(){
+    super.ready();
+
+    this.addEventListener("onresize", function(e){
+      var element = this.$.energyBar;//.offsetWidth;
+
+      var width = element.offsetWidth;
+
+
+
+    }.bind(this));
   }
 
 }

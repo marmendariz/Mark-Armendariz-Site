@@ -123,7 +123,8 @@ class MarkArmendarizApplication extends PolymerElement {
                         class="page" 
                         title="Skills."
                         subtitle="This is what I can do:"
-                        data="[[skillsData]]">
+                        data="[[skillsData]]"
+                        other-data=[[otherSkillsData]]>
         </ma-skills-page>
         <ma-education-page id="educationPage"
                            class="page" 
@@ -134,7 +135,7 @@ class MarkArmendarizApplication extends PolymerElement {
         <ma-experience-page id="experiencePage"
                             class="page"
                             title="Experience."
-                            subtitle="This is what I've done:"
+                            subtitle="This is where I've worked:"
                             data=[[experienceData]]>
         </ma-experience-page>
         <ma-projects-page id="projectsPage"
@@ -173,6 +174,9 @@ class MarkArmendarizApplication extends PolymerElement {
         type: Object,
       },
       skillsData:{
+        type: Array
+      },
+      otherSkillsData:{
         type: Array
       },
       experienceData:{
@@ -218,6 +222,7 @@ class MarkArmendarizApplication extends PolymerElement {
             this.appPages = data.appPages;
             this.homePageData = data.homePageData;
             this.skillsData = data.skillsData;
+            this.otherSkillsData = data.otherSkillsData;
             this.experienceData = data.experienceData;
             this.projectsData = data.projectsData;
             this.educationData = data.educationData;

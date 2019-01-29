@@ -30,7 +30,6 @@ export class MaCard extends PolymerElement {
         #cardFrame{
           background-image: var(--ma-card-background-image, linear-gradient(white, #fafafa));
           height: var(--ma-card-frame-height, 100%);
-          /*background-image: var(--ma-card-background-image);*/
           box-shadow: var(--ma-card-box-shadow, 4px 2px 31px #55555557);
           padding: var(--ma-card-padding, 20px);
           background-color: var(--ma-card-background-color, white);

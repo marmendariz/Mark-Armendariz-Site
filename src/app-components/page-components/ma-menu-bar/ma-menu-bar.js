@@ -39,6 +39,7 @@ export class MaMenuBar extends PolymerElement {
           position: relative;
           width: 45%;
           margin: 0 auto;
+          margin-left: 0px;
         }
         #menuIcon{
           display: none;
@@ -57,6 +58,7 @@ export class MaMenuBar extends PolymerElement {
         }*/
 
         .menuButton{
+          width: 76px;
           align-self: stretch;
           flex: 1;
           margin: 3px;
@@ -66,7 +68,7 @@ export class MaMenuBar extends PolymerElement {
           width: 100%;
           --ma-background-color: white;
         }
-        @media screen and (max-width: 910px){
+        @media screen and (max-width: 970px){
           #appTitle{
             width: fit-content;
             height: auto;
@@ -164,7 +166,7 @@ export class MaMenuBar extends PolymerElement {
   _buttonsAreaAdjust(e){
     console.log("there");
     console.log(window.innerWidth);
-    if(window.innerWidth > 911){
+    if(window.innerWidth > 970){
         this.$.buttonsArea.style.display = "flex";
         this.$.buttonsArea.style.visibility = "visible";
     }
@@ -195,7 +197,7 @@ export class MaMenuBar extends PolymerElement {
 
   _handlePageButtonClick(e){
     this.set('selectedPage', e.detail);
-    if(window.innerWidth < 911){
+    if(window.innerWidth < 970){
       if(this.$.buttonsArea.style.display == "block"){
         this.$.buttonsArea.style.display = 'none';
         this.$.buttonsArea.style.visibility = "hidden";

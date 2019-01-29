@@ -25,6 +25,7 @@ export class MaHomePage extends PolymerElement {
           margin-top: 20px;
         }
         .traitIcon{
+          width: 252px;
           --ma-icon-background-color : var(--ma-main-theme-color);
           --ma-icon-border-radius: 50%;
           --ma-icon-style:{
@@ -56,6 +57,8 @@ export class MaHomePage extends PolymerElement {
         }*/
       </style>
       <div>
+
+        
         <ma-card class="centeredCard">
           <div id="titleSlot" slot="title"><h1>Hi, I'm <span class="highlighted"> Mark.</span></h1></div>
           <div slot="subtitle">[[subtitle]]</div>
