@@ -1,0 +1,7 @@
+{
+  "name": "showcase-app",
+  "short_name": "showcase-app",
+  "description": "Portfolio Application",
+  "start_url": "/",
+  "display": "standalone"
+}
