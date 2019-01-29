@@ -96,6 +96,9 @@ export class MaMenuBar extends PolymerElement {
           #menuIcon:hover{
             color: var(--ma-accent-color);
           }
+          .menuButton{
+            width: initial;
+          }
         }
       </style>
       
