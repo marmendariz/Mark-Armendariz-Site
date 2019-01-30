@@ -88,9 +88,11 @@ export class MaProjectsPage extends PolymerElement {
           <dom-repeat id="repeat" items="[[data]]">
             <template>
                 <ma-project-card title=[[item.projectName]]
-                                  icon-name=[[item.iconName]]
-                                  image-name=[[item.projectImage]]
-                                  data=[[item.points]]>
+                                 icon-name=[[item.iconName]]
+                                 image-name=[[item.projectImage]]
+                                 start-date=[[item.startDate]]
+                                 end-date=[[item.endDate]]
+                                 data=[[item.points]]>
                 </ma-project-card>
             </template>
           </dom-repeat>

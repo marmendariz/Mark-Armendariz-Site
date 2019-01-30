@@ -50,6 +50,11 @@ export class MaProjectDialog extends PolymerElement {
         iron-icon:hover{
           fill: var(--ma-accent-color);
         }
+        #dateRange{
+          text-align: center;
+          font-weight: 500;
+          margin-top: 0px;
+        }
 
         @media (min-width: 1025px)  {
           div#projectImage{
@@ -101,6 +106,7 @@ export class MaProjectDialog extends PolymerElement {
       <paper-dialog id="dialog" opened={{opened}}>
         <iron-icon on-tap="close" icon="icons:close"></iron-icon>
         <h1 id="title">[[title]]</h1>
+        <div id="dateRange">[[startDate]] - [[endDate]]</div>
         <div id="projectImage"></div>
         <div id="projectDescription">
             <ul>
@@ -126,6 +132,12 @@ export class MaProjectDialog extends PolymerElement {
         type: String,
       },
       text:{
+        type: String
+      },
+      startDate:{
+        type: String
+      },
+      endDate:{
         type: String
       },
       opened:{

@@ -129,14 +129,12 @@ export class MaProjectCard extends PolymerElement {
           </div>
         </div>
 
-        <!--<paper-dialog opened={{opened}}>
-          <h1>[[title]]</h1>
-          <p>asdfkasdfkasdfk</p>
-        </paper-dialog>-->
         <ma-project-dialog opened={{opened}}
                            title=[[title]]
                            data=[[data]]
-                           image-name=[[imageName]]>
+                           image-name=[[imageName]]
+                           start-date=[[startDate]]
+                           end-date=[[endDate]]>
         </ma-project-dialog>
 
       </div>
@@ -153,6 +151,12 @@ export class MaProjectCard extends PolymerElement {
       title:{
         type: String,
         //observer: "_titleProcess"
+      },
+      startDate:{
+        type: String
+      },
+      endDate:{
+        type: String
       },
       data:{
         type: Array
