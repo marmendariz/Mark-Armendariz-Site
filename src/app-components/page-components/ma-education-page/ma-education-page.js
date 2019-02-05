@@ -100,11 +100,8 @@ export class MaEducationPage extends PolymerElement {
         #coursesTitle{
           font-weight: 800;
         }
-
-        #educationDetailsCard, #educationDetailsCard>div[slot="content"]{
-          --ma-card-frame:{
-            height: 78vh;
-          }
+        #educationDetailsCard{
+          height: 95%;
         }
         #educationInfoCard, #educationInfoCard>div[slot="content"]{
           --ma-card-frame:{
