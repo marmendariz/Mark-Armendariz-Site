@@ -30,7 +30,7 @@ export class MaSkillProgressBar extends PolymerElement {
       }
       #skillName{
         background-color: var(--ma-skill-progress-bar-color, #0c4e8a);
-        width: 120px;
+        width: 150px;
         font-weight: bold;
         padding: 0px 0px 0px 10px;
         line-height:47px;
@@ -56,12 +56,20 @@ export class MaSkillProgressBar extends PolymerElement {
         line-height:33px;
       }
 
-      @media screen and (max-width: 640px){
+      @media screen and (max-width: 800px){
         #ratio{
           display: none;
         }
         #skillName{
           font-size: 8pt;
+        }
+        #skillName{
+          width: 180px;
+        }
+      }
+      @media (min-width: 320px) and (max-width: 480px) {
+        #skillName{
+          width: 120px;
         }
       }
       </style>

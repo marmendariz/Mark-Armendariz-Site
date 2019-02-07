@@ -82,7 +82,7 @@ export class MaSkillsPage extends PolymerElement {
               </template>
             </dom-repeat>
 
-            <h3 id="otherSkillsTitle">Skills from Previous Experience:</h3>
+            <h3 id="otherSkillsTitle">Previous Experience with:</h3>
             <ul id="otherSkillsList">
               <dom-repeat id="repeat" items="{{otherData}}" as="skill">
                 <template>
