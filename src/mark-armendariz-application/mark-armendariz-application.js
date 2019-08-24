@@ -6,7 +6,6 @@ import {} from '@polymer/polymer/lib/utils/resolve-url.js';
 import {MaMenuBar} from '../app-components/page-components/ma-menu-bar/ma-menu-bar.js';
 import {MaLandingPage} from '../app-components/page-components/ma-landing-page/ma-landing-page.js';
 import {MaHomePage} from '../app-components/page-components/ma-home-page/ma-home-page.js';
-import {MaResumePage} from '../app-components/page-components/ma-resume-page/ma-resume-page.js';
 import {MaSkillsPage} from '../app-components/page-components/ma-skills-page/ma-skills-page.js';
 import {MaExperiencePage} from '../app-components/page-components/ma-experience-page/ma-experience-page.js';
 import {MaProjectsPage} from '../app-components/page-components/ma-projects-page/ma-projects-page.js';
