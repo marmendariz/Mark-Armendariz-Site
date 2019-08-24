@@ -146,8 +146,9 @@ class MarkArmendarizApplication extends PolymerElement {
         <ma-projects-page id="projectsPage"
                           class="page"
                           title="Projects."
-                          subtitle="This is some of what I've worked on (or am working on):"
-                          data=[[projectsData]]>
+                          subtitle="My projects have moved! Here's where to find them:"
+                          data=[[projectsData]]
+                          url=[[projectsSiteUrl]]>
         </ma-projects-page>
         <ma-contact-page id="contactPage"
                          class="page" 
@@ -190,6 +191,9 @@ class MarkArmendarizApplication extends PolymerElement {
       projectsData:{
         type: Array
       },
+      projectsSiteUrl:{
+        type: String
+      },
       educationData:{
         type: Object
       }
@@ -231,6 +235,7 @@ class MarkArmendarizApplication extends PolymerElement {
             this.experienceData = data.experienceData;
             this.projectsData = data.projectsData;
             this.educationData = data.educationData;
+            this.projectsSiteUrl = data.projectsSiteLocalUrl;
         }
      })
   }

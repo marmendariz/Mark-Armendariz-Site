@@ -1,6 +1,9 @@
 {
   "name": "showcase-app",
-  "description": "Portfolio Application",
+  "description": "Mark Armendariz Website Application",
+  "scripts": {
+    "start": "polymer serve"
+  },
   "dependencies": {
     "@polymer/app-layout": "^3.0.2",
     "@polymer/app-route": "^3.0.2",
