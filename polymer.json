@@ -4,5 +4,12 @@
     "rules": [
       "polymer-3"
     ]
-  }
+  },
+  "sources": [
+	"src/**",
+	"node_modules/**",
+	"src/app-components/**",
+	"src/mark-armendariz-application/**",
+	"index.html"
+  ]
 }

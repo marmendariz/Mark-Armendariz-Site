@@ -2,7 +2,8 @@
   "name": "showcase-app",
   "description": "Mark Armendariz Website Application",
   "scripts": {
-    "start": "polymer serve"
+    "start": "polymer serve",
+	"build": "polymer build --js-minify --css-minify --html-minify"
   },
   "dependencies": {
     "@polymer/app-layout": "^3.0.2",

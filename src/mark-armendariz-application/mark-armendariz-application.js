@@ -234,7 +234,7 @@ class MarkArmendarizApplication extends PolymerElement {
             this.experienceData = data.experienceData;
             this.projectsData = data.projectsData;
             this.educationData = data.educationData;
-            this.projectsSiteUrl = data.projectsSiteLocalUrl;
+            this.projectsSiteUrl = data.projectsSiteUrl;
         }
      })
   }
