@@ -4,7 +4,6 @@ import {MaCard} from '../../util-components/ma-card/ma-card.js';
 import {} from '@polymer/polymer/lib/elements/dom-repeat';
 import '@polymer/polymer/lib/elements/dom-if.js';
 import '@webcomponents/shadycss/entrypoints/apply-shim.js';
-import '../ma-project-card/ma-project-card.js';
 
 /**
  * @customElement
@@ -28,50 +27,21 @@ export class MaProjectsPage extends PolymerElement {
         #contentSlot{
           @apply --ma-resume-page-style;
         }
-        ma-project-card{
-          flex: 1;
-          --ma-project-card-style:{
-            height: 30vh;
-            width: 120px;
-          }
-        }
-        #projectCards{
-          display: flex;
-          justify-content: center;
-          flex-wrap: wrap;
-          margin: 15px 0;
-        }
-
-        ma-card#comingSoonCard{
+        #comingSoonCard{
           margin-top: 40px;
         }
-        h3#comingSoonMsg{
+        #comingSoonCard div[slot="content"]{
+          background-color : var(--ma-main-theme-color);
+        }
+        #comingSoonMsg, a{
           text-align: center;
+          color: white;
+          text-decoration: none;
+          font-size: 20pt;
+          height: 50px;
         }
-        @media (min-width: 1281px) {
-        }
-
-        @media (min-width: 1025px) and (max-width: 1280px) {
-        }
-
-        @media (min-width: 768px) and (max-width: 1024px) {
-        }
-
-        @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-        }
-
-        @media (min-width: 481px) and (max-width: 767px) {
-        }
-
         @media (min-width: 320px) and (max-width: 480px) {
-          ma-project-card{
-            margin-bottom: 20px;
-            --ma-project-card-style:{
-              height: 24vh;
-              width: 120px;
-            }
-          }        
-          ma-card#comingSoonCard{
+          #comingSoonCard{
             margin-top: 0px;
             margin-bottom: 10px;
           }
@@ -84,23 +54,9 @@ export class MaProjectsPage extends PolymerElement {
           <div slot="subtitle">[[subtitle]]</div>
         </ma-card>
 
-        <div id="projectCards">
-          <dom-repeat id="repeat" items="[[data]]">
-            <template>
-                <ma-project-card title=[[item.projectName]]
-                                 icon-name=[[item.iconName]]
-                                 image-name=[[item.projectImage]]
-                                 start-date=[[item.startDate]]
-                                 end-date=[[item.endDate]]
-                                 data=[[item.points]]>
-                </ma-project-card>
-            </template>
-          </dom-repeat>
-        </div>
-        
         <ma-card id="comingSoonCard">
           <div slot="content">
-            <h3 id="comingSoonMsg">More projects coming soon</h3>
+            <p id="comingSoonMsg"><a href="{{url}}" target="_blank">Enter Projects Site</a></p>
           </div>
         </ma-card>
 
@@ -123,8 +79,10 @@ export class MaProjectsPage extends PolymerElement {
       },
       data:{
         type: Array
+      },
+      url:{
+        type: String
       }
-
     };
   }
 

@@ -74,9 +74,7 @@ class MarkArmendarizApplication extends PolymerElement {
           .page{
             padding: 60px 40px 60px 40px;
           }
-        }/*
-        @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-        }*/
+        }
         @media (min-width: 481px) and (max-width: 1024px) {
           .page{
             padding: 60px 10px 60px 10px;
@@ -146,8 +144,9 @@ class MarkArmendarizApplication extends PolymerElement {
         <ma-projects-page id="projectsPage"
                           class="page"
                           title="Projects."
-                          subtitle="This is some of what I've worked on (or am working on):"
-                          data=[[projectsData]]>
+                          subtitle="My projects have moved! Here's where to find them:"
+                          data=[[projectsData]]
+                          url=[[projectsSiteUrl]]>
         </ma-projects-page>
         <ma-contact-page id="contactPage"
                          class="page" 
@@ -190,6 +189,9 @@ class MarkArmendarizApplication extends PolymerElement {
       projectsData:{
         type: Array
       },
+      projectsSiteUrl:{
+        type: String
+      },
       educationData:{
         type: Object
       }
@@ -230,6 +232,7 @@ class MarkArmendarizApplication extends PolymerElement {
             this.otherSkillsData = data.otherSkillsData;
             this.experienceData = data.experienceData;
             this.projectsData = data.projectsData;
+            this.projectsSiteUrl = data.projectsSiteLocalUrl;
             this.educationData = data.educationData;
         }
      })

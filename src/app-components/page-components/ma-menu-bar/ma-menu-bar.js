@@ -62,7 +62,7 @@ export class MaMenuBar extends PolymerElement {
           width: 100%;
           --ma-background-color: white;
         }
-        @media screen and (max-width: 1050px){
+        @media (max-width: 1050px){
           #appTitle{
             width: fit-content;
             height: auto;
