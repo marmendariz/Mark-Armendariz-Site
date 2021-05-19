@@ -44,12 +44,6 @@ export class MaProjectsPage extends PolymerElement {
         #comingSoonMsg:hover{
           color: black;
         }
-        /*@media (min-width: 320px) and (max-width: 480px) {
-          #comingSoonCard{
-            margin-top: 0px;
-            margin-bottom: 10px;
-          }
-        }*/
       </style>
       <div class="centeredCard">
         <ma-card >

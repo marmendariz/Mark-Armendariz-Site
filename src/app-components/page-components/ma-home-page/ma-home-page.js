@@ -29,8 +29,8 @@ export class MaHomePage extends PolymerElement {
           --ma-icon-background-color : var(--ma-main-theme-color);
           --ma-icon-border-radius: 50%;
           --ma-icon-style:{
-            width: 200px;
-            height: 200px;
+            width: 180px;
+            height: 180px;
           }
           margin: 0 30px;
           padding: 20px;
@@ -72,22 +72,20 @@ export class MaHomePage extends PolymerElement {
         }
         @media (min-width: 320px) and (max-width: 480px) {
         }*/
-
-        
       </style>
       <div>
+        <div style="margin-top: 10px;">
+          <ma-card class="centeredCard">
+            <div id="titleSlot" slot="title"><h1>Hi, I'm <span class="highlighted"> Mark.</span></h1></div>
+            <div slot="subtitle">[[subtitle]]</div>
 
-        
-        <ma-card class="centeredCard">
-          <div id="titleSlot" slot="title"><h1>Hi, I'm <span class="highlighted"> Mark.</span></h1></div>
-          <div slot="subtitle">[[subtitle]]</div>
-
-          <div slot ="content">
-            <p>[[data.topMsg]]
-            </p>
-            <a id="resumeAnchor" href="src\\docs\\MarkArmendariz_Resume.pdf"><ma-button id="resumeButton" text="Resume"></ma-button></a>
-          </div>
-        </ma-card>
+            <div slot ="content">
+              <p>[[data.topMsg]]
+              </p>
+              <a id="resumeAnchor" href="src\\docs\\MarkArmendariz_Resume.pdf"><ma-button id="resumeButton" text="Resume"></ma-button></a>
+            </div>
+          </ma-card>
+        </div>
 
         <div id="pageContent">
           <div id="traitIcons">

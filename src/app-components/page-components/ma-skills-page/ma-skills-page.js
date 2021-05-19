@@ -66,6 +66,7 @@ export class MaSkillsPage extends PolymerElement {
         }
       </style>
 
+<div>
       <ma-card>
         <div id="titleSlot" slot="title"><h1>{{_toLowerCase(title)}}</h1></div>
         <div slot="subtitle">[[subtitle]]</div>
@@ -93,7 +94,7 @@ export class MaSkillsPage extends PolymerElement {
 
         </div>
       </ma-card>
-
+</div>
     `;
   }
 

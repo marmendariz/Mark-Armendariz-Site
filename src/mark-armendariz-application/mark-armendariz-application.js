@@ -37,6 +37,10 @@ class MarkArmendarizApplication extends PolymerElement {
         #landingPage{
           height: 100vh;
         }
+        /* #appPages{
+          margin-left: 10%;
+          margin-right: 10%;
+        } */
         #appPages>.page:nth-child(odd){
           --ma-page-background-color: var(--ma-main-theme-color);
         }
@@ -53,29 +57,36 @@ class MarkArmendarizApplication extends PolymerElement {
          padding-top: 60px;
         }
         #projectsPage, #contactPage{
-          height: 909px;
+          height: 600px;
         }
 
         @media (min-width: 1281px) {
           #homePage{
-            padding-top: 0px;
+            padding-top: 10px;
           }
           .page{
             padding: 60px 40px 60px 40px;
+          }
+          .page.home-page{
+            padding: 10px 40px 60px 40px;
           }
         }
         @media (min-width: 1025px) and (max-width: 1280px) {
           .page{
             padding: 60px 40px 60px 40px;
           }
+          .page.home-page{
+            padding: 10px 40px 60px 40px;
+          }
         }
         @media (min-width: 768px) and (max-width: 1024px) {
           .page{
             padding: 60px 40px 60px 40px;
           }
-        }/*
-        @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-        }*/
+          .page.home-page{
+            padding: 10px 40px 60px 40px;
+          }
+        }
         @media (min-width: 481px) and (max-width: 1024px) {
           .page{
             padding: 60px 10px 60px 10px;
@@ -91,6 +102,11 @@ class MarkArmendarizApplication extends PolymerElement {
           #homePage{
             padding-top: 0px;
           }
+        }
+
+        .page{
+          padding-left: 10% !important;
+          padding-right: 10% !important;
         }
       </style>
   
@@ -118,7 +134,7 @@ class MarkArmendarizApplication extends PolymerElement {
                      name-line-two="Armendariz">
         </ma-menu-bar>
         <ma-home-page id="homePage"
-                      class="page"
+                      class="page home-page"
                       title="Hi, I'm Mark."
                       subtitle="This is who I am:"
                       data=[[homePageData]]>
@@ -151,11 +167,15 @@ class MarkArmendarizApplication extends PolymerElement {
         </ma-projects-page>
         <ma-contact-page id="contactPage"
                          class="page" 
-                         title="Contact"
+                         title="Contact."
                          subtitle="This is how to get ahold of me:"
                          data=[[contactData]]>
         </ma-contact-page>
       </div>
+
+      <footer style="background-color: white;    padding: 20px 50px; height: 150px;">
+        <h3>footer</h3>
+      </footer>
       <!-- ================================= -->
 
     `;

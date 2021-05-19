@@ -266,7 +266,6 @@ export class MaEducationPage extends PolymerElement {
             font-size: 12pt;
           }
         }
-
       </style>
 
       <div id="centeredCard">

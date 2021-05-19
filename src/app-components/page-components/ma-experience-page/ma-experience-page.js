@@ -81,13 +81,6 @@ export class MaExperiencePage extends PolymerElement {
         .jobCard>div[slot="content"]{
           line-height: 15px;
         }
-        /*
-        .jobCard:hover{
-          box-shadow: var(--ma-card-box-shadow, 10px 10px 47px 20px #55555557);
-          transform: translate(-1%, -2%);
-        }*/
-
-
 
 
         /*********************/
@@ -186,9 +179,6 @@ export class MaExperiencePage extends PolymerElement {
           }
         }
 
-        /*#jobDetailsCard{
-          transform: translateY(50%);
-        }*/
         /*****************************************/
         @media (min-width: 1281px) {
           li{
@@ -204,9 +194,6 @@ export class MaExperiencePage extends PolymerElement {
         @media (min-width: 731px) {
           #jobDetailsCard{
             transform: none;
-          }
-          #jobsListContainer{
-            height: 100%;
           }
           li{
             font-size: 12pt;
@@ -242,8 +229,6 @@ export class MaExperiencePage extends PolymerElement {
             --ma-card-padding: 10px 5px;
           }
         }
-
-
       </style>
 
   <div>

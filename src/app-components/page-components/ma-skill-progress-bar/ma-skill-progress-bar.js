@@ -23,6 +23,8 @@ export class MaSkillProgressBar extends PolymerElement {
       }
       #energyBar{
         width: 80%;
+        left: -1px;
+        position: relative;
       }
       #energyBar>#fillInArea{
         background-color: var(--ma-skill-progress-bar-color, #0c4e8a);

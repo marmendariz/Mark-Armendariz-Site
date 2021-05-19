@@ -77,7 +77,6 @@ export class MaContactPage extends PolymerElement {
         }
       </style>
 
-
       <div id="contactPage">
         <ma-card>
           <div slot="title"><h1>{{_toLowerCase(title)}}</h1></div>
