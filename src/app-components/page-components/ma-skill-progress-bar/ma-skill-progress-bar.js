@@ -51,11 +51,12 @@ export class MaSkillProgressBar extends PolymerElement {
       }
       #ratio{
         height: 20px;
-        padding: 5px;
-        padding-right: 10px;
+        padding: 6px;
+        padding-right: 0px;
         float: right;
         width: 55px;
         line-height:33px;
+        font-weight: bold;
       }
 
       @media screen and (max-width: 800px){

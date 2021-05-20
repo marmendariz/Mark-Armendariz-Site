@@ -105,8 +105,25 @@ class MarkArmendarizApplication extends PolymerElement {
         }
 
         .page{
-          padding-left: 10% !important;
-          padding-right: 10% !important;
+          padding-left: 20% !important;
+          padding-right: 20% !important;
+        }
+
+footer{
+  background-color: white;
+    padding: 20px 50px;
+    height: 46px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 9pt;
+}
+        footer #footer-logo{
+          background-image:url('icon.png');
+          height: 38px;
+    width: 29px;
+    background-size: cover;
+    background-repeat: no-repeat;
         }
       </style>
   
@@ -173,8 +190,9 @@ class MarkArmendarizApplication extends PolymerElement {
         </ma-contact-page>
       </div>
 
-      <footer style="background-color: white;    padding: 20px 50px; height: 150px;">
-        <h3>footer</h3>
+      <footer>
+        <div>Copyright &copy; 2021 Mark Armendariz. All rights reserved.</div>
+        <div id="footer-logo"></div>
       </footer>
       <!-- ================================= -->
 

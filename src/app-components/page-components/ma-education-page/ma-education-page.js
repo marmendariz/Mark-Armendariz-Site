@@ -42,7 +42,6 @@ export class MaEducationPage extends PolymerElement {
           font-size: 10pt;
         }
      
-
         #educationInfoCard>div[slot="content"]{
           line-height: 15px;
         }
@@ -50,20 +49,17 @@ export class MaEducationPage extends PolymerElement {
         #pageContent{
           display: flex;
           position: relative;
-          margin-top:20px;
-          /*height: 82vh;*/
+          margin-top: 20px;
+          justify-content: center;
         }
-
 
         #educationInfoContainer{
-          width: 50%;
-          margin-right: 20px;
+          width: 35%;
+          margin-right: 55px;
         }
         #educationDetailsContainer{
-          width: 50%;
+          width: 30%;
         }
-
-
 
         .schoolName{
           font-size: 14pt;
@@ -84,7 +80,6 @@ export class MaEducationPage extends PolymerElement {
         ul{
           padding-left: 24px;
         }
-
 
         #educationIcon{
           height: 50%;
@@ -114,7 +109,6 @@ export class MaEducationPage extends PolymerElement {
           height: 21vh;
         }
 
-
         @media screen and (max-width: 930px){
           #educationIcon>img{
             width:100%;
@@ -128,7 +122,6 @@ export class MaEducationPage extends PolymerElement {
             display: block;
             width: 100%;
           }
-
           #educationInfoContainer{
             display: flex;
             width: 100%;
@@ -161,8 +154,6 @@ export class MaEducationPage extends PolymerElement {
             }
           }
         }
-
-
 
         @media (min-width: 1281px) {
           .schoolName{
@@ -285,7 +276,6 @@ export class MaEducationPage extends PolymerElement {
                     <p class="degreeInfo">[[data.degreeName]] - [[data.majorName]]</p>
                     <p class="dateRange">[[data.startDate]] - [[data.endDate]]</p>
                     <p class="gpa">GPA - [[data.gpaValue]] on a 4.00 scale.</p>
-                    <!--<div id="schoolIcon"><img src="src/images/csub.png"></div>-->
                   </div>
                 </ma-card>
             </div>

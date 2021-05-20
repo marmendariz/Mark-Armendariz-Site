@@ -41,7 +41,7 @@ export class MaSkillsPage extends PolymerElement {
         #skillsList{
           height: 80%;
           margin: 45px auto;
-          width: 90%;
+          width: 70%;
         }
         ma-skill-progress-bar{
             margin: 40px 0px 25px 0px;
