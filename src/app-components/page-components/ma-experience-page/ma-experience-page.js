@@ -75,7 +75,8 @@ export class MaExperiencePage extends PolymerElement {
         }
         #jobDetailsCard{
           display: table-row;
-          height: 100%;
+          /* height: 100%; */
+          --ma-card-padding: 20px 25px 20px 25px;
         }
         #jobDetailsCard li{
           font-size: 10pt !important;
@@ -237,6 +238,10 @@ export class MaExperiencePage extends PolymerElement {
           .jobCard{
             --ma-card-padding: 10px 5px;
           }
+        }
+
+        ul{
+          padding-left: 20px;
         }
       </style>
 
