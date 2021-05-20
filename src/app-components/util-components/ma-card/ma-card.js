@@ -20,7 +20,7 @@ export class MaCard extends PolymerElement {
           padding: 0 2%;
         }
         slot[name='title']{
-          font-size: 20pt;
+          font-size: 1.4em;
           line-height: 0px;
         }
         slot[name='subtitle']{

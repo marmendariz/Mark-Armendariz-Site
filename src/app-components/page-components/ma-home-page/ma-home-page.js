@@ -29,8 +29,8 @@ export class MaHomePage extends PolymerElement {
           --ma-icon-background-color : var(--ma-main-theme-color);
           --ma-icon-border-radius: 50%;
           --ma-icon-style:{
-            width: 180px;
-            height: 180px;
+            width: 150px;
+            height: 150px;
           }
           margin: 0 30px;
           padding: 20px;

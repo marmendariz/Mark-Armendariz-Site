@@ -60,36 +60,65 @@ class MarkArmendarizApplication extends PolymerElement {
           height: 600px;
         }
 
+        .page{
+          padding-left: 20% !important;
+          padding-right: 20% !important;
+        }
+
         @media (min-width: 1281px) {
           #homePage{
             padding-top: 10px;
           }
           .page{
-            padding: 60px 40px 60px 40px;
+            /* padding: 60px 40px 60px 40px; */
+            padding-top: 60px;
+            padding-bottom: 60px;
           }
           .page.home-page{
-            padding: 10px 40px 60px 40px;
+            /* padding: 10px 40px 60px 40px; */
+            padding-top: 10px;
+            padding-bottom: 60px;
           }
         }
         @media (min-width: 1025px) and (max-width: 1280px) {
           .page{
-            padding: 60px 40px 60px 40px;
+            /* padding: 60px 40px 60px 40px; */
+            padding-left: 15% !important;
+            padding-right: 15% !important;
+            padding-top: 60px;
+            padding-bottom: 60px;
           }
           .page.home-page{
-            padding: 10px 40px 60px 40px;
+            /* padding: 10px 40px 60px 40px; */
+
+            padding-top: 10px;
+            padding-bottom: 60px;
           }
         }
         @media (min-width: 768px) and (max-width: 1024px) {
           .page{
-            padding: 60px 40px 60px 40px;
+            /* padding: 60px 40px 60px 40px; */
+
+             padding-top: 60px;
+            padding-bottom: 60px;            
+            padding-left: 10% !important;
+            padding-right: 10% !important;
           }
           .page.home-page{
-            padding: 10px 40px 60px 40px;
+            /* padding: 10px 40px 60px 40px; */
+
+             padding-top: 10px;
+            padding-bottom: 60px;
           }
         }
         @media (min-width: 481px) and (max-width: 1024px) {
           .page{
-            padding: 60px 10px 60px 10px;
+            /* padding: 60px 10px 60px 10px; */
+
+            padding-top: 60px;
+            padding-bottom: 60px;
+            padding-left: 5% !important;
+            padding-right: 5% !important;
           }
           #homePage{
             padding-top: 0px;
@@ -97,17 +126,17 @@ class MarkArmendarizApplication extends PolymerElement {
         }
         @media (min-width: 320px) and (max-width: 480px) {
           .page{
-            padding: 60px 5px 20px 5px;
+            /* padding: 60px 5px 20px 5px; */
+
+            padding-top: 60px;
+            padding-bottom: 20px;
           }
           #homePage{
             padding-top: 0px;
           }
         }
 
-        .page{
-          padding-left: 20% !important;
-          padding-right: 20% !important;
-        }
+
 
 footer{
   background-color: white;

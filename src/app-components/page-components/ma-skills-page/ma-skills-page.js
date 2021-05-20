@@ -44,7 +44,7 @@ export class MaSkillsPage extends PolymerElement {
           width: 70%;
         }
         ma-skill-progress-bar{
-            margin: 40px 0px 25px 0px;
+            margin: 30px 0px 25px 0px;
         }
         #otherSkillsTitle{
           color: var(--ma-main-theme-color);

@@ -23,6 +23,9 @@ export class MaExperiencePage extends PolymerElement {
           background-color: var(--ma-page-background-color ,white);
           height: 100%;
         }
+        .jobCard{
+          --ma-card-padding:7px 20px;
+        }
         div[slot="subtitle"]{
           color: #0c4e8a;
           font-weight: bold;
@@ -73,7 +76,11 @@ export class MaExperiencePage extends PolymerElement {
         #jobDetailsCard{
           display: table-row;
           height: 100%;
-          font-size: 10pt;
+        }
+        #jobDetailsCard li{
+          font-size: 10pt !important;
+          line-height: 22px;
+          margin-bottom: 10px;        
         }
 
         /**************************/
@@ -93,13 +100,15 @@ export class MaExperiencePage extends PolymerElement {
           font-size: 11pt;
         }
         .companyName{
-          font-size: 14pt;
+          font-size: 12pt;
+          line-height: 0px;
         }
         .positionName{
-          font-size: 10pt;
-        }
-        .companyName, .positionName{
+          font-size: 8pt;
           line-height: 4px;
+        }
+
+        .companyName, .positionName{
           font-weight: bold;
         }
         .dateRange{
@@ -199,11 +208,11 @@ export class MaExperiencePage extends PolymerElement {
             font-size: 12pt;
           }
           .companyName{
-            font-size: 18pt;
-            line-height: 10px;
+            font-size: 16pt;
+            line-height: 0px;
           }
           .positionName{
-            font-size: 15pt;
+            font-size: 13pt;
             line-height: 10px;
             margin-bottom: 30px;
           }
