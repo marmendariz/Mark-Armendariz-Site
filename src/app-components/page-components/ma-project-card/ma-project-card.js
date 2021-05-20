@@ -1,20 +1,16 @@
-
-import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
-import '@polymer/polymer/lib/elements/dom-if.js';
-import '@webcomponents/shadycss/entrypoints/apply-shim.js';
-import { updateStyles } from '@polymer/polymer/lib/mixins/element-mixin.js';
-import {MaButton} from '../../util-components/ma-button/ma-button.js';
-import {MaCard} from '../../util-components/ma-card/ma-card.js';
-import {MaProjectDialog} from '../ma-project-dialog/ma-project-dialog.js';
-
+import { html, PolymerElement } from "../../../../node_modules/@polymer/polymer/polymer-element.js";
+import "../../../../node_modules/@polymer/polymer/lib/elements/dom-if.js";
+import "../../../../node_modules/@webcomponents/shadycss/entrypoints/apply-shim.js";
+import { updateStyles } from "../../../../node_modules/@polymer/polymer/lib/mixins/element-mixin.js";
+import { MaButton } from '../../util-components/ma-button/ma-button.js';
+import { MaCard } from '../../util-components/ma-card/ma-card.js';
+import { MaProjectDialog } from '../ma-project-dialog/ma-project-dialog.js';
 /**
  * @customElement
  * @polymer
  */
 
-
 export class MaProjectCard extends PolymerElement {
-  
   static get template() {
     return html`
       <style>
@@ -142,74 +138,73 @@ export class MaProjectCard extends PolymerElement {
     `;
   }
 
-
   static get properties() {
     return {
       /**
        * Title of Resume Section
        */
-      title:{
-        type: String,
-        //observer: "_titleProcess"
+      title: {
+        type: String //observer: "_titleProcess"
+
       },
-      startDate:{
+      startDate: {
         type: String
       },
-      endDate:{
+      endDate: {
         type: String
       },
-      data:{
+      data: {
         type: Array
       },
-      text:{
+      text: {
         type: String
       },
-      iconPath:{
+      iconPath: {
         type: String,
         value: "src/images/projects/"
       },
-      iconName:{
+      iconName: {
         type: String,
         value: "project",
         observer: "_setIconImage"
       },
-      imageName:{
+      imageName: {
         type: String
       },
-      opened:{
+      opened: {
         type: Boolean,
         value: false,
-        notify: true,
+        notify: true
       }
-      
     };
   }
 
-  ready(){
+  ready() {
     super.ready();
   }
 
-  _handleButtonClick(e){
+  _handleButtonClick(e) {
     //this.$.flip.classList.toggle('hover');
-      this.opened = !this.opened;;
+    this.opened = !this.opened;
+    ;
   }
 
-  _titleProcess(title){
+  _titleProcess(title) {
     var temp = title.split(' ');
-    if(temp.length > 1){
+
+    if (temp.length > 1) {
       console.log(temp);
-      this.$.title.innerHTML =  temp[0] + "<br>" + temp[1];
-    }
-    else{
-    this.$.title.innerHTML= temp[0];
+      this.$.title.innerHTML = temp[0] + "<br>" + temp[1];
+    } else {
+      this.$.title.innerHTML = temp[0];
     }
   }
 
-  _setIconImage(iconName){
-    this.updateStyles({"--ma-card-background-image": "url("+this.iconPath + iconName +".png)"});
+  _setIconImage(iconName) {
+    this.updateStyles({
+      "--ma-card-background-image": "url(" + this.iconPath + iconName + ".png)"
+    });
   }
-
 
 }
-
 window.customElements.define('ma-project-card', MaProjectCard);

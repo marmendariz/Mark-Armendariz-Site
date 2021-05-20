@@ -1,21 +1,16 @@
-
-import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
-import {MaCard} from '../../util-components/ma-card/ma-card.js';
-import '@polymer/polymer/lib/elements/dom-if.js';
-import '@webcomponents/shadycss/entrypoints/apply-shim.js';
-import { updateStyles } from '@polymer/polymer/lib/mixins/element-mixin.js';
-import '@polymer/paper-dialog/paper-dialog.js';
-import '@polymer/iron-icons/iron-icons.js';
-
-
+import { html, PolymerElement } from "../../../../node_modules/@polymer/polymer/polymer-element.js";
+import { MaCard } from '../../util-components/ma-card/ma-card.js';
+import "../../../../node_modules/@polymer/polymer/lib/elements/dom-if.js";
+import "../../../../node_modules/@webcomponents/shadycss/entrypoints/apply-shim.js";
+import { updateStyles } from "../../../../node_modules/@polymer/polymer/lib/mixins/element-mixin.js";
+import "../../../../node_modules/@polymer/paper-dialog/paper-dialog.js";
+import "../../../../node_modules/@polymer/iron-icons/iron-icons.js";
 /**
  * @customElement
  * @polymer
  */
 
-
 export class MaProjectDialog extends PolymerElement {
-  
   static get template() {
     return html`
       <style>
@@ -121,59 +116,56 @@ export class MaProjectDialog extends PolymerElement {
       </paper-dialog>
 
       `;
-    }
+  }
 
   static get properties() {
     return {
       /**
        * Title of Resume Section
        */
-      title:{
-        type: String,
-      },
-      text:{
+      title: {
         type: String
       },
-      startDate:{
+      text: {
         type: String
       },
-      endDate:{
+      startDate: {
         type: String
       },
-      opened:{
+      endDate: {
+        type: String
+      },
+      opened: {
         type: Boolean,
         notify: true,
         observer: "openDialog"
       },
-      imagePath:{
+      imagePath: {
         type: String,
         value: "src/images/projects/"
       },
-      imageName:{
+      imageName: {
         type: String,
         observer: "_setProjectImage"
       }
-      
     };
   }
 
-  openDialog (opened){
-    if(opened){
+  openDialog(opened) {
+    if (opened) {
       this.$.dialog.open();
-    }
-    else{
+    } else {
       this.$.dialog.close();
     }
   }
 
-  close(){
+  close() {
     this.$.dialog.close();
   }
 
-  _setProjectImage(imageName){
-    this.$.projectImage.style.backgroundImage = "url("+this.imagePath + imageName +".png)"
+  _setProjectImage(imageName) {
+    this.$.projectImage.style.backgroundImage = "url(" + this.imagePath + imageName + ".png)";
   }
 
 }
-
 window.customElements.define('ma-project-dialog', MaProjectDialog);

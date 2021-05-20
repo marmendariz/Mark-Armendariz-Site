@@ -1,12 +1,15 @@
-import {html, PolymerElement} from '@polymer/polymer/polymer-element.js';
-import {MaCard} from '../../util-components/ma-card/ma-card.js';
-import {} from '@polymer/polymer/lib/elements/dom-repeat';
-import '@polymer/polymer/lib/elements/dom-if.js';
-import '@webcomponents/shadycss/entrypoints/apply-shim.js';
+import { html, PolymerElement } from "../../../../node_modules/@polymer/polymer/polymer-element.js";
+import { MaCard } from '../../util-components/ma-card/ma-card.js';
+import "../../../../node_modules/@polymer/polymer/lib/elements/dom-repeat.js";
+import "../../../../node_modules/@polymer/polymer/lib/elements/dom-if.js";
+import "../../../../node_modules/@webcomponents/shadycss/entrypoints/apply-shim.js";
 import '../ma-project-card/ma-project-card.js';
+/**
+ * @customElement
+ * @polymer
+ */
 
 export class MaProjectsPage extends PolymerElement {
-  
   static get template() {
     return html`
       <style>
@@ -21,67 +24,112 @@ export class MaProjectsPage extends PolymerElement {
         #contentSlot{
           @apply --ma-resume-page-style;
         }
-        #comingSoonCard{
-          margin-top: 100px;
+        ma-project-card{
+          flex: 1;
+          --ma-project-card-style:{
+            height: 30vh;
+            width: 120px;
+          }
         }
-        #comingSoonCard div[slot="content"]{
-          background-color : var(--ma-main-theme-color);
-          height: 100px;
+        #projectCards{
+          display: flex;
+          justify-content: center;
+          flex-wrap: wrap;
+          margin: 15px 0;
         }
-        #comingSoonCard div[slot="content"]:hover{
-          background-color : white;
-          color: black;
+
+        ma-card#comingSoonCard{
+          margin-top: 40px;
         }
-        #comingSoonMsg{
+        h3#comingSoonMsg{
           text-align: center;
-          color: white;
-          text-decoration: none;
-          font-size: 20pt;
-          display: block;
-          line-height: 100px;
-          font-weight: bold;
         }
-        #comingSoonMsg:hover{
-          color: black;
+        @media (min-width: 1281px) {
+        }
+
+        @media (min-width: 1025px) and (max-width: 1280px) {
+        }
+
+        @media (min-width: 768px) and (max-width: 1024px) {
+        }
+
+        @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
+        }
+
+        @media (min-width: 481px) and (max-width: 767px) {
+        }
+
+        @media (min-width: 320px) and (max-width: 480px) {
+          ma-project-card{
+            margin-bottom: 20px;
+            --ma-project-card-style:{
+              height: 24vh;
+              width: 120px;
+            }
+          }        
+          ma-card#comingSoonCard{
+            margin-top: 0px;
+            margin-bottom: 10px;
+          }
         }
       </style>
+
       <div class="centeredCard">
         <ma-card >
           <div id="titleSlot" slot="title"><h1>{{_toLowerCase(title)}}</h1></div>
           <div slot="subtitle">[[subtitle]]</div>
         </ma-card>
-        <ma-card id="comingSoonCard">
+
+        <div id="projectCards">
+          <dom-repeat id="repeat" items="[[data]]">
+            <template>
+                <ma-project-card title=[[item.projectName]]
+                                 icon-name=[[item.iconName]]
+                                 image-name=[[item.projectImage]]
+                                 start-date=[[item.startDate]]
+                                 end-date=[[item.endDate]]
+                                 data=[[item.points]]>
+                </ma-project-card>
+            </template>
+          </dom-repeat>
+        </div>
+        
+        <!-- <ma-card id="comingSoonCard">
           <div slot="content">
-            <a id="comingSoonMsg" href="{{url}}" target="">Enter Projects Website</a>
+            <h3 id="comingSoonMsg">More projects coming soon</h3>
           </div>
-        </ma-card>
+        </ma-card> -->
+
       </div>
     `;
   }
 
-
   static get properties() {
     return {
-      title:{
+      /**
+       * Title of Resume Section
+       */
+      title: {
         type: String,
         reflectToAttribute: true
       },
-      subtitle:{
+      subtitle: {
         type: String
       },
-      data:{
+      data: {
         type: Array
-      },
-      url:{
-        type: String
       }
     };
   }
+  /**
+   * Utility method for converting text to lowercase
+   * @param {*} title 
+   */
 
-  _toLowerCase(text){
+
+  _toLowerCase(text) {
     return text.toLowerCase();
   }
 
 }
-
 window.customElements.define('ma-projects-page', MaProjectsPage);

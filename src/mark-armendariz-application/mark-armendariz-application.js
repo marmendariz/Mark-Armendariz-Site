@@ -178,7 +178,7 @@ footer{
         <ma-projects-page id="projectsPage"
                           class="page"
                           title="Projects."
-                          subtitle="My projects have moved! Here's where to find them:"
+                          subtitle="This is what I've worked on:"
                           data=[[projectsData]]
                           url=[[projectsSiteUrl]]>
         </ma-projects-page>
