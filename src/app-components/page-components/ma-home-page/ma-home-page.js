@@ -13,14 +13,17 @@ export class MaHomePage extends PolymerElement {
       <style>
         :host {
           display: block;
-          background-color: var(--ma-page-background-color ,white);
+          /* background-color: var(--ma-page-background-color ,white); */
+          --ma-card-background-image: none;
+          --ma-card-background-color: none;
+          --ma-card-box-shadow: none;
         }
         div[slot="subtitle"]{
           @apply --ma-subtitle-text;
         }
-        #traitIcons{
+        /* #traitIcons{
           display: flex;
-          flex-wrap: wrap;
+          /* flex-wrap: wrap; */
           justify-content: center;
           margin-top: 20px;
         }
@@ -29,17 +32,17 @@ export class MaHomePage extends PolymerElement {
           --ma-icon-background-color : var(--ma-main-theme-color);
           --ma-icon-border-radius: 50%;
           --ma-icon-style:{
-            width: 150px;
-            height: 150px;
+            width: 100px;
+            height: 100px;
           }
-          margin: 0 30px;
+          /* margin: 0 30px; */
           padding: 20px;
         }
         .traitIcon:hover{
           filter: drop-shadow(var(--ma-card-box-shadow, 10px 10px 10px #55555557));
           transform: translate(-1%, -2%);
           --ma-icon-background-color : var(--ma-main-theme-color-lite);
-        }
+        } */
         .highlighted{
           color: var(--ma-main-theme-color);
         }
@@ -51,14 +54,9 @@ export class MaHomePage extends PolymerElement {
           cursor: pointer;
         }
 
-        @media (min-width: 320px) and (max-width: 1025px) {
-          .traitIcon{
-            width: 252px;
-            --ma-icon-style:{
-              width: 150px;
-              height: 150px;
-            }
-          }
+        #topMessage{
+          line-height: 30px;
+            font-size: 12pt;
         }
         /*@media (min-width: 1281px) {
         }
@@ -80,37 +78,41 @@ export class MaHomePage extends PolymerElement {
             <div slot="subtitle">[[subtitle]]</div>
 
             <div slot ="content">
-              <p>[[data.topMsg]]
-              </p>
+              <p id="topMessage">[[data.topMsg]]</p>
               <a id="resumeAnchor" href="src\\docs\\MarkArmendariz_Resume.pdf"><ma-button id="resumeButton" text="Resume"></ma-button></a>
+
+
+                <!-- <div id="pageContent">
+                  <div id="traitIcons">
+                    <ma-icon class="traitIcon"
+                            title="{{_toUpperCase('Reliable Performer')}}"
+                            icon-name="ReliablePerformer"
+                            text=[[data.reliablePerformerMsg]]>
+                    </ma-icon>
+                    <ma-icon class="traitIcon"
+                            title="{{_toUpperCase('Philomath')}}"
+                            icon-name="Philomath"
+                            text=[[data.philomathMsg]]>
+                    </ma-icon>
+                    <ma-icon class="traitIcon"
+                            title="{{_toUpperCase('Problem Solver')}}"
+                            icon-name="ProblemSolver"
+                            text=[[data.problemSolverMsg]]>
+                    </ma-icon>
+                    <ma-icon class="traitIcon"
+                            title="{{_toUpperCase('Strategist')}}"
+                            icon-name="Strategist"
+                            text=[[data.strategistMsg]]>
+                    </ma-icon>
+                  </div>
+                </div> -->
+
+
             </div>
           </ma-card>
         </div>
 
-        <div id="pageContent">
-          <div id="traitIcons">
-            <ma-icon class="traitIcon"
-                    title="{{_toUpperCase('Reliable Performer')}}"
-                    icon-name="ReliablePerformer"
-                    text=[[data.reliablePerformerMsg]]>
-            </ma-icon>
-            <ma-icon class="traitIcon"
-                    title="{{_toUpperCase('Philomath')}}"
-                    icon-name="Philomath"
-                    text=[[data.philomathMsg]]>
-            </ma-icon>
-            <ma-icon class="traitIcon"
-                    title="{{_toUpperCase('Problem Solver')}}"
-                    icon-name="ProblemSolver"
-                    text=[[data.problemSolverMsg]]>
-            </ma-icon>
-            <ma-icon class="traitIcon"
-                    title="{{_toUpperCase('Strategist')}}"
-                    icon-name="Strategist"
-                    text=[[data.strategistMsg]]>
-            </ma-icon>
-          </div>
-        </div>
+       
       </div>
 
 

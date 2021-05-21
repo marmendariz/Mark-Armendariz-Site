@@ -20,7 +20,7 @@ export class MaExperiencePage extends PolymerElement {
         :host {
           position: relative;
           display: block;
-          background-color: var(--ma-page-background-color ,white);
+          /* background-color: var(--ma-page-background-color ,white); */
           height: 100%;
         }
         .jobCard{
@@ -77,11 +77,13 @@ export class MaExperiencePage extends PolymerElement {
           display: table-row;
           /* height: 100%; */
           --ma-card-padding: 20px 25px 20px 25px;
+          line-height: 30px;
+    
         }
         #jobDetailsCard li{
-          font-size: 10pt !important;
+          font-size: 12pt !important;
           line-height: 22px;
-          margin-bottom: 10px;        
+          margin-bottom: 10px;    
         }
 
         /**************************/
@@ -116,8 +118,11 @@ export class MaExperiencePage extends PolymerElement {
           margin-top: 20px;
         }
         .dateRange, .location{
-          line-height: 5px;
           font-size: 10pt;
+    position: relative;
+    top: -12px;
+    margin-top: 17px;
+    line-height: 0;
         }
         /*********************/
 
@@ -160,10 +165,13 @@ export class MaExperiencePage extends PolymerElement {
           .companyName, .positionName{
             line-height: 15px
           }
-          .dateRange{
-            line-height: 15px;
-            margin-top: 10px;
-          }
+          .dateRange, .location{
+            font-size: 10pt;
+    position: relative;
+    top: -12px;
+    margin-top: 17px;
+    line-height: 0;
+        }
           #pageContent{
             display: block;
           }
@@ -213,13 +221,18 @@ export class MaExperiencePage extends PolymerElement {
             line-height: 0px;
           }
           .positionName{
-            font-size: 13pt;
+            font-size: 12pt;
             line-height: 10px;
             margin-bottom: 30px;
           }
           .dateRange, .location{
-            font-size: 13pt;
-          }
+            font-size: 10pt;
+    position: relative;
+    top: -12px;
+    margin-top: 17px;
+    line-height: 0;
+
+        }
         }
 
         @media (min-width: 731px) and (max-width: 1024px) and (orientation: landscape) {
@@ -240,8 +253,14 @@ export class MaExperiencePage extends PolymerElement {
           }
         }
 
-        ul{
+        /* ul{
           padding-left: 20px;
+        } */
+
+        #pageTitleCard, #jobDetailsCard{
+          --ma-card-background-image: none;
+          --ma-card-background-color: none;
+          --ma-card-box-shadow: none;
         }
       </style>
 

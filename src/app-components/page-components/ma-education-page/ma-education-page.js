@@ -19,11 +19,14 @@ export class MaEducationPage extends PolymerElement {
       <style>
         :host {
           display: block;
-          background-image:url('src/images/educationPageFaded2.png');
+          /* background-image:url('src/images/educationPageFaded2.png'); */
           background-attachment: fixed;
           background-position: center;
           background-repeat: no-repeat;
           background-size: cover;
+          --ma-card-background-image: none;
+          --ma-card-background-color: none;
+          --ma-card-box-shadow: none;
         }
         #contentSlot{
           @apply --ma-resume-page-style;
@@ -35,7 +38,7 @@ export class MaEducationPage extends PolymerElement {
         }
         #educationInfoCard{
           --ma-card-height: 10px;
-          height: 50%;
+          /* height: 50%; */
         }
 
         #educationDetailsCard{
@@ -50,35 +53,34 @@ export class MaEducationPage extends PolymerElement {
           display: flex;
           position: relative;
           margin-top: 20px;
-          justify-content: center;
         }
 
         #educationInfoContainer{
-          width: 35%;
-          margin-right: 55px;
+          /* width: 35%;
+          margin-right: 55px; */
         }
         #educationDetailsContainer{
-          width: 30%;
+          /* width: 30%; */
         }
 
         .schoolName{
-          font-size: 14pt;
-          color: var(--ma-main-theme-color);
-          font-weight: 800;
+          font-size: 12pt;
+          font-weight: bold;
         }
         .degreeInfo{
           font-size: 12pt;
           font-weight: 600;
         }
-        .schoolName, .degreeInfo{
+        /* .schoolName, .degreeInfo{
           line-height: 20px;
-        }
+        } */
         .dateRange, .location{
           line-height: 5px;
           font-size: 12pt;
         }
         ul{
           padding-left: 24px;
+          margin-top: 5px;
         }
 
         #educationIcon{
@@ -93,7 +95,11 @@ export class MaEducationPage extends PolymerElement {
           top: 50%;
         }
         #coursesTitle{
-          font-weight: 800;
+          font-weight: bold;
+          font-size: 13pt;
+          margin-top: 28px;
+          margin-top: 18px;
+          margin-bottom: 0px;
         }
         #educationDetailsCard{
           height: 95%;
@@ -157,28 +163,37 @@ export class MaEducationPage extends PolymerElement {
 
         @media (min-width: 1281px) {
           .schoolName{
-            font-size: 18pt;
-            line-height: 28px;
+            font-size: 16pt;
+            line-height: 0;
           }
           .degreeInfo{
-            font-size: 16pt;
+            font-size: 12pt;
           }
           .dateRange, .gpa{
-            font-size: 14pt;
+            font-size: 10pt;
+            top: -4px;
+            position: relative;
           }
           li{
-            line-height: 60px;
-            font-size: 16pt;
+            line-height: 27px;
+            font-size: 11pt;
+          }
+          #coursesTitle{
+            font-size: 11pt;
           }
         }
 
         @media (min-width: 1025px) and (max-width: 1280px) {
           li{
-            line-height: 60px;
+            line-height: 27px;
+             font-size: 16pt;
+          }
+          #coursesTitle{
             font-size: 16pt;
           }
+
           .schoolName{
-            font-size: 18pt;
+            font-size: 16pt;
             line-height: 28px;
           }
           .degreeInfo{
@@ -197,7 +212,10 @@ export class MaEducationPage extends PolymerElement {
           }
 
           li{
-            line-height: 55px;
+            line-height: 27px;
+            font-size: 16pt;
+          }
+          #coursesTitle{
             font-size: 16pt;
           }
           .degreeInfo, .gpa, .dateRange{
@@ -210,7 +228,7 @@ export class MaEducationPage extends PolymerElement {
             transform: translate(-50%, -62%);
           }
           li{
-            line-height: 55px;
+            line-height: 40px;
             font-size: 16pt;
           }
 
@@ -222,7 +240,10 @@ export class MaEducationPage extends PolymerElement {
             transform: translate(-50%, -62%);
           }
           li{
-            line-height: 45px;
+            line-height: 27px;
+            font-size: 14pt;
+          }
+          #coursesTitle{
             font-size: 14pt;
           }
           .degreeInfo{
@@ -253,54 +274,48 @@ export class MaEducationPage extends PolymerElement {
             padding: 16px 0px;
           }
           li{
-            line-height: 40px;
+            line-height: 27px;
+            font-size: 12pt;
+          }
+          #coursesTitle{
             font-size: 12pt;
           }
         }
       </style>
 
       <div id="centeredCard">
-
         <ma-card class="">
           <div slot="title"><h1>{{_toLowerCase(title)}}</h1></div>
           <div slot="subtitle">[[subtitle]]</div>
-        </ma-card>
-      
-        <div id="pageContent">
+          <div slot="content">
+            <div id="pageContent">
+              <div id="educationInfoContainer">
+                  <div id="educationInfoCard">
+                    <div slot="content">
+                      <p class="schoolName">[[data.schoolName]]</p>
+                      <p class="degreeInfo">[[data.degreeName]] - [[data.majorName]]</p>
+                      <p class="dateRange">[[data.startDate]] - [[data.endDate]]</p>
+                      <p class="gpa">GPA - [[data.gpaValue]] on a 4.00 scale.</p>
 
-            <div id="educationInfoContainer">
-                <div id="educationIcon"><img src="src/images/Education.png"></div>
-                <ma-card id="educationInfoCard">
-                  <div slot="content">
-                    <p class="schoolName">[[_toUpperCase(data.schoolName)]]</p>
-                    <p class="degreeInfo">[[data.degreeName]] - [[data.majorName]]</p>
-                    <p class="dateRange">[[data.startDate]] - [[data.endDate]]</p>
-                    <p class="gpa">GPA - [[data.gpaValue]] on a 4.00 scale.</p>
+                    <div id="educationDetailsContainer">
+                          <h2 id="coursesTitle">Courses Included:</h2>
+                            <ul>
+                              <dom-repeat id="repeat" items="[[data.courses]]">
+                                <template>
+                                    <li>[[item]]</li>
+                                </template>
+                              </dom-repeat>
+                            </ul>
+                    </div>
                   </div>
-                </ma-card>
-            </div>
-
-            <div id="educationDetailsContainer">
-              <ma-card id="educationDetailsCard">
-                <div slot="content">
-                  <h2 id="coursesTitle">COURSES INCLUDED</h2>
-                    <ul>
-                      <dom-repeat id="repeat" items="[[data.courses]]">
-                        <template>
-                            <li>[[item]]</li>
-                        </template>
-                      </dom-repeat>
-                    </ul>
                 </div>
-              </ma-card>
+              </div>
             </div>
-        </div>
-
+          </div>
+        </ma-card>
       </div>
-
     `;
   }
-
 
   static get properties() {
     return {

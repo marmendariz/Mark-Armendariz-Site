@@ -33,9 +33,9 @@ export class MaMenuBar extends PolymerElement {
           height: 10px;
           padding: 6px 18px;
           font-size: 20pt;
-          line-height: 20px;
+          line-height: 22px;
           font-weight: 700;
-          top: -3px;
+          top: 6px;
           position: relative;
           width: 45%;
           margin: 0 auto;
@@ -99,8 +99,7 @@ export class MaMenuBar extends PolymerElement {
       <ma-card id="menuBarCard">
         <div slot="content" id="buttons">
           <div id="appTitle">
-            <div id="lineOne">[[nameLineOne]]</div>
-            <div id="lineTwo">[[nameLineTwo]]</div>
+            Mark Armendariz
           </div>
           <iron-icon id="menuIcon" icon="menu" on-tap="_openMenu"></iron-icon>
 

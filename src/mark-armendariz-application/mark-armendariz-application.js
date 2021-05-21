@@ -11,6 +11,7 @@ import {MaExperiencePage} from '../app-components/page-components/ma-experience-
 import {MaProjectsPage} from '../app-components/page-components/ma-projects-page/ma-projects-page.js';
 import {MaContactPage} from '../app-components/page-components/ma-contact-page/ma-contact-page.js';
 import {MaEducationPage} from '../app-components/page-components/ma-education-page/ma-education-page.js';
+import {MaAboutMe} from '../app-components/page-components/ma-about-me/ma-about-me.js';
 
 class MarkArmendarizApplication extends PolymerElement {
  
@@ -19,10 +20,11 @@ class MarkArmendarizApplication extends PolymerElement {
       
       <style>
         :host {
+          /*1c739b*/
           display: block;
           --ma-general-font-color: #404042;
           --ma-accent-font-color: #404042;
-          --ma-suppress-font-color: #b1b1b4;
+          --ma-suppress-font-color: #dcdcdc;
           --ma-main-theme-color: #0c4e8a;
           --ma-main-theme-color-lite: #2264A0;
           --ma-main-theme-color-lite-transparent: #2264a047;
@@ -41,9 +43,10 @@ class MarkArmendarizApplication extends PolymerElement {
           margin-left: 10%;
           margin-right: 10%;
         } */
-        #appPages>.page:nth-child(odd){
+        
+        /* #appPages>.page:nth-child(odd){
           --ma-page-background-color: var(--ma-main-theme-color);
-        }
+        } */
         ma-menu-bar#menuBar{
           top: 0px;
           z-index: 1;
@@ -70,51 +73,40 @@ class MarkArmendarizApplication extends PolymerElement {
             padding-top: 10px;
           }
           .page{
-            /* padding: 60px 40px 60px 40px; */
             padding-top: 60px;
             padding-bottom: 60px;
           }
           .page.home-page{
-            /* padding: 10px 40px 60px 40px; */
             padding-top: 10px;
             padding-bottom: 60px;
           }
         }
         @media (min-width: 1025px) and (max-width: 1280px) {
           .page{
-            /* padding: 60px 40px 60px 40px; */
             padding-left: 15% !important;
             padding-right: 15% !important;
             padding-top: 60px;
             padding-bottom: 60px;
           }
           .page.home-page{
-            /* padding: 10px 40px 60px 40px; */
-
             padding-top: 10px;
             padding-bottom: 60px;
           }
         }
         @media (min-width: 768px) and (max-width: 1024px) {
           .page{
-            /* padding: 60px 40px 60px 40px; */
-
              padding-top: 60px;
             padding-bottom: 60px;            
             padding-left: 10% !important;
             padding-right: 10% !important;
           }
           .page.home-page{
-            /* padding: 10px 40px 60px 40px; */
-
              padding-top: 10px;
             padding-bottom: 60px;
           }
         }
         @media (min-width: 481px) and (max-width: 1024px) {
           .page{
-            /* padding: 60px 10px 60px 10px; */
-
             padding-top: 60px;
             padding-bottom: 60px;
             padding-left: 5% !important;
@@ -123,11 +115,18 @@ class MarkArmendarizApplication extends PolymerElement {
           #homePage{
             padding-top: 0px;
           }
+          #skillsAndEducationPage{
+            flex-wrap: wrap;
+          }
+          #educationPage, #skillsPage{
+            width: 100% !important;
+          }
+          #educationPage{
+            margin-bottom: 50px;
+          }
         }
         @media (min-width: 320px) and (max-width: 480px) {
           .page{
-            /* padding: 60px 5px 20px 5px; */
-
             padding-top: 60px;
             padding-bottom: 20px;
           }
@@ -136,23 +135,33 @@ class MarkArmendarizApplication extends PolymerElement {
           }
         }
 
+        #skillsAndEducationPage{
+        }
+        #educationPage{
+          margin-right: 35px;
+        }
+        #educationPage, #skillsPage{
+          width: 50%;
+        }
 
-
-footer{
-  background-color: white;
-    padding: 20px 50px;
-    height: 46px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    font-size: 9pt;
-}
+        footer{
+          background-color: var(--ma-main-theme-color);
+            padding: 20px 50px;
+            height: 46px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 9pt;
+            color: white;
+            
+        }
         footer #footer-logo{
-          background-image:url('icon.png');
+          /* background-image:url('icon.png'); */
+          background-color: 
           height: 38px;
-    width: 29px;
-    background-size: cover;
-    background-repeat: no-repeat;
+          width: 29px;
+          background-size: cover;
+          background-repeat: no-repeat;
         }
       </style>
   
@@ -181,40 +190,43 @@ footer{
         </ma-menu-bar>
         <ma-home-page id="homePage"
                       class="page home-page"
-                      title="Hi, I'm Mark."
-                      subtitle="This is who I am:"
+                      title="Hi, I'm Mark"
                       data=[[homePageData]]>
         </ma-home-page>
-        <ma-skills-page id="skillsPage"
-                        class="page" 
-                        title="Skills."
-                        subtitle="This is what I can do:"
-                        data="[[skillsData]]"
-                        other-data=[[otherSkillsData]]>
-        </ma-skills-page>
-        <ma-education-page id="educationPage"
-                           class="page" 
-                           title="Education."
-                           subtitle="This is where I studied:"
-                           data=[[educationData]]>
-        </ma-education-page>
+        
+        <ma-about-me id="aboutMePage"
+                     class="page"
+                     data=[[homePageData]]
+                     title="About me">
+        </ma-about-me>
+
+        <div class="page" id="skillsAndEducationPage" style="display: flex;">
+          <ma-education-page id="educationPage"
+                            style="margin-right: 35px;"
+                            title="Education"
+                            data=[[educationData]]>
+          </ma-education-page>
+          <ma-skills-page id="skillsPage"
+                          title="Skills"
+                          data="[[skillsData]]"
+                          other-data=[[otherSkillsData]]>
+          </ma-skills-page>
+        </div>
+        
         <ma-experience-page id="experiencePage"
                             class="page"
-                            title="Experience."
-                            subtitle="This is where I've worked:"
+                            title="Experience"
                             data=[[experienceData]]>
         </ma-experience-page>
         <ma-projects-page id="projectsPage"
                           class="page"
-                          title="Projects."
-                          subtitle="This is what I've worked on:"
+                          title="Projects"
                           data=[[projectsData]]
                           url=[[projectsSiteUrl]]>
         </ma-projects-page>
         <ma-contact-page id="contactPage"
                          class="page" 
-                         title="Contact."
-                         subtitle="This is how to get ahold of me:"
+                         title="Contact"
                          data=[[contactData]]>
         </ma-contact-page>
       </div>

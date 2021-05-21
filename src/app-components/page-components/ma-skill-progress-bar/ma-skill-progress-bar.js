@@ -17,7 +17,7 @@ export class MaSkillProgressBar extends PolymerElement {
         display: block;
         --ma-card-padding: 0px;
         --ma-card-frame:{
-          height: 45px;
+          height: 30px;
         }
         font-size: 12pt;
       }
@@ -28,21 +28,24 @@ export class MaSkillProgressBar extends PolymerElement {
       }
       #energyBar>#fillInArea{
         background-color: var(--ma-skill-progress-bar-color, #0c4e8a);
-        height: 45px; 
+        height: 30px; 
       }
       #skillName{
         background-color: var(--ma-skill-progress-bar-color, #0c4e8a);
         width: 150px;
         font-weight: bold;
         padding: 0px 0px 0px 10px;
-        line-height:47px;
+        line-height: 33px;
         color: white;
-        height: 45px;
+        height: 30px;
       }
       #barContainer{
         background-color: white;
         display: flex;
         flex-wrap: nowrap;
+        height: 30px;
+        font-size: 11pt;
+        border: 1px solid #d8d8d8;
         /*justify-content: space-between;*/
       }
       .bar{
@@ -55,7 +58,7 @@ export class MaSkillProgressBar extends PolymerElement {
         padding-right: 0px;
         float: right;
         width: 55px;
-        line-height:33px;
+        line-height:20px;
         font-weight: bold;
       }
 

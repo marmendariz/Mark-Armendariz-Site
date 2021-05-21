@@ -22,7 +22,10 @@ export class MaContactPage extends PolymerElement {
         :host {
           display: block;
           padding: var(--ma-page-padding, 0px);
-          background-color: var(--ma-page-background-color ,white);
+          /* background-color: var(--ma-page-background-color ,white); */
+          --ma-card-background-image: none;
+          --ma-card-background-color: none;
+          --ma-card-box-shadow: none;
         }
         div[slot="subtitle"]{
           @apply --ma-subtitle-text;
