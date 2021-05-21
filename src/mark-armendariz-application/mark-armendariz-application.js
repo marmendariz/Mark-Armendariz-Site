@@ -59,7 +59,7 @@ class MarkArmendarizApplication extends PolymerElement {
         .sticky + #homePage {
          padding-top: 60px;
         }
-        #projectsPage, #contactPage{
+        #contactPage{
           height: 600px;
         }
 
@@ -70,7 +70,7 @@ class MarkArmendarizApplication extends PolymerElement {
 
         @media (min-width: 1281px) {
           #homePage{
-            padding-top: 10px;
+            padding-top: 20px;
           }
           .page{
             padding-top: 60px;
@@ -156,8 +156,8 @@ class MarkArmendarizApplication extends PolymerElement {
             
         }
         footer #footer-logo{
-          /* background-image:url('icon.png'); */
-          background-color: 
+          background-image:url('icon-inverted.png');
+          /* background-color:  */
           height: 38px;
           width: 29px;
           background-size: cover;

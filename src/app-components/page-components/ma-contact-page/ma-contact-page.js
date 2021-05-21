@@ -57,8 +57,8 @@ export class MaContactPage extends PolymerElement {
           }
           --ma-icon-background-color : white;
           --ma-icon-style:{
-            width: 100px;
-            height: 100px;
+            width: 50px;
+            height: 50px;
           }
           margin: 10px 43px;
         }

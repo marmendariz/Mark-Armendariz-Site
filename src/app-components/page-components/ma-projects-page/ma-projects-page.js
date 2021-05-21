@@ -17,9 +17,6 @@ export class MaProjectsPage extends PolymerElement {
           display: block;
           padding: var(--ma-page-padding, 0px);
           /* background-color: var(--ma-page-background-color ,white); */
-          --ma-card-background-image: none;
-          --ma-card-background-color: none;
-          --ma-card-box-shadow: none;
         }
         div[slot="subtitle"]{
           @apply --ma-subtitle-text;
@@ -35,9 +32,8 @@ export class MaProjectsPage extends PolymerElement {
           }
         }
         #projectCards{
-          display: flex;
-          justify-content: center;
-          flex-wrap: wrap;
+          display: grid;
+          grid-template-columns: 50% 50%;
           margin: 15px 0;
         }
         #projectCards .project-card{
@@ -78,10 +74,16 @@ export class MaProjectsPage extends PolymerElement {
             margin-bottom: 10px;
           }
         }
+
+        #project-title-card{
+          --ma-card-background-image: none;
+          --ma-card-background-color: none;
+          --ma-card-box-shadow: none;
+        }
       </style>
 
       <div class="centeredCard">
-        <ma-card >
+        <ma-card id="project-title-card">
           <div id="titleSlot" slot="title"><h1>{{_toLowerCase(title)}}</h1></div>
           <div slot="subtitle">[[subtitle]]</div>
         </ma-card>
@@ -100,13 +102,6 @@ export class MaProjectsPage extends PolymerElement {
             </template>
           </dom-repeat>
         </div>
-        
-        <!-- <ma-card id="comingSoonCard">
-          <div slot="content">
-            <h3 id="comingSoonMsg">More projects coming soon</h3>
-          </div>
-        </ma-card> -->
-
       </div>
     `;
   }

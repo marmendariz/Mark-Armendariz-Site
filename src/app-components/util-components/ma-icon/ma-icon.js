@@ -39,7 +39,7 @@ export class MaIcon extends PolymerElement {
           text-align: center;
         }
         #iconText{
-          width: 234px;
+          /* width: 234px; */
           text-align: center;
           font-size: 13pt;
           margin-top: 5px;

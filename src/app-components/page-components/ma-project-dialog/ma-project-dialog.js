@@ -19,9 +19,9 @@ export class MaProjectDialog extends PolymerElement {
           cursor: default;
         }
         #dialog{
-          border: 2px solid;
-          border-color: var(--ma-main-theme-color);
-          width: var(--ma-project-modal-width, 75%);
+          border: 1px solid;
+          border-color: #d2d2d2;
+          width: var(--ma-project-modal-width, 45%);
           height: var(--ma-project-modal-height, 85%);
         }
         h1#title{
@@ -56,17 +56,17 @@ export class MaProjectDialog extends PolymerElement {
             height: 50%;
           }
           #dialog{
-            height: 88%;
+            height: 72%;
           }
           #projectDescription{
-            font-size: 16pt;
+            font-size: 12pt;
             line-height: 20pt;
           }
         }
 
         @media (min-width: 320px) and (max-width: 1024px) {
           #projectDescription{
-            font-size: 14pt;
+            font-size: 13pt;
             line-height: 20pt;
           }
           div#projectImage{
