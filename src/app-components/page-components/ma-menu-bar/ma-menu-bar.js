@@ -33,7 +33,6 @@ export class MaMenuBar extends PolymerElement {
           height: 10px;
           padding: 6px 18px;
           font-size: 20pt;
-          line-height: 22px;
           font-weight: 700;
           top: 6px;
           position: relative;
@@ -65,7 +64,6 @@ export class MaMenuBar extends PolymerElement {
         @media screen and (max-width: 1050px){
           #appTitle{
             width: fit-content;
-            height: auto;
             display: block;
             margin: 0 auto;
             padding: 20px;

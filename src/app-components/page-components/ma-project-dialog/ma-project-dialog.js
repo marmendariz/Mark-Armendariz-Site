@@ -21,13 +21,14 @@ export class MaProjectDialog extends PolymerElement {
         #dialog{
           border: 1px solid;
           border-color: #d2d2d2;
-          width: var(--ma-project-modal-width, 45%);
+          width: var(--ma-project-modal-width, 60%);
           height: var(--ma-project-modal-height, 85%);
         }
         h1#title{
           line-height: 27px;
           text-align: center;
           margin-bottom: 10px;
+          margin-top: 0;
         }
         div#projectImage{
           background-size: contain;
@@ -36,10 +37,11 @@ export class MaProjectDialog extends PolymerElement {
           width: 85%;
           height: 56%;
           margin: 0 auto;
+          margin-bottom: 10px;
         }
         iron-icon{
-          height: 40px;
-          width: 40px;
+          height: 35px;
+          width: 35px;
           cursor: pointer;
         }
         iron-icon:hover{
@@ -49,28 +51,50 @@ export class MaProjectDialog extends PolymerElement {
           text-align: center;
           font-weight: 500;
           margin-top: 0px;
+          position: relative;
+          bottom: 6px;
+        }
+
+        #descriptionWrapper{
+          margin-top: 0;
+        }
+        #projectDescription, #technologies{
+          width: 50%;
+        }
+
+        @media (min-width: 1281px){
+          div#projectImage{
+            height: 56%;
+          }
+        }
+
+        @media (max-width: 1400px){
+          #dialog{
+            width: 85%;
+            height: 87%;
+          }
         }
 
         @media (min-width: 1025px)  {
-          div#projectImage{
-            height: 50%;
-          }
+          /* div#projectImage{
+            height: 42%;
+          } */
           #dialog{
-            height: 72%;
+            height: 80%;
           }
-          #projectDescription{
-            font-size: 12pt;
-            line-height: 20pt;
+          #projectDescription, #technologies{
+            font-size: 10pt;
+            line-height: 15pt;
           }
         }
 
         @media (min-width: 320px) and (max-width: 1024px) {
-          #projectDescription{
-            font-size: 13pt;
-            line-height: 20pt;
+          #projectDescription, #technologies{
+            font-size: 10pt;
+            line-height: 15pt;
           }
           div#projectImage{
-            height: 30%;
+            height: 40%;
           }
           #dialog{
             width: 90%;
@@ -92,9 +116,19 @@ export class MaProjectDialog extends PolymerElement {
             height: 93vh;
             top: 40px !important;
           }
-          #projectDescription{
+          #projectDescription, #technologies{
             font-size: 10pt;
           }
+        }
+        #descriptionWrapper{
+          display: flex;
+        }
+
+        p{
+          margin: 0;
+        }
+        ul{
+          margin-top: 5px;
         }
       </style>
 
@@ -103,14 +137,27 @@ export class MaProjectDialog extends PolymerElement {
         <h1 id="title">[[title]]</h1>
         <div id="dateRange">[[startDate]] - [[endDate]]</div>
         <div id="projectImage"></div>
-        <div id="projectDescription">
+        <div id="descriptionWrapper">
+          <div id="projectDescription">
+              <p>Details:</p>
+              <ul>
+                <dom-repeat items="[[data]]">
+                  <template>
+                    <li>[[item]]</li>
+                  </template>
+                </dom-repeat>
+              </ul>
+          </div>
+          <div id="technologies">
+            <p>Technologies:</p>
             <ul>
-              <dom-repeat items="[[data]]">
-                <template>
-                  <li>[[item]]</li>
-                </template>
-              </dom-repeat>
-            </ul>
+                <dom-repeat items="[[technologies]]">
+                  <template>
+                    <li>[[item]]</li>
+                  </template>
+                </dom-repeat>
+              </ul>
+          </div>
         </div>
         <div id="projectCodeUrl"></div>
       </paper-dialog>

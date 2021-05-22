@@ -19,7 +19,6 @@ export class MaButton extends PolymerElement {
         :host([selected]) button, button:hover{
           background-color: #555555;
           filter: drop-shadow(6px 6px 6px #555555);
-          /*transform: scale(1.1);*/
           color: white;
         }
         button{

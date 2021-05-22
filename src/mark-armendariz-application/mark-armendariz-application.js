@@ -73,20 +73,20 @@ class MarkArmendarizApplication extends PolymerElement {
             padding-top: 20px;
           }
           .page{
-            padding-top: 60px;
-            padding-bottom: 60px;
+            padding-top: 10px;
+            /* padding-bottom: 60px; */
           }
           .page.home-page{
             padding-top: 10px;
-            padding-bottom: 60px;
+            padding-bottom: 0;
           }
         }
         @media (min-width: 1025px) and (max-width: 1280px) {
           .page{
             padding-left: 15% !important;
             padding-right: 15% !important;
-            padding-top: 60px;
-            padding-bottom: 60px;
+            padding-top: 10px;
+            padding-bottom: 0px
           }
           .page.home-page{
             padding-top: 10px;
@@ -95,8 +95,8 @@ class MarkArmendarizApplication extends PolymerElement {
         }
         @media (min-width: 768px) and (max-width: 1024px) {
           .page{
-             padding-top: 60px;
-            padding-bottom: 60px;            
+            padding-top: 10px;
+            padding-bottom: 0px;       
             padding-left: 10% !important;
             padding-right: 10% !important;
           }
@@ -107,8 +107,8 @@ class MarkArmendarizApplication extends PolymerElement {
         }
         @media (min-width: 481px) and (max-width: 1024px) {
           .page{
-            padding-top: 60px;
-            padding-bottom: 60px;
+            padding-top: 10px;
+            padding-bottom: 0px;  
             padding-left: 5% !important;
             padding-right: 5% !important;
           }
@@ -135,8 +135,13 @@ class MarkArmendarizApplication extends PolymerElement {
           }
         }
 
-        #skillsAndEducationPage{
+        @media (max-width: 481px){
+          .page{
+            padding-left: 5% !important;
+            padding-right: 5% !important;
+          }
         }
+
         #educationPage{
           margin-right: 35px;
         }
@@ -153,7 +158,6 @@ class MarkArmendarizApplication extends PolymerElement {
             align-items: center;
             font-size: 9pt;
             color: white;
-            
         }
         footer #footer-logo{
           background-image:url('icon-inverted.png');
@@ -165,18 +169,6 @@ class MarkArmendarizApplication extends PolymerElement {
         }
       </style>
   
-      <!-- ====== APPLICATION ROUTING Not currently implemented ====== -->
-      <!--<app-location route="{{route}}">
-      </app-location>
-
-      <app-route route="{{route}}"
-                 pattern="/:name"
-                 data="{{selectedPage}}"
-                 tail="{{subroute}}">
-      </app-route>-->
-      <!-- ================================= -->
-
-      <!-- ========== APPLICATION ========== -->
       <ma-landing-page id="landingPage"
                        title="Home">
       </ma-landing-page>
@@ -188,6 +180,7 @@ class MarkArmendarizApplication extends PolymerElement {
                      name-line-one="Mark"
                      name-line-two="Armendariz">
         </ma-menu-bar>
+
         <ma-home-page id="homePage"
                       class="page home-page"
                       title="Hi, I'm Mark"
@@ -218,12 +211,14 @@ class MarkArmendarizApplication extends PolymerElement {
                             title="Experience"
                             data=[[experienceData]]>
         </ma-experience-page>
+
         <ma-projects-page id="projectsPage"
                           class="page"
                           title="Projects"
                           data=[[projectsData]]
                           url=[[projectsSiteUrl]]>
         </ma-projects-page>
+        
         <ma-contact-page id="contactPage"
                          class="page" 
                          title="Contact"
@@ -235,8 +230,6 @@ class MarkArmendarizApplication extends PolymerElement {
         <div>Copyright &copy; 2021 Mark Armendariz. All rights reserved.</div>
         <div id="footer-logo"></div>
       </footer>
-      <!-- ================================= -->
-
     `;
   }
 

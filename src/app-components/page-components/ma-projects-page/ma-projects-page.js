@@ -97,6 +97,7 @@ export class MaProjectsPage extends PolymerElement {
                                  image-name=[[item.projectImage]]
                                  start-date=[[item.startDate]]
                                  end-date=[[item.endDate]]
+                                 technologies=[[item.technologies]]
                                  data=[[item.points]]>
                 </ma-project-card>
             </template>

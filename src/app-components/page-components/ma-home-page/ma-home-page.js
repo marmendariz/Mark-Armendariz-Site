@@ -80,34 +80,6 @@ export class MaHomePage extends PolymerElement {
             <div slot ="content">
               <p id="topMessage">[[data.topMsg]]</p>
               <a id="resumeAnchor" href="src\\docs\\MarkArmendariz_Resume.pdf"><ma-button id="resumeButton" text="Resume"></ma-button></a>
-
-
-                <!-- <div id="pageContent">
-                  <div id="traitIcons">
-                    <ma-icon class="traitIcon"
-                            title="{{_toUpperCase('Reliable Performer')}}"
-                            icon-name="ReliablePerformer"
-                            text=[[data.reliablePerformerMsg]]>
-                    </ma-icon>
-                    <ma-icon class="traitIcon"
-                            title="{{_toUpperCase('Philomath')}}"
-                            icon-name="Philomath"
-                            text=[[data.philomathMsg]]>
-                    </ma-icon>
-                    <ma-icon class="traitIcon"
-                            title="{{_toUpperCase('Problem Solver')}}"
-                            icon-name="ProblemSolver"
-                            text=[[data.problemSolverMsg]]>
-                    </ma-icon>
-                    <ma-icon class="traitIcon"
-                            title="{{_toUpperCase('Strategist')}}"
-                            icon-name="Strategist"
-                            text=[[data.strategistMsg]]>
-                    </ma-icon>
-                  </div>
-                </div> -->
-
-
             </div>
           </ma-card>
         </div>

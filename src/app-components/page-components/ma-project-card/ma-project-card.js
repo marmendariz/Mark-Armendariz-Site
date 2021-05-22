@@ -128,6 +128,7 @@ export class MaProjectCard extends PolymerElement {
         <ma-project-dialog opened={{opened}}
                            title=[[title]]
                            data=[[data]]
+                           technologies=[[technologies]]
                            image-name=[[imageName]]
                            start-date=[[startDate]]
                            end-date=[[endDate]]>
@@ -154,6 +155,9 @@ export class MaProjectCard extends PolymerElement {
         type: String
       },
       data: {
+        type: Array
+      },
+      technologies: {
         type: Array
       },
       text: {

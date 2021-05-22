@@ -35,9 +35,9 @@ export class MaAboutMe extends PolymerElement {
           }
         }
 
-        #about-me-wrapper{
+        /* #about-me-wrapper{
           display: flex;
-        }
+        } */
 
 
         #traitIcons{
@@ -74,9 +74,7 @@ export class MaAboutMe extends PolymerElement {
 
         #about-me-wrapper #about-me-text{
           line-height: 30px;
-          padding-right: 90px;
           font-size: 12pt;
-          width: 74%;
         }
 
         #photo{
@@ -84,8 +82,13 @@ export class MaAboutMe extends PolymerElement {
           background-size: contain;
           background-repeat: no-repeat;
           height: 367px;
-          width: 315px;
+          width: 276px;
+          margin-left: 10px;
+          margin-bottom: 10px;
         }
+
+
+
       </style>
 
       <div id="contactPage">
@@ -93,14 +96,26 @@ export class MaAboutMe extends PolymerElement {
           <div slot="title"><h1>{{_toLowerCase(title)}}</h1></div>
           <div slot="subtitle">[[subtitle]]</div>
           <div slot="content">
-            <div id="about-me-wrapper">
+
+<div id="about-me-wrapper">
+    <div style="float:right; margin 10px;">
+    <div id="photo"></div>
+    </div>
+    <div id='about-me-text'>
+    <p>{{data.aboutMe1}}</p>
+    <p>{{data.aboutMe2}}</p>
+    </div>
+    
+</div>
+
+
+            <!-- <div id="about-me-wrapper">
               <div id="about-me-text">
                 <p>{{data.aboutMe1}}</p>
                 <p>{{data.aboutMe2}}</p>
               </div>
-              <!-- <img src="src/images/me2.png"> -->
-              <div id="photo"></div>
-            </div>
+              <!-- <div id="photo"></div> -->
+            </div> -->
 
             <div id="traitIcons">
               <ma-icon class="traitIcon"
