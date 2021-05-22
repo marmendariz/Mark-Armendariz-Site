@@ -19,7 +19,6 @@ export class MaEducationPage extends PolymerElement {
       <style>
         :host {
           display: block;
-          /* background-image:url('src/images/educationPageFaded2.png'); */
           background-attachment: fixed;
           background-position: center;
           background-repeat: no-repeat;
@@ -38,7 +37,6 @@ export class MaEducationPage extends PolymerElement {
         }
         #educationInfoCard{
           --ma-card-height: 10px;
-          /* height: 50%; */
         }
 
         #educationDetailsCard{
@@ -55,28 +53,20 @@ export class MaEducationPage extends PolymerElement {
           margin-top: 20px;
         }
 
-        #educationInfoContainer{
-          /* width: 35%;
-          margin-right: 55px; */
-        }
-        #educationDetailsContainer{
-          /* width: 30%; */
-        }
-
         .schoolName{
           font-size: 12pt;
           font-weight: bold;
         }
         .degreeInfo{
-          font-size: 12pt;
+          font-size: 11pt;
           font-weight: 600;
         }
-        /* .schoolName, .degreeInfo{
-          line-height: 20px;
-        } */
         .dateRange, .location{
           line-height: 5px;
-          font-size: 12pt;
+          font-size: 10pt;
+        }
+        .gpa{
+          font-size: 10pt;
         }
         ul{
           padding-left: 24px;
@@ -133,11 +123,6 @@ export class MaEducationPage extends PolymerElement {
             width: 100%;
             height: 35%;
           }
-          #educationDetailsCard, #educationDetailsCard>div[slot="content"]{
-          --ma-card-frame:{
-            /*height: 44vh;*/
-          }
-        }
           #educationDetailsContainer{
             height: 65%;
             width: 100%;
@@ -147,14 +132,6 @@ export class MaEducationPage extends PolymerElement {
             height: initial;
           }
           #educationInfoCard{
-            width: 50%;
-          }
-          #coursesTitle{
-            text-align: center;
-            font-size: 14pt;
-            margin-bottom: 0;
-          }
-          #educationInfoCard{
             --ma-card-frame:{
               height: 150%;
             }
@@ -162,23 +139,8 @@ export class MaEducationPage extends PolymerElement {
         }
 
         @media (min-width: 1281px) {
-          .schoolName{
-            font-size: 16pt;
-            line-height: 0;
-          }
-          .degreeInfo{
-            font-size: 12pt;
-          }
-          .dateRange, .gpa{
-            font-size: 10pt;
-            top: -4px;
-            position: relative;
-          }
           li{
             line-height: 27px;
-            font-size: 11pt;
-          }
-          #coursesTitle{
             font-size: 11pt;
           }
         }
@@ -186,23 +148,8 @@ export class MaEducationPage extends PolymerElement {
         @media (min-width: 1025px) and (max-width: 1280px) {
           li{
             line-height: 27px;
-             font-size: 16pt;
+            font-size: 11pt;
           }
-          #coursesTitle{
-            font-size: 16pt;
-          }
-
-          .schoolName{
-            font-size: 16pt;
-            line-height: 28px;
-          }
-          .degreeInfo{
-            font-size: 15pt;
-          }
-          .gpa, .dateRange{
-            font-size: 14pt;
-          }
-
         }
 
         @media (min-width: 768px) and (max-width: 1024px) {
@@ -210,16 +157,9 @@ export class MaEducationPage extends PolymerElement {
             height: 72%;
             transform: translate(-50%, -62%);
           }
-
           li{
             line-height: 27px;
-            font-size: 16pt;
-          }
-          #coursesTitle{
-            font-size: 16pt;
-          }
-          .degreeInfo, .gpa, .dateRange{
-            font-size: 13pt;
+            font-size: 11pt;
           }
         }
         @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
@@ -228,10 +168,9 @@ export class MaEducationPage extends PolymerElement {
             transform: translate(-50%, -62%);
           }
           li{
-            line-height: 40px;
-            font-size: 16pt;
+            line-height: 27px;
+            font-size: 11pt;
           }
-
         }
 
         @media (min-width: 481px) and (max-width: 767px) {
@@ -241,16 +180,7 @@ export class MaEducationPage extends PolymerElement {
           }
           li{
             line-height: 27px;
-            font-size: 14pt;
-          }
-          #coursesTitle{
-            font-size: 14pt;
-          }
-          .degreeInfo{
-            font-size: 13pt;
-          }
-          .gpa{
-            font-size: 12pt;
+            font-size: 11pt;
           }
         }
 
@@ -264,21 +194,12 @@ export class MaEducationPage extends PolymerElement {
           #educationInfoCard{
             width: 100%;
           }
-          .schoolName{
-            font-size: 13pt;
-          }
-          .degreeInfo{
-            font-size: 13pt;
-          }
           #educationInfoCard>div[slot="content"]{
             padding: 16px 0px;
           }
           li{
             line-height: 27px;
-            font-size: 12pt;
-          }
-          #coursesTitle{
-            font-size: 12pt;
+            font-size: 11pt;
           }
         }
       </style>

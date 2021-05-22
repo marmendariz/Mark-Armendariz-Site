@@ -20,7 +20,6 @@ export class MaExperiencePage extends PolymerElement {
         :host {
           position: relative;
           display: block;
-          /* background-color: var(--ma-page-background-color ,white); */
           height: 100%;
         }
         .jobCard{
@@ -75,7 +74,6 @@ export class MaExperiencePage extends PolymerElement {
         }
         #jobDetailsCard{
           display: table-row;
-          /* height: 100%; */
           --ma-card-padding: 20px 25px 20px 25px;
           line-height: 30px;
     
@@ -86,14 +84,10 @@ export class MaExperiencePage extends PolymerElement {
           margin-bottom: 10px;    
         }
 
-        /**************************/
-
         .jobCard>div[slot="content"]{
           line-height: 15px;
         }
 
-
-        /*********************/
         li{
           line-height: 28px;
           margin: 10px 0;
@@ -107,7 +101,7 @@ export class MaExperiencePage extends PolymerElement {
           line-height: 0px;
         }
         .positionName{
-          font-size: 8pt;
+          font-size: 10pt;
           line-height: 4px;
         }
 
@@ -119,32 +113,24 @@ export class MaExperiencePage extends PolymerElement {
         }
         .dateRange, .location{
           font-size: 10pt;
-    position: relative;
-    top: -12px;
-    margin-top: 17px;
-    line-height: 0;
+          position: relative;
+          top: -12px;
+          margin-top: 17px;
+          line-height: 0;
         }
-        /*********************/
 
-        /*****************************************/
         @media screen and (max-width: 900px){
           .companyName{
             font-size: 11pt;
           }
           .positionName{
-            font-size: 9pt;
-          }
-          .location{
-            display: none;
+            font-size: 10pt;
           }
           ul{
             font-size: 10pt;
           }
         }
-        /*****************************************/
 
-        /*****************************************/
-        /* SMALLER RESOLUTION STYLES */
         @media screen and (max-width: 730px){
           li{
            line-height: 27px;
@@ -165,13 +151,16 @@ export class MaExperiencePage extends PolymerElement {
           .companyName, .positionName{
             line-height: 15px
           }
+          .location{
+            display: none;
+          }
           .dateRange, .location{
-            font-size: 10pt;
-    position: relative;
-    top: -12px;
-    margin-top: 17px;
-    line-height: 0;
-        }
+            font-size: 8pt;
+            position: relative;
+            top: -12px;
+            margin-top: 17px;
+            line-height: 18px;
+          }
           #pageContent{
             display: block;
           }
@@ -197,7 +186,6 @@ export class MaExperiencePage extends PolymerElement {
           }
         }
 
-        /*****************************************/
         @media (min-width: 1281px) {
           li{
             font-size: 14pt !important;
@@ -217,25 +205,21 @@ export class MaExperiencePage extends PolymerElement {
             font-size: 12pt;
           }
           .companyName{
-            font-size: 16pt;
+            font-size: 12pt;
             line-height: 0px;
           }
           .positionName{
-            font-size: 12pt;
+            font-size: 10pt;
             line-height: 10px;
             margin-bottom: 30px;
           }
           .dateRange, .location{
             font-size: 10pt;
-    position: relative;
-    top: -12px;
-    margin-top: 17px;
-    line-height: 0;
-
-        }
-        }
-
-        @media (min-width: 731px) and (max-width: 1024px) and (orientation: landscape) {
+            position: relative;
+            top: -12px;
+            margin-top: 17px;
+            line-height: 0;
+          }
         }
 
         @media (min-width: 481px) and (max-width: 730px) {
@@ -253,9 +237,11 @@ export class MaExperiencePage extends PolymerElement {
           }
         }
 
-        /* ul{
-          padding-left: 20px;
-        } */
+        @media (max-width: 480px) {
+          #pageTitleCard{
+            --ma-card-padding: 20px 0 10px 0;
+          }
+        }
 
         #pageTitleCard, #jobDetailsCard{
           --ma-card-background-image: none;

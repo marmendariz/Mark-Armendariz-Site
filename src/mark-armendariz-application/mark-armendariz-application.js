@@ -39,14 +39,6 @@ class MarkArmendarizApplication extends PolymerElement {
         #landingPage{
           height: 100vh;
         }
-        /* #appPages{
-          margin-left: 10%;
-          margin-right: 10%;
-        } */
-        
-        /* #appPages>.page:nth-child(odd){
-          --ma-page-background-color: var(--ma-main-theme-color);
-        } */
         ma-menu-bar#menuBar{
           top: 0px;
           z-index: 1;
@@ -60,7 +52,7 @@ class MarkArmendarizApplication extends PolymerElement {
          padding-top: 60px;
         }
         #contactPage{
-          height: 600px;
+          min-height: 600px;
         }
 
         .page{
@@ -74,7 +66,6 @@ class MarkArmendarizApplication extends PolymerElement {
           }
           .page{
             padding-top: 10px;
-            /* padding-bottom: 60px; */
           }
           .page.home-page{
             padding-top: 10px;
@@ -115,9 +106,6 @@ class MarkArmendarizApplication extends PolymerElement {
           #homePage{
             padding-top: 0px;
           }
-          #skillsAndEducationPage{
-            flex-wrap: wrap;
-          }
           #educationPage, #skillsPage{
             width: 100% !important;
           }
@@ -127,45 +115,53 @@ class MarkArmendarizApplication extends PolymerElement {
         }
         @media (min-width: 320px) and (max-width: 480px) {
           .page{
-            padding-top: 60px;
+            /* padding-top: 60px; */
             padding-bottom: 20px;
           }
           #homePage{
             padding-top: 0px;
           }
         }
-
         @media (max-width: 481px){
+          #educationPage, #skillsPage{
+            width: 100% !important;
+          }
           .page{
             padding-left: 5% !important;
             padding-right: 5% !important;
           }
         }
-
+        @media(max-width: 1024px){
+          #skillsAndEducationPage{
+            display: block !important;
+          }
+        }
         #educationPage{
           margin-right: 35px;
         }
         #educationPage, #skillsPage{
           width: 50%;
         }
-
         footer{
           background-color: var(--ma-main-theme-color);
-            padding: 20px 50px;
-            height: 46px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            font-size: 9pt;
-            color: white;
+          padding: 20px 50px;
+          height: 46px;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          font-size: 9pt;
+          color: white;
         }
         footer #footer-logo{
           background-image:url('icon-inverted.png');
-          /* background-color:  */
           height: 38px;
           width: 29px;
           background-size: cover;
           background-repeat: no-repeat;
+        }
+
+        #projectsPage{
+          margin-top: 20px;
         }
       </style>
   

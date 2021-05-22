@@ -22,7 +22,6 @@ export class MaContactPage extends PolymerElement {
         :host {
           display: block;
           padding: var(--ma-page-padding, 0px);
-          /* background-color: var(--ma-page-background-color ,white); */
           --ma-card-background-image: none;
           --ma-card-background-color: none;
           --ma-card-box-shadow: none;
@@ -38,7 +37,6 @@ export class MaContactPage extends PolymerElement {
           display: flex;
           flex-wrap: wrap;
           justify-content: space-evenly;
-          margin-top: 20px;
           --ma-card-frame:{
             height: 100% !important;
           }

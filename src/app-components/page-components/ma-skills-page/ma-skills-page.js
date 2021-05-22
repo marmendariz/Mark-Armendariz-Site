@@ -20,7 +20,6 @@ export class MaSkillsPage extends PolymerElement {
       <style>
         :host {
           display: block;
-          /* background-color: var(--ma-page-background-color ,white); */
           --ma-card-background-image: none;
           --ma-card-background-color: none;
           --ma-card-box-shadow: none;
@@ -43,22 +42,24 @@ export class MaSkillsPage extends PolymerElement {
         }
         #skillsList{
           height: 80%;
-          margin: 45px auto;
+          margin-top: 45px;
         }
         ma-skill-progress-bar{
-            /* margin: 30px 0px 25px 0px; */
-            margin: 20px 0px 18px 0px;
+          margin: 20px 0px 18px 0px;
         }
         #otherSkillsTitle{
-          color: var(--ma-main-theme-color);
           margin-bottom: 5px;
           margin-top: 32px;
+          font-size: 11pt;
+          font-weight: bold;
         }
         ul{
           padding-left: 17px;
           margin-top: 0px;
-          font-weight: 700;
-          font-size: 14pt;
+        }
+        li{
+          line-height: 27px;
+          font-size: 11pt;
         }
         @media (min-width: 320px) and (max-width: 480px) {
           #skillsList{

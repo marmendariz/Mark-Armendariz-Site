@@ -46,7 +46,6 @@ export class MaSkillProgressBar extends PolymerElement {
         height: 30px;
         font-size: 11pt;
         border: 1px solid #d8d8d8;
-        /*justify-content: space-between;*/
       }
       .bar{
         float: left;
@@ -63,11 +62,8 @@ export class MaSkillProgressBar extends PolymerElement {
       }
 
       @media screen and (max-width: 800px){
-        #ratio{
-          display: none;
-        }
-        #skillName{
-          font-size: 8pt;
+        #skillName, #ratio{
+          font-size: 10pt;
         }
         #skillName{
           width: 180px;
@@ -95,7 +91,6 @@ export class MaSkillProgressBar extends PolymerElement {
     `;
   }
 
-
   static get properties() {
     return {
       /**
@@ -105,14 +100,10 @@ export class MaSkillProgressBar extends PolymerElement {
         type: String,
         reflectToAttribute: true
       },
-
       skillId: {
         type: String,
         reflectToAttribute: true
       },
-
-      
-
       progress:{
           type: String,
           notify: true,
@@ -138,14 +129,9 @@ export class MaSkillProgressBar extends PolymerElement {
 
     this.addEventListener("onresize", function(e){
       var element = this.$.energyBar;//.offsetWidth;
-
       var width = element.offsetWidth;
-
-
-
     }.bind(this));
   }
-
 }
 
 window.customElements.define('ma-skill-progress-bar', MaSkillProgressBar);
