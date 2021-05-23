@@ -22,7 +22,6 @@ export class MaAboutMe extends PolymerElement {
           @apply --ma-subtitle-text;
         }
         div[slot="content"]{
-          /* padding: 50px; */
           @apply --ma-resume-page-style;
         }
         #pageContent{
@@ -35,14 +34,8 @@ export class MaAboutMe extends PolymerElement {
           }
         }
 
-        /* #about-me-wrapper{
-          display: flex;
-        } */
-
-
         #traitIcons{
           display: flex;
-          /* flex-wrap: wrap; */
           justify-content: center;
           margin-top: 20px;
         }
@@ -54,7 +47,6 @@ export class MaAboutMe extends PolymerElement {
             width: 100px;
             height: 100px;
           }
-          /* margin: 0 30px; */
           padding: 20px;
         }
         .traitIcon:hover{
@@ -62,13 +54,32 @@ export class MaAboutMe extends PolymerElement {
           transform: translate(-1%, -2%);
           --ma-icon-background-color : var(--ma-main-theme-color-lite);
         }
-        @media (min-width: 320px) and (max-width: 1025px) {
+        @media (min-width: 700px) and (max-width: 1025px){
           .traitIcon{
-            width: 252px;
+            width: 225px;
             --ma-icon-style:{
-              width: 150px;
-              height: 150px;
+              width: 100px;
+              height: 100px;
             }
+          }
+          #traitIcons{
+            display: grid;
+            grid-template-columns: 50% 50%;
+            margin: 0 auto;
+            justify-items: center;
+          }
+        }
+        @media (max-width: 699px){
+          .traitIcon{
+            width: unset;
+            padding: 10px;
+            --ma-icon-style:{
+              width: 100px;
+              height: 100px;
+            }
+          }
+          #traitIcons{
+            display: block;
           }
         }
 
@@ -77,6 +88,9 @@ export class MaAboutMe extends PolymerElement {
           font-size: 12pt;
         }
 
+        #photo-wrapper{
+          float: right;
+        }
         #photo{
           background-image: url("src/images/me2.png");
           background-size: contain;
@@ -86,9 +100,6 @@ export class MaAboutMe extends PolymerElement {
           margin-left: 10px;
           margin-bottom: 10px;
         }
-
-
-
       </style>
 
       <div id="contactPage">
@@ -96,27 +107,16 @@ export class MaAboutMe extends PolymerElement {
           <div slot="title"><h1>{{_toLowerCase(title)}}</h1></div>
           <div slot="subtitle">[[subtitle]]</div>
           <div slot="content">
-
-<div id="about-me-wrapper">
-    <div style="float:right; margin 10px;">
-    <div id="photo"></div>
-    </div>
-    <div id='about-me-text'>
-    <p>{{data.aboutMe1}}</p>
-    <p>{{data.aboutMe2}}</p>
-    </div>
-    
-</div>
-
-
-            <!-- <div id="about-me-wrapper">
-              <div id="about-me-text">
+            <div id="about-me-wrapper">
+                <div id="photo-wrapper">
+                  <div id="photo"></div>
+                </div>
+                <div id='about-me-text'>
                 <p>{{data.aboutMe1}}</p>
                 <p>{{data.aboutMe2}}</p>
-              </div>
-              <!-- <div id="photo"></div> -->
-            </div> -->
-
+                <p>{{data.aboutMe3}}</p>
+                </div>
+            </div>
             <div id="traitIcons">
               <ma-icon class="traitIcon"
                       title="{{_toUpperCase('Reliable Performer')}}"
@@ -139,15 +139,11 @@ export class MaAboutMe extends PolymerElement {
                       text=[[data.strategistMsg]]>
               </ma-icon>
             </div>
-
-
           </div>
         </ma-card>
-
       </div>
     `;
   }
-
 
   static get properties() {
     return {

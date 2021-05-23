@@ -71,8 +71,6 @@ export class MaProjectCard extends PolymerElement {
           height: 100%;
           width: 100%;
         }
-        /*.cardFront{
-        }*/
         .cardBack{
           background-color: white;
           transform: rotateY(180deg);
@@ -89,7 +87,7 @@ export class MaProjectCard extends PolymerElement {
           top: 0%;
           left: 0%;
         }
-        @media (min-width: 320px) and (max-width: 800px) {
+        @media (max-width: 800px) {
           .cardBack{
             transform: none;
             background-color: #ffffffc7;

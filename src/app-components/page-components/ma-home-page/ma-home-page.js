@@ -13,7 +13,6 @@ export class MaHomePage extends PolymerElement {
       <style>
         :host {
           display: block;
-          /* background-color: var(--ma-page-background-color ,white); */
           --ma-card-background-image: none;
           --ma-card-background-color: none;
           --ma-card-box-shadow: none;
@@ -21,28 +20,6 @@ export class MaHomePage extends PolymerElement {
         div[slot="subtitle"]{
           @apply --ma-subtitle-text;
         }
-        /* #traitIcons{
-          display: flex;
-          /* flex-wrap: wrap; */
-          justify-content: center;
-          margin-top: 20px;
-        }
-        .traitIcon{
-          width: 437px;
-          --ma-icon-background-color : var(--ma-main-theme-color);
-          --ma-icon-border-radius: 50%;
-          --ma-icon-style:{
-            width: 100px;
-            height: 100px;
-          }
-          /* margin: 0 30px; */
-          padding: 20px;
-        }
-        .traitIcon:hover{
-          filter: drop-shadow(var(--ma-card-box-shadow, 10px 10px 10px #55555557));
-          transform: translate(-1%, -2%);
-          --ma-icon-background-color : var(--ma-main-theme-color-lite);
-        } */
         .highlighted{
           color: var(--ma-main-theme-color);
         }
@@ -53,41 +30,29 @@ export class MaHomePage extends PolymerElement {
           display: inline-block;
           cursor: pointer;
         }
-
         #topMessage{
           line-height: 30px;
             font-size: 12pt;
         }
-        /*@media (min-width: 1281px) {
+        @media(max-width: 600px){
+          #resumeButton{
+            display: flex !important;
+            justify-content: center;
+          }
         }
-        @media (min-width: 1025px) and (max-width: 1280px) {
-        }
-        @media (min-width: 768px) and (max-width: 1024px) {
-        }
-        @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-        }
-        @media (min-width: 481px) and (max-width: 767px) {
-        }
-        @media (min-width: 320px) and (max-width: 480px) {
-        }*/
       </style>
       <div>
         <div style="margin-top: 10px;">
           <ma-card class="centeredCard">
             <div id="titleSlot" slot="title"><h1>Hi, I'm <span class="highlighted"> Mark.</span></h1></div>
             <div slot="subtitle">[[subtitle]]</div>
-
             <div slot ="content">
               <p id="topMessage">[[data.topMsg]]</p>
               <a id="resumeAnchor" href="src\\docs\\MarkArmendariz_Resume.pdf"><ma-button id="resumeButton" text="Resume"></ma-button></a>
             </div>
           </ma-card>
         </div>
-
-       
       </div>
-
-
     `;
   }
 
@@ -116,7 +81,6 @@ export class MaHomePage extends PolymerElement {
   _toUpperCase(text){
     return text.toUpperCase();
   }
-
 }
 
 window.customElements.define('ma-home-page', MaHomePage);

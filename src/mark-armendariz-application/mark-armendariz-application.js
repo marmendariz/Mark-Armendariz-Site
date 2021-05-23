@@ -109,9 +109,9 @@ class MarkArmendarizApplication extends PolymerElement {
           #educationPage, #skillsPage{
             width: 100% !important;
           }
-          #educationPage{
+          /* #educationPage{
             margin-bottom: 50px;
-          }
+          } */
         }
         @media (min-width: 320px) and (max-width: 480px) {
           .page{

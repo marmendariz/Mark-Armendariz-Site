@@ -37,7 +37,7 @@ export class MaLandingPage extends PolymerElement {
           font-weight: 900;
           color: var(--ma-main-theme-color);
         }
-        @media (min-width: 320px) and (max-width: 480px) {
+        @media (max-width: 480px) {
           #apptitle{
             font-size: 30pt;
           }

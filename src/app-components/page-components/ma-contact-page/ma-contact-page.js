@@ -76,6 +76,12 @@ export class MaContactPage extends PolymerElement {
             margin: 10px 0px;
           }
         }
+
+        @media(max-width: 771px){
+          #pageContent{
+            margin-bottom: 50px;
+          }
+        }
       </style>
 
       <div id="contactPage">

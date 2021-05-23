@@ -16,7 +16,6 @@ export class MaProjectsPage extends PolymerElement {
         :host {
           display: block;
           padding: var(--ma-page-padding, 0px);
-          /* background-color: var(--ma-page-background-color ,white); */
         }
         div[slot="subtitle"]{
           @apply --ma-subtitle-text;
@@ -37,7 +36,7 @@ export class MaProjectsPage extends PolymerElement {
           margin: 15px 0;
         }
         #projectCards .project-card{
-          margin: 5px;
+          margin: 0 12px 24px 12px;
         }
 
         ma-card#comingSoonCard{
@@ -46,21 +45,6 @@ export class MaProjectsPage extends PolymerElement {
         h3#comingSoonMsg{
           text-align: center;
         }
-        @media (min-width: 1281px) {
-        }
-
-        @media (min-width: 1025px) and (max-width: 1280px) {
-        }
-
-        @media (min-width: 768px) and (max-width: 1024px) {
-        }
-
-        @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-        }
-
-        @media (min-width: 481px) and (max-width: 767px) {
-        }
-
         @media (min-width: 320px) and (max-width: 480px) {
           ma-project-card{
             margin-bottom: 20px;
@@ -72,6 +56,17 @@ export class MaProjectsPage extends PolymerElement {
           ma-card#comingSoonCard{
             margin-top: 0px;
             margin-bottom: 10px;
+          }
+        }
+
+        @media (max-width: 650px){
+          #projectCards{
+            display: block;
+          }
+          ma-project-card{
+            --ma-project-card-style:{
+              height: 20vh;
+            }
           }
         }
 

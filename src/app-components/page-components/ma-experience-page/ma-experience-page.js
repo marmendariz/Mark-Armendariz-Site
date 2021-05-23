@@ -23,7 +23,7 @@ export class MaExperiencePage extends PolymerElement {
           height: 100%;
         }
         .jobCard{
-          --ma-card-padding:7px 20px;
+          --ma-card-padding: 7px 20px;
         }
         div[slot="subtitle"]{
           color: #0c4e8a;
@@ -74,7 +74,7 @@ export class MaExperiencePage extends PolymerElement {
         }
         #jobDetailsCard{
           display: table-row;
-          --ma-card-padding: 20px 25px 20px 25px;
+          --ma-card-padding: 0 20px;
           line-height: 30px;
     
         }
@@ -257,7 +257,6 @@ export class MaExperiencePage extends PolymerElement {
         </ma-card>
       
         <div id="pageContent">
-
             <div id="jobsListContainer">
             <dom-repeat id="repeat" items="{{data}}" as="section">
               <template>
@@ -272,7 +271,6 @@ export class MaExperiencePage extends PolymerElement {
               </template>
             </dom-repeat>
             </div>
-
             <div id="jobDetailsContainer">
               <ma-card id="jobDetailsCard">
                 <div slot="content">
@@ -286,9 +284,7 @@ export class MaExperiencePage extends PolymerElement {
                 </div>
               </ma-card>
             </div>
-
         </div>
-
   </div>
 
     `;
