@@ -86,8 +86,7 @@ export class MaEducationPage extends PolymerElement {
         }
         #coursesTitle{
           font-weight: bold;
-          font-size: 13pt;
-          margin-top: 28px;
+          font-size: 11pt;
           margin-top: 18px;
           margin-bottom: 0px;
         }

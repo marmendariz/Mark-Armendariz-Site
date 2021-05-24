@@ -76,9 +76,6 @@ export class MaProjectDialog extends PolymerElement {
         }
 
         @media (min-width: 1025px)  {
-          /* div#projectImage{
-            height: 42%;
-          } */
           #dialog{
             height: 80%;
           }
@@ -102,12 +99,6 @@ export class MaProjectDialog extends PolymerElement {
           }
         }
 
-        @media (min-width: 768px) and (max-width: 1024px) and (orientation: landscape) {
-        }
-
-        @media (min-width: 481px) and (max-width: 767px) {
-        }
-
         @media (min-width: 320px) and (max-width: 480px) {
           #dialog{
             width: 100%;
@@ -126,6 +117,7 @@ export class MaProjectDialog extends PolymerElement {
 
         p{
           margin: 0;
+          font-weight: bold;
         }
         ul{
           margin-top: 5px;

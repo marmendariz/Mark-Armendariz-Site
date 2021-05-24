@@ -134,9 +134,9 @@ export class MaAboutMe extends PolymerElement {
                       text=[[data.problemSolverMsg]]>
               </ma-icon>
               <ma-icon class="traitIcon"
-                      title="{{_toUpperCase('Strategist')}}"
-                      icon-name="Strategist"
-                      text=[[data.strategistMsg]]>
+                      title="{{_toUpperCase('Fast Learner')}}"
+                      icon-name="FastLearner"
+                      text=[[data.fastLearnerMsg]]>
               </ma-icon>
             </div>
           </div>

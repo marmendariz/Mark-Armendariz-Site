@@ -248,6 +248,11 @@ export class MaExperiencePage extends PolymerElement {
           --ma-card-background-color: none;
           --ma-card-box-shadow: none;
         }
+
+        #techologiesTitle{
+          font-weight: bold;
+          margin-bottom: 0;
+        }
       </style>
 
   <div>
@@ -275,9 +280,18 @@ export class MaExperiencePage extends PolymerElement {
               <ma-card id="jobDetailsCard">
                 <div slot="content">
                     <ul>
-                      <dom-repeat id="repeat" items="[[_selectedData]]">
+                      <dom-repeat id="repeat" items="[[_selectedData.points]]">
                         <template>
                             <li>[[item]]</li>
+                        </template>
+                      </dom-repeat>
+                    </ul>
+
+                    <p id="techologiesTitle">[[keyTechnologiesTitle]]</p>
+                    <ul style="margin-top: 0;">
+                      <dom-repeat id="techologies" items="[[_selectedData.keyTechnologies]]">
+                        <template>
+                          <li>[[item]]</li>
                         </template>
                       </dom-repeat>
                     </ul>
@@ -312,19 +326,23 @@ export class MaExperiencePage extends PolymerElement {
       },
 
       _selectedData:{
-        type: Array
+        type: Object
       },
 
       defaultDetailsMessage: {
         type: String,
         value: "Select an experience card for more details"
+      },
+
+      keyTechnologiesTitle: {
+        type: String,
+        value: ""
       }
     };
   }
 
   ready(){
     super.ready();
-    this._selectedData = [this.defaultDetailsMessage];
   }
 
   _setAsSelected(e){
@@ -354,12 +372,14 @@ export class MaExperiencePage extends PolymerElement {
     }
     this.updateStyles();
 
-    var tempSelection = this.data[parseInt(targetElement.id)-1].points;
+    var tempSelection = this.data[parseInt(targetElement.id)-1];
     if(tempSelection!= this._selectedData){
       this._selectedData = tempSelection;
+      this.keyTechnologiesTitle = "Key Technologies";
     }
     else{
       this._selectedData = [this.defaultDetailsMessage];
+      this.keyTechnologiesTitle = "";
     }
 
   }
